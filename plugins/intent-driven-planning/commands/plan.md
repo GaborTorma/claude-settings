@@ -12,17 +12,24 @@ A beszélgetésben legyen véglegesített `Intent` + `Spec`. Új sessionben olva
 
 ## Workflow
 
-1. **`Plan` tervezete** az elfogadott `Intent` + `Spec` alapján → iteratív finomítás (lépések pontosítása, edge case-ek, verifikáció erősítése). A `Branch` sorba **konkrét név** kerüljön, ne placeholder.
+1. **Bontás-döntés (flat vs. multi-stage)**: vizsgáld meg, hogy a Spec AC-i és a tervezett változtatások több, **e2e-tesztelhető és release-worthy egységre** bonthatók-e és szükséges/logikus-e a bontás vagy csak elaprózza a megvalósítást.
+   - **Ha milestone-bontás mellett döntenél**: a részletes `Plan` megírása **előtt** mutasd be a usernek:
+      - a döntés **indoklását**: miért nem fér be flat alakba, milyen e2e-tesztelhető egységekre bontható szét
+      - a javasolt `MS-XX` milestone-okat (cím + 1 mondatos hatókör, kapcsolódó `AC-XX`-ek).
 
-   **Milestone-bontás megfontolása**: ha a Spec AC-i és a tervezett változtatások több, **e2e-tesztelhető és release-worthy egységre** bonthatók (pl. külön rétegek, önállóan demo-able increment-ek), javasolj `MS-XX` milestone-csoportokat. Kisebb, egyetlen e2e-egységnyi feladatnál maradj a flat `IS-XX` listánál. A user dönt a Plan-review-ban.
+      Kérj megerősítést `AskUserQuestion`-nel. A user pivot-olhat flat-re, módosíthatja vagy átszámozhatja a milestone-okat, vagy jóváhagyhatja. A részletes `IS` / `MV` lépések csak ezután készülnek.
 
-2. **`ExitPlanMode` hívás**: a teljes **Spec-fájl** tartalma (mindhárom szakasszal) megy review-ra. Visszajelzés → iteráció → újra `ExitPlanMode`.
+   - **Ha flat alak (alapeset)**: folytasd közvetlenül a 2. lépéssel, külön user-checkpoint nélkül.
 
-3. **Approve után — mentés**: kilépés a Plan harness-ből, és a véglegesített tartalom mentése a megegyezett **Spec-fájl** útvonalra.
+2. **`Plan` tervezete** az elfogadott bontás-döntés szerint, az `Intent` + `Spec` alapján → iteratív finomítás (lépések pontosítása, edge case-ek, verifikáció erősítése). A `Branch` sorba **konkrét név** kerüljön, ne placeholder.
 
-4. **Session-javaslat**: tegyél indoklással ellátott ajánlást, hogy a megvalósítás **új sessionben** induljon (tisztább kontextus, kevesebb plan-mód-zaj — nagyobb feladatnál ajánlott) vagy **az aktuálisban folytatódjon** (kicsi, gyors feladat; a kontextus még friss). A döntés a useré.
+3. **`ExitPlanMode` hívás**: a teljes **Spec-fájl** tartalma (mindhárom szakasszal) megy review-ra. Visszajelzés → iteráció → újra `ExitPlanMode`.
 
-5. **STOP**: implementáció csak a user explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
+4. **Approve után — mentés**: kilépés a Plan harness-ből, és a véglegesített tartalom mentése a megegyezett **Spec-fájl** útvonalra.
+
+5. **Session-javaslat**: tegyél indoklással ellátott ajánlást, hogy a megvalósítás **új sessionben** induljon (tisztább kontextus, kevesebb plan-mód-zaj — nagyobb feladatnál ajánlott) vagy **az aktuálisban folytatódjon** (kicsi, gyors feladat; a kontextus még friss). A döntés a useré.
+
+6. **STOP**: implementáció csak a user explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
 
 ---
 
@@ -140,7 +147,7 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Továbbiak (- [ ] MS-01:IS-02, - [ ] MS-01:IS-03, ...) ugyanezzel a struktúrával. -->
 
-##### <a id="MS-01:MV">MS-01:MV</a> — Milestone verify
+**Milestone verify**
 
 - [ ] <a id="MS-01:MV-01">**MS-01:MV-01**</a> — <konkrét ellenőrzési mód (parancs / Playwright snapshot / MCP query / DB-állapot).> [[AC-XX](#AC-XX)]
 
