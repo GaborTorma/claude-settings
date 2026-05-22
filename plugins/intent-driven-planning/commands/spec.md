@@ -85,7 +85,7 @@ A `Spec` szakasz, amit az `Intent` mögé fűzünk:
    3. <Mit látunk — megfigyelhető eredmény (log / DB / API / UI / állapot, stb...).>
 
 - **AC-02** — _<Másik forgatókönyv címkéje.>_ [FR-03]
-   1. <Mi áll fenn.>
-   2. <Mi történik.>
-   3. <Mit látunk.>
+   1. <Mi áll fenn?>
+   2. <Mi történik?>
+   3. <Mit látunk?>
 ```
