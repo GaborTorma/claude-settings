@@ -65,10 +65,10 @@ A sablon mezőit ezekkel a szabályokkal töltsd ki.
 
 - **Minden bejegyzés konkrét, futtatható vagy reprodukálható** — Spec `AC-XX`-re, nevesített flow-ra, vagy konkrét parancsra hivatkozva.
 - **Tilos**:
-   - "Minden `IS-XX` Verify-ja zöld" — a checkbox-ok jelzik.
+   - "Minden `IS-XX` / `MS-XX:IS-YY` Verify-ja zöld" — a checkbox-ok jelzik.
    - "Lint zöld, build hibamentes" minden milestone-nál — ha kell, egyszer a `GV`-ben.
    - "Régi funkciók regressziómentesek" — nevesítsd a flow-t és a megfigyelhető állapotot.
-- **Jó MV/GV-bejegyzés alak**: "AC-<XX>: <kiváltó állapot> → <megfigyelhető eredmény> <konkrét időkereten belül> (<eszköz> + <ellenőrzési mód>)."
+- **Jó `MS-XX:MV-XX` / `GV-XX` bejegyzés alak**: "<kiváltó állapot> → <megfigyelhető eredmény> <konkrét időkereten belül> (<eszköz> + <ellenőrzési mód>) [[AC-XX](#AC-XX)]"
 
 ---
 
@@ -110,53 +110,49 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
     MS-XX milestone-csoportok, lokális `MS-XX:IS-YY` lépésszámozás, milestone-onkénti MV-XX verify.
 -->
 
+<!-- Lépés-mezők szabályait lásd: `Mező-szemantika`. -->
+
 <!-- OPCIÓ A — Flat alak -->
 
-#### [ ] <a id="IS-01">IS-01</a> — <Lépés rövid címe>
+- [ ] <a id="IS-01">**IS-01**</a> — _<Lépés rövid címe>_ [[AC-XX](#AC-XX)]
+   - **Művelet**: <…>
+   - **Implementáció**: <…>
+      - <…>
+      - <…>
+   - **Failing test**: <…> _vagy_ `—`
+   - **Verify**: <…> _vagy_ `—`
+   - **Commit**: `<type>(<scope>): <subject> [IS-XX]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[IS-04, IL-02]`
 
-<!-- Mezők szabályait lásd: `Mező-szemantika`. -->
+<!-- Továbbiak (- [ ] IS-02, - [ ] IS-03, ...) ugyanezzel a struktúrával. -->
 
-- **Művelet**: <…>
-- **Implementáció**: <…>
-   - <…>
-   - <…>
-- **Failing test**: <…> _vagy_ `—`
-- **Verify**: <…> _vagy_ `—`
-- **Commit**: `<type>(<scope>): <subject> [IS-XX]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[IS-04, IL-02]`
+<!-- OPCIÓ B — Multi-stage alak (mező-struktúra azonos a flat IS-szel; csak az ID-prefix és Commit-token tér el) -->
 
-<!-- Továbbiak (#### IS-02, #### IS-03, ...) ugyanezzel a struktúrával. -->
+#### <a id="MS-01">MS-01</a> — <Milestone rövid címe, ami egy e2e-tesztelhető release-worthy egységet ír le>
 
-<!-- OPCIÓ B — Multi-stage alak -->
+- [ ] <a id="MS-01:IS-01">**MS-01:IS-01**</a> — _<Lépés rövid címe>_ [[AC-XX](#AC-XX)]
+   - **Művelet**: <…>
+   - **Implementáció**: <…>
+      - <…>
+      - <…>
+   - **Failing test**: <…> _vagy_ `—`
+   - **Verify**: <…> _vagy_ `—`
+   - **Commit**: `<type>(<scope>): <subject> [MS-XX:IS-YY]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[MS-02:IS-04, IL-02]`
 
-#### [ ] <a id="MS-01">MS-01</a> — <Milestone rövid címe, ami egy e2e-tesztelhető release-worthy egységet ír le>
-
-##### [ ] <a id="MS-01:IS-01">MS-01:IS-01</a> — <Lépés rövid címe>
-
-<!-- Mezők szabályait lásd: `Mező-szemantika`. -->
-
-- **Művelet**: <…>
-- **Implementáció**: <…>
-   - <…>
-   - <…>
-- **Failing test**: <…> _vagy_ `—`
-- **Verify**: <…> _vagy_ `—`
-- **Commit**: `<type>(<scope>): <subject> [MS-XX:IS-YY]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[MS-02:IS-04, IL-02]`
-
-<!-- Továbbiak: ##### MS-01:IS-02, ##### MS-01:IS-03, ... -->
+<!-- Továbbiak (- [ ] MS-01:IS-02, - [ ] MS-01:IS-03, ...) ugyanezzel a struktúrával. -->
 
 ##### <a id="MS-01:MV">MS-01:MV</a> — Milestone verify
 
-- <a id="MS-01:MV-01">**MS-01:MV-01**</a> — <AC-hivatkozás vagy nevesített flow + konkrét ellenőrzési mód (parancs / Playwright snapshot / MCP query / DB-állapot).>
+- [ ] <a id="MS-01:MV-01">**MS-01:MV-01**</a> — <konkrét ellenőrzési mód (parancs / Playwright snapshot / MCP query / DB-állapot).> [[AC-XX](#AC-XX)]
 
-<!-- Továbbiak: - **MS-01:MV-02**, - **MS-01:MV-03**, ... -->
+<!-- Továbbiak: - [ ] **MS-01:MV-02**, - [ ] **MS-01:MV-03**, ... -->
 
 <!-- További milestone-ok (#### MS-02, #### MS-03, ...) ugyanezzel a struktúrával, lokális IS-számozással és saját MV blokkal. -->
 
 ### Globális verifikáció (a teljes Plan végén)
 
-- <a id="GV-01">**GV-01**</a> — <Konkrét záró ellenőrzés a teljes Plan szintjén (AC-coverage, golden path e2e, build parancs stb.).>
+- [ ] <a id="GV-01">**GV-01**</a> — <konkrét ellenőrzési mód a teljes Plan szintjén (AC-coverage, golden path e2e, build parancs stb.).> [[AC-XX](#AC-XX)]
 
-<!-- Továbbiak: - **GV-02**, - **GV-03**, ... -->
+<!-- Továbbiak: - [ ] **GV-02**, - [ ] **GV-03**, ... -->
 
 ### Kockázat
 
@@ -166,14 +162,12 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Az implementáció során bővül. Csak a Plan és a megvalósult kód közötti **deltákat** rögzíti (eltérés, fix, follow-up, refactor) — a Plan szerint lefutott `IS-XX` / `MS-XX:IS-YY` lépéseket nem ismétli. -->
 
-### <a id="IL-01">IL-01</a> — <Bejegyzés rövid címe>
+- <a id="IL-01">**IL-01**</a> — _<Bejegyzés rövid címe>_ [[IS-XX](#IS-XX), [MS-XX:IS-YY](#MS-XX:IS-YY), [AC-XX](#AC-XX), [FR-XX](#FR-XX)]
+   - **Típus**: Eltérés | Fix | Follow-up | Refactor
+   - **Indoklás**: <1-2 mondat a motivációról / triggerről: mi váltotta ki a deltát — mi derült ki, milyen bugot fedeztünk fel, miért nem volt megfelelő a Plan-megközelítés.>
+   - **Delta**: <1-2 mondat — a delta konkrét tartalma: hogyan tértünk el / mit fixáltunk / mit vettünk fel follow-up-ként. **Ne ismételd a Plan-tételt** — csak a deltát írd le.>
+   - **Nyitott** (opcionális): <amit nem sikerült megcsinálni, későbbre halasztottuk — pl. follow-up ticket, tech-debt jegyzet. Csak akkor írd ki, ha van ilyen.>
+   - **Commit** (ha külön commit-ot kap): `<type>(<scope>): <subject> [IL-XX]`
 
-- **Típus**: Eltérés | Fix | Follow-up | Refactor
-- **Érintett**: [IS-XX](#IS-XX) / [MS-XX:IS-YY](#MS-XX:IS-YY) / [AC-XX](#AC-XX) / [FR-XX](#FR-XX) (vagy `—`, ha a Plan-ban nem szerepelt)
-- **Indoklás**: <1-2 mondat a motivációról / triggerről: mi váltotta ki a deltát — mi derült ki, milyen bugot fedeztünk fel, miért nem volt megfelelő a Plan-megközelítés.>
-- **Delta**: <1-2 mondat — a delta konkrét tartalma: hogyan tértünk el / mit fixáltunk / mit vettünk fel follow-up-ként. **Ne ismételd a Plan-tételt** — csak a deltát írd le.>
-- **Nyitott** (opcionális): <amit nem sikerült megcsinálni, későbbre halasztottuk — pl. follow-up ticket, tech-debt jegyzet. Csak akkor írd ki, ha van ilyen.>
-- **Commit** (ha külön commit-ot kap): `<type>(<scope>): <subject> [IL-XX]`
-
-<!-- További bejegyzések (### IL-02, ### IL-03, ...) ugyanezzel a struktúrával. Ha olyan dolog történik, ami egy korábbi `IL-XX` bejegyzést érint (pl. egy korábbi `Nyitott` tétel teljesül), a meglévő bejegyzést kell frissíteni — ne nyiss újat. -->
+<!-- További bejegyzések (- IL-02, - IL-03, ...) ugyanezzel a struktúrával. Ha olyan dolog történik, ami egy korábbi `IL-XX` bejegyzést érint (pl. egy korábbi `Nyitott` tétel teljesül), a meglévő bejegyzést kell frissíteni — ne nyiss újat. -->
 ```

@@ -30,8 +30,8 @@ Létezik egy lezárt **Spec-fájl** (`.spec/<slug>.md` vagy `.spec/<group>/<slug
    - Ha **nincs commit** (untracked vagy unstaged), commitold **az első Plan-lépés előtt**, külön commit-ban (pl. `docs(spec): add <slug>`).
 
 4. **Resume-pont meghatározása**:
-   - Olvasd a Plan-lépés-headingek `[ ]` / `[x]` állapotát — az `[x]`-elt lépéseket kihagyod, az első `[ ]` az indulópont.
-   - Multi-stage Plan: ha egy `MS-XX` milestone `[ ]`, de minden `MS-XX:IS-YY` alatta `[x]`, az `MV-XX` újrafuttatásánál folytasd — ne a következő milestone-nál.
+   - Olvasd a Plan-lépés-bullet-ek `[ ]` / `[x]` állapotát (`IS-XX`, `MS-XX:IS-YY`, `MS-XX:MV-XX`, `GV-XX`) — az `[x]`-elt lépéseket kihagyod, az első `[ ]` az indulópont.
+   - Multi-stage Plan: ha minden `MS-XX:IS-YY` `[x]`, de van `MS-XX:MV-XX` ami még `[ ]`, ott folytasd — ne a következő milestone-nál. (Az `MS-XX` heading-nek nincs külön checkbox-a; az állapot a benne lévő lépésekből olvasható.)
    - Ha a Plan régi sablonú (nincs checkbox), vagy az állapot inkonzisztens a commit-aktivitással / `Megvalósítási napló` bejegyzésekkel, jelezd a usernek és kérj iránymutatást.
 
 5. **Plan-lépések végrehajtása** — minden hátralévő `IS-XX` (vagy `MS-XX:IS-YY`) lépésnél:
@@ -41,9 +41,9 @@ Létezik egy lezárt **Spec-fájl** (`.spec/<slug>.md` vagy `.spec/<group>/<slug
    4. Delta esetén `IL-XX` napló-bejegyzés a `methodology` szabálya szerint.
 
    **Multi-stage milestone-zárás** — egy `MS-XX` **utolsó** `MS-XX:IS-YY` lépésénél a 2. és 3. pont közé beékelődik:
-   - `MS-XX:IS-YY` `[x]` után futtasd le a `MV-XX` `Milestone verify` blokkot (integrációs smoke, AC, regresszió).
-   - Csak ha minden `MV-XX` zöld: pipáld a `MS-XX` milestone-t `[x]`, és **csak ezután** mehet a commit (egy commit: utolsó IS kód + `MS-XX:IS-YY` `[x]` + `MS-XX` `[x]`).
-   - Piros `MV-XX` blokkolja a commit-ot és a következő `MS-(XX+1)` indulását.
+   - `MS-XX:IS-YY` `[x]` után futtasd le az összes `MS-XX:MV-XX` `Milestone verify` lépést (integrációs smoke, AC, regresszió).
+   - Csak ha minden `MS-XX:MV-XX` zöld: pipáld mindegyiket `[x]`, és **csak ezután** mehet a commit (egy commit: utolsó IS kód + `MS-XX:IS-YY` `[x]` + minden `MS-XX:MV-XX` `[x]`). Az `MS-XX` heading-nek nincs külön checkbox-a — a milestone implicit lezárt, ha minden alá tartozó `IS` és `MV` `[x]`.
+   - Piros `MS-XX:MV-XX` blokkolja a commit-ot és a következő `MS-(XX+1)` indulását.
 
 6. **Globális verifikáció**:
    - A `Plan.Globális verifikáció` (`GV-XX`) mind zöld.

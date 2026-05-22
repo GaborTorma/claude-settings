@@ -38,7 +38,7 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
    - Ha a `Plan` írásakor kiderül valami, ami a `Spec`-et vagy `Intent`-et érinti, azokat is frissíteni kell.
    - A `Plan`-jóváhagyás egy konzisztens, koherens dokumentumra menjen át.
 
-- **Plan-jóváhagyás után — fagyott állapot**: az `Intent`, `Spec`, `Plan` szakaszok **tartalma többé nem módosul**. Ezek tükrözik, mire vállalkoztunk a tervezéskor. **Egyetlen kivétel**: a Plan-lépés-headingek (`IS-XX` / `MS-XX` / `MS-XX:IS-YY`) `[ ]` → `[x]` állapot-jelölése implementáció közben — ez nem tartalmi módosítás, csak haladás-tracking.
+- **Plan-jóváhagyás után — fagyott állapot**: az `Intent`, `Spec`, `Plan` szakaszok **tartalma többé nem módosul**. Ezek tükrözik, mire vállalkoztunk a tervezéskor. **Egyetlen kivétel**: a Plan-lépés-bullet-ek (`IS-XX` / `MS-XX:IS-YY` / `MS-XX:MV-XX` / `GV-XX`) `[ ]` → `[x]` állapot-jelölése implementáció közben — ez nem tartalmi módosítás, csak haladás-tracking. Az `MS-XX` heading-nek nincs külön checkbox-a; a milestone-állapot a benne lévő `IS` és `MV` lépésekből olvasható.
 
 - **Implementáció közben — `## Megvalósítási napló` bővül**: az eltérések, fix-ek, follow-up-ok és refactorok a Plan után fűzött `Megvalósítási napló` szakaszba kerülnek **strukturált bejegyzésként** (sablon: `intent-driven-planning:plan` Sablon szakasza). Az eredeti három szakasz változatlan marad — a napló adja a "tényleges megvalósítás" rétegét.
 
@@ -50,17 +50,14 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
 
 ### Megvalósítási napló — példa bejegyzések
 
-#### <a id="IL-01">IL-01</a> — [IS-04](#IS-04) eltérő technikai megközelítéssel
+- <a id="IL-01">**IL-01**</a> — _Eltérő technikai megközelítéssel_ [[IS-04](#IS-04)]
+   - **Típus**: Eltérés
+   - **Indoklás**: A Plan-megközelítés (közvetlen módosítás) duplikációt hozott volna egy meglévő segédfüggvénnyel; implementáláskor derült ki, hogy a helper kiterjesztése egyszerűbb és kevesebb új kódot igényel.
+   - **Delta**: Az [IS-04](#IS-04) célját a meglévő segédfüggvény kiterjesztésével értük el, közvetlen módosítás helyett. A Failing test és az eredmény változatlan; csak a megvalósítás módja tér el a Plantól.
 
-- **Típus**: Eltérés
-- **Érintett**: [IS-04](#IS-04)
-- **Indoklás**: A Plan-megközelítés (közvetlen módosítás) duplikációt hozott volna egy meglévő segédfüggvénnyel; implementáláskor derült ki, hogy a helper kiterjesztése egyszerűbb és kevesebb új kódot igényel.
-- **Delta**: Az [IS-04](#IS-04) célját a meglévő segédfüggvény kiterjesztésével értük el, közvetlen módosítás helyett. A Failing test és az eredmény változatlan; csak a megvalósítás módja tér el a Plantól.
-
-#### <a id="IL-02">IL-02</a> — Menet közben felfedezett bug fixe
-
-- **Típus**: Fix
-- **Érintett**: `—` (Plan-ban nem szerepelt)
-- **Indoklás**: Az [IS-05](#IS-05) implementálásakor egy meglévő edge case bug derült ki — a kód hibás állapotba kerül; a bug blokkolja az [IS-05](#IS-05) Failing test-jét, ezért itt és most javítható (külön ticketre halasztva regressziót okozna a Plan későbbi lépéseinek tesztjeiben).
-- **Delta**: Minimális javítás az érintett függvényben; az [IS-05](#IS-05) Failing test-je ezután már a tervezett viselkedést méri, a Plan többi lépését nem mozdítja.
-- **Nyitott**: a fix mellé tartozó regressziós teszt megírása későbbre halasztva — külön follow-up ticketre kerül, mert a Plan scope-ján kívül esik.
+- <a id="IL-02">**IL-02**</a> — _Menet közben felfedezett bug fixe_ [—]
+   - **Típus**: Fix
+   - **Indoklás**: Az [IS-05](#IS-05) implementálásakor egy meglévő edge case bug derült ki — a kód hibás állapotba kerül; a bug blokkolja az [IS-05](#IS-05) Failing test-jét, ezért itt és most javítható (külön ticketre halasztva regressziót okozna a Plan későbbi lépéseinek tesztjeiben).
+   - **Delta**: Minimális javítás az érintett függvényben; az [IS-05](#IS-05) Failing test-je ezután már a tervezett viselkedést méri, a Plan többi lépését nem mozdítja.
+   - **Nyitott**: a fix mellé tartozó regressziós teszt megírása későbbre halasztva — külön follow-up ticketre kerül, mert a Plan scope-ján kívül esik.
+   - **Commit**: `fix(<scope>): <subject> [IL-02]`
