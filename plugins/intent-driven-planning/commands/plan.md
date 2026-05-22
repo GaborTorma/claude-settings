@@ -82,11 +82,11 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 ### Előfeltételek
 
 - **Branch**: `<branch-name>` — `git checkout -b <branch-name>`
-- <Mire van szükség a kezdés előtt (dep, env var, migration, feature flag, tesztkörnyezet, fixtures, mcp)?>
+- <Mire van szükség a kezdés előtt (pl.: dep, env var, migration, feature flag, tesztkörnyezet, fixtures, mcp, stb...)?>
 
-### Tervezett változtatások
+### Tervezett változtatások <Üres egység törölhető>
 
-<!-- A változás hatóköre — **mit** érint a változás. Kategóriák: módosítás (`CM`), hozzáadás (`CA`), törlés (`CD`). Leírás röviden, tömören. Line ref, ha lehetséges. Üres egység -> törlés --->
+<!-- A változás hatóköre — **mit** érint a változás. Kategóriák: módosítás (`CM`), hozzáadás (`CA`), törlés (`CD`). Leírás röviden, tömören. Line ref, ha lehetséges. --->
 
 #### Módosítás
 
