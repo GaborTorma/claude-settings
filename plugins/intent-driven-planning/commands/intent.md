@@ -27,6 +27,7 @@ Iteráció során a próza tendenciózusan hízik, és részletek szivárognak b
    - **Branch** — current branch (`git branch --show-current`); ha `<prefix>/<slug>` konvenciót követ, a slug a step 4 fájlnév-javaslat alapja.
    - **Korábbi Spec-ek** — ha van `.spec/`, listázd és olvasd a relevánsakat (átfedő terület/réteg/feature-család, vagy átfedő `Célok` / `NEM-célok` / `Későbbi megvalósítás`).
    - **Kódbázis** — célzott kutatás: érintett modul/réteg/függvény azonosítása (SocratiCode `codebase_search` / `ctx_search` / `Glob`), kulcs-fájlok `map` / `signatures` módban.
+   - **Konkurencia-elemzés** event-vezérelt vagy aszinkron érintség esetén.
 
 3. **`Intent` tervezete** az első prompt + orientáció alapján: Probléma + Célok + NEM-célok + Későbbi megvalósítás.
 

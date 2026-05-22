@@ -43,7 +43,8 @@ A beszélgetésben legyen véglegesített `Intent`. Ha hiányzik, **kérdezz vis
 
 - happy path
 - negatív eset / hibakezelés
-- edge case / boundary (üres, max, race, timeout)
+- edge case / boundary (üres, max, timeout)
+- konkurencia / race-felület: dupla-trigger / idempotencia, ordering-sérülés, lost update, observer re-entry
 - megfigyelhetőség (mit látunk a rendszer kívülről — log, metric, állapot)
 
 ### AC szerkezete (3 sor, sorszám prefixxel)
