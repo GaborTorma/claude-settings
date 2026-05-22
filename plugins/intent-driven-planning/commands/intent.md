@@ -69,13 +69,13 @@ _Készítve: <YYYY-MM-DD — az `intent` futtatás napja>_
 
 <1-2 mondat magas szintű cél; ha van mérhető siker vagy invariáns, fűzd hozzá sub-bulletekben:>
 
-- <a id="GL-01">**GL-01**</a> — <invariáns / megfigyelhető siker #1>
+- <a id="GL-01"></a>**GL-01** — <invariáns / megfigyelhető siker #1>
 
 ### NEM-célok
 
-- <a id="NG-01">**NG-01**</a> — <Amit explicit nem csinálunk meg — sosem.>
+- <a id="NG-01"></a>**NG-01** — <Amit explicit nem csinálunk meg — sosem.>
 
 ### Későbbi megvalósítás
 
-- <a id="LI-01">**LI-01**</a> — <Amit később lehet, de most nem csinálunk meg. Nem fejtjük ki bővebben, de egy tervezési döntésnél, ha nem bonyolítja el az aktuális megvalósítást, figyelembe vehető.>
+- <a id="LI-01"></a>**LI-01** — <Amit később lehet, de most nem csinálunk meg. Nem fejtjük ki bővebben, de egy tervezési döntésnél, ha nem bonyolítja el az aktuális megvalósítást, figyelembe vehető.>
 ```

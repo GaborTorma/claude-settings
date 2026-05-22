@@ -68,24 +68,24 @@ A `Spec` szakasz, amit az `Intent` mögé fűzünk:
 
 ### Funkcionális követelmények
 
-- <a id="FR-01">**FR-01**</a> — <Megfigyelhető viselkedés #1 — input → output, fájl-független megfogalmazásban.>
-- <a id="FR-02">**FR-02**</a> — <Megfigyelhető viselkedés #2.>
+- <a id="FR-01"></a>**FR-01** — <Megfigyelhető viselkedés #1 — input → output, fájl-független megfogalmazásban.>
+- <a id="FR-02"></a>**FR-02** — <Megfigyelhető viselkedés #2.>
 
 ### Nem-funkcionális követelmények
 
-- <a id="NF-01">**NF-01**</a> — <Performance: pl. p95 < 200ms, max memória, throughput.>
-- <a id="NF-02">**NF-02**</a> — <Biztonság / adatvédelem: auth, secret-kezelés, PII.>
-- <a id="NF-03">**NF-03**</a> — <Kompatibilitás: verziók, böngészők, runtime, OS.>
-- <a id="NF-04">**NF-04**</a> — <Egyéb: a11y, i18n, observability, ha releváns.>
+- <a id="NF-01"></a>**NF-01** — <Performance: pl. p95 < 200ms, max memória, throughput.>
+- <a id="NF-02"></a>**NF-02** — <Biztonság / adatvédelem: auth, secret-kezelés, PII.>
+- <a id="NF-03"></a>**NF-03** — <Kompatibilitás: verziók, böngészők, runtime, OS.>
+- <a id="NF-04"></a>**NF-04** — <Egyéb: a11y, i18n, observability, ha releváns.>
 
 ### Elfogadási kritériumok
 
-- <a id="AC-01">**AC-01**</a> — _<Forgatókönyv egymondatos címkéje.>_ [[FR-01](#FR-01), [NF-02](#NF-02)]
+- <a id="AC-01"></a>**AC-01** — _<Forgatókönyv egymondatos címkéje.>_ [[FR-01](#FR-01), [NF-02](#NF-02)]
    1. <Mi áll fenn — előfeltétel főnévi szerkezettel.>
    2. <Mi történik — kiváltó esemény akció-igével.>
    3. <Mit látunk — megfigyelhető eredmény (log / DB / API / UI / állapot, stb...).>
 
-- <a id="AC-02">**AC-02**</a> — _<Másik forgatókönyv címkéje.>_ [[FR-03](#FR-03)]
+- <a id="AC-02"></a>**AC-02** — _<Másik forgatókönyv címkéje.>_ [[FR-03](#FR-03)]
    1. <Mi áll fenn?>
    2. <Mi történik?>
    3. <Mit látunk?>

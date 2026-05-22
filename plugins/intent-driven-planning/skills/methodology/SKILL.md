@@ -50,12 +50,12 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
 
 ### Megvalósítási napló — példa bejegyzések
 
-- <a id="IL-01">**IL-01**</a> — _Eltérő technikai megközelítéssel_ [[IS-04](#IS-04)]
+- <a id="IL-01"></a>**IL-01** — _Eltérő technikai megközelítéssel_ [[IS-04](#IS-04)]
    - **Típus**: Eltérés
    - **Indoklás**: A Plan-megközelítés (közvetlen módosítás) duplikációt hozott volna egy meglévő segédfüggvénnyel; implementáláskor derült ki, hogy a helper kiterjesztése egyszerűbb és kevesebb új kódot igényel.
    - **Delta**: Az [IS-04](#IS-04) célját a meglévő segédfüggvény kiterjesztésével értük el, közvetlen módosítás helyett. A Failing test és az eredmény változatlan; csak a megvalósítás módja tér el a Plantól.
 
-- <a id="IL-02">**IL-02**</a> — _Menet közben felfedezett bug fixe_ [—]
+- <a id="IL-02"></a>**IL-02** — _Menet közben felfedezett bug fixe_ [—]
    - **Típus**: Fix
    - **Indoklás**: Az [IS-05](#IS-05) implementálásakor egy meglévő edge case bug derült ki — a kód hibás állapotba kerül; a bug blokkolja az [IS-05](#IS-05) Failing test-jét, ezért itt és most javítható (külön ticketre halasztva regressziót okozna a Plan későbbi lépéseinek tesztjeiben).
    - **Delta**: Minimális javítás az érintett függvényben; az [IS-05](#IS-05) Failing test-je ezután már a tervezett viselkedést méri, a Plan többi lépését nem mozdítja.
