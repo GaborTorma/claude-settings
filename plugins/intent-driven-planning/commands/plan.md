@@ -90,16 +90,16 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 #### Módosítás
 
-- **CM-01** — <Meglévő rész / fájl / pipeline> — <mit módosítunk benne>
-- **CM-02** — <...>
+- <a id="CM-01">**CM-01**</a> — <Meglévő rész / fájl / pipeline> — <mit módosítunk benne>
+- <a id="CM-02">**CM-02**</a> — <...>
 
 #### Hozzáadás
 
-- **CA-01** — <Új rész / fájl / pipeline> — <mit adunk hozzá>
+- <a id="CA-01">**CA-01**</a> — <Új rész / fájl / pipeline> — <mit adunk hozzá>
 
 #### Törlés
 
-- **CD-01** — <Törlendő rész / fájl / pipeline> — <mit távolítunk el>
+- <a id="CD-01">**CD-01**</a> — <Törlendő rész / fájl / pipeline> — <mit távolítunk el>
 
 ### Implementációs lépések
 
@@ -112,7 +112,7 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- OPCIÓ A — Flat alak -->
 
-#### [ ] IS-01 — <Lépés rövid címe>
+#### [ ] <a id="IS-01">IS-01</a> — <Lépés rövid címe>
 
 <!-- Mezők szabályait lásd: `Mező-szemantika`. -->
 
@@ -128,9 +128,9 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- OPCIÓ B — Multi-stage alak -->
 
-#### [ ] MS-01 — <Milestone rövid címe, ami egy e2e-tesztelhető release-worthy egységet ír le>
+#### [ ] <a id="MS-01">MS-01</a> — <Milestone rövid címe, ami egy e2e-tesztelhető release-worthy egységet ír le>
 
-##### [ ] MS-01:IS-01 — <Lépés rövid címe>
+##### [ ] <a id="MS-01:IS-01">MS-01:IS-01</a> — <Lépés rövid címe>
 
 <!-- Mezők szabályait lásd: `Mező-szemantika`. -->
 
@@ -144,9 +144,9 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Továbbiak: ##### MS-01:IS-02, ##### MS-01:IS-03, ... -->
 
-##### MS-01:MV — Milestone verify
+##### <a id="MS-01:MV">MS-01:MV</a> — Milestone verify
 
-- **MS-01:MV-01** — <AC-hivatkozás vagy nevesített flow + konkrét ellenőrzési mód (parancs / Playwright snapshot / MCP query / DB-állapot).>
+- <a id="MS-01:MV-01">**MS-01:MV-01**</a> — <AC-hivatkozás vagy nevesített flow + konkrét ellenőrzési mód (parancs / Playwright snapshot / MCP query / DB-állapot).>
 
 <!-- Továbbiak: - **MS-01:MV-02**, - **MS-01:MV-03**, ... -->
 
@@ -154,7 +154,7 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 ### Globális verifikáció (a teljes Plan végén)
 
-- **GV-01** — <Konkrét záró ellenőrzés a teljes Plan szintjén (AC-coverage, golden path e2e, build parancs stb.).>
+- <a id="GV-01">**GV-01**</a> — <Konkrét záró ellenőrzés a teljes Plan szintjén (AC-coverage, golden path e2e, build parancs stb.).>
 
 <!-- Továbbiak: - **GV-02**, - **GV-03**, ... -->
 
@@ -166,10 +166,10 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Az implementáció során bővül. Csak a Plan és a megvalósult kód közötti **deltákat** rögzíti (eltérés, fix, follow-up, refactor) — a Plan szerint lefutott `IS-XX` / `MS-XX:IS-YY` lépéseket nem ismétli. -->
 
-### IL-01 — <Bejegyzés rövid címe>
+### <a id="IL-01">IL-01</a> — <Bejegyzés rövid címe>
 
 - **Típus**: Eltérés | Fix | Follow-up | Refactor
-- **Érintett**: `IS-XX` / `MS-XX:IS-YY` / `AC-XX` / `FR-XX` (vagy `—`, ha a Plan-ban nem szerepelt)
+- **Érintett**: [IS-XX](#IS-XX) / [MS-XX:IS-YY](#MS-XX:IS-YY) / [AC-XX](#AC-XX) / [FR-XX](#FR-XX) (vagy `—`, ha a Plan-ban nem szerepelt)
 - **Indoklás**: <1-2 mondat a motivációról / triggerről: mi váltotta ki a deltát — mi derült ki, milyen bugot fedeztünk fel, miért nem volt megfelelő a Plan-megközelítés.>
 - **Delta**: <1-2 mondat — a delta konkrét tartalma: hogyan tértünk el / mit fixáltunk / mit vettünk fel follow-up-ként. **Ne ismételd a Plan-tételt** — csak a deltát írd le.>
 - **Nyitott** (opcionális): <amit nem sikerült megcsinálni, későbbre halasztottuk — pl. follow-up ticket, tech-debt jegyzet. Csak akkor írd ki, ha van ilyen.>

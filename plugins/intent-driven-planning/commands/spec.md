@@ -48,7 +48,7 @@ A beszélgetésben legyen véglegesített `Intent`. Ha hiányzik, **kérdezz vis
 
 ### AC szerkezete (3 sor, sorszám prefixxel)
 
-Minden AC fejléce egy _dőlt_ egymondatos forgatókönyv-címke + `[FR-XX]` a kapcsolódó FR/NF-ekre, alatta **három sorszámozott al-pont** fix sorrendben — prefix (Given/When/Then) nem kell, a mondatok alakja hordozza a szerepet:
+Minden AC fejléce egy _dőlt_ egymondatos forgatókönyv-címke + `[[FR-XX](#FR-XX)]` linkek a kapcsolódó FR/NF-ekre (vesszővel elválasztva, egy zárójelen belül), alatta **három sorszámozott al-pont** fix sorrendben — prefix (Given/When/Then) nem kell, a mondatok alakja hordozza a szerepet:
 
 1. **Kiinduló állapot** — főnévi szerkezet, jelen idő: mi áll fenn a rendszerben. _("Egy `<állapot>` állapotú entitás `<feltétellel>`.")_
 2. **Kiváltó esemény** — akció-ige, jelen idő: mi történik. _("Esemény érkezik / timer lejár / külső hívás történik.")_
@@ -67,24 +67,24 @@ A `Spec` szakasz, amit az `Intent` mögé fűzünk:
 
 ### Funkcionális követelmények
 
-- **FR-01** — <Megfigyelhető viselkedés #1 — input → output, fájl-független megfogalmazásban.>
-- **FR-02** — <Megfigyelhető viselkedés #2.>
+- <a id="FR-01">**FR-01**</a> — <Megfigyelhető viselkedés #1 — input → output, fájl-független megfogalmazásban.>
+- <a id="FR-02">**FR-02**</a> — <Megfigyelhető viselkedés #2.>
 
 ### Nem-funkcionális követelmények
 
-- **NF-01** — <Performance: pl. p95 < 200ms, max memória, throughput.>
-- **NF-02** — <Biztonság / adatvédelem: auth, secret-kezelés, PII.>
-- **NF-03** — <Kompatibilitás: verziók, böngészők, runtime, OS.>
-- **NF-04** — <Egyéb: a11y, i18n, observability, ha releváns.>
+- <a id="NF-01">**NF-01**</a> — <Performance: pl. p95 < 200ms, max memória, throughput.>
+- <a id="NF-02">**NF-02**</a> — <Biztonság / adatvédelem: auth, secret-kezelés, PII.>
+- <a id="NF-03">**NF-03**</a> — <Kompatibilitás: verziók, böngészők, runtime, OS.>
+- <a id="NF-04">**NF-04**</a> — <Egyéb: a11y, i18n, observability, ha releváns.>
 
 ### Elfogadási kritériumok
 
-- **AC-01** — _<Forgatókönyv egymondatos címkéje.>_ [FR-01, NF-02]
+- <a id="AC-01">**AC-01**</a> — _<Forgatókönyv egymondatos címkéje.>_ [[FR-01](#FR-01), [NF-02](#NF-02)]
    1. <Mi áll fenn — előfeltétel főnévi szerkezettel.>
    2. <Mi történik — kiváltó esemény akció-igével.>
    3. <Mit látunk — megfigyelhető eredmény (log / DB / API / UI / állapot, stb...).>
 
-- **AC-02** — _<Másik forgatókönyv címkéje.>_ [FR-03]
+- <a id="AC-02">**AC-02**</a> — _<Másik forgatókönyv címkéje.>_ [[FR-03](#FR-03)]
    1. <Mi áll fenn?>
    2. <Mi történik?>
    3. <Mit látunk?>

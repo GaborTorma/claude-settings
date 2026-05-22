@@ -50,17 +50,17 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
 
 ### Megvalósítási napló — példa bejegyzések
 
-#### IL-01 — `IS-04` eltérő technikai megközelítéssel
+#### <a id="IL-01">IL-01</a> — [IS-04](#IS-04) eltérő technikai megközelítéssel
 
 - **Típus**: Eltérés
-- **Érintett**: `IS-04`
+- **Érintett**: [IS-04](#IS-04)
 - **Indoklás**: A Plan-megközelítés (közvetlen módosítás) duplikációt hozott volna egy meglévő segédfüggvénnyel; implementáláskor derült ki, hogy a helper kiterjesztése egyszerűbb és kevesebb új kódot igényel.
-- **Delta**: Az `IS-04` célját a meglévő segédfüggvény kiterjesztésével értük el, közvetlen módosítás helyett. A Failing test és az eredmény változatlan; csak a megvalósítás módja tér el a Plantól.
+- **Delta**: Az [IS-04](#IS-04) célját a meglévő segédfüggvény kiterjesztésével értük el, közvetlen módosítás helyett. A Failing test és az eredmény változatlan; csak a megvalósítás módja tér el a Plantól.
 
-#### IL-02 — Menet közben felfedezett bug fixe
+#### <a id="IL-02">IL-02</a> — Menet közben felfedezett bug fixe
 
 - **Típus**: Fix
 - **Érintett**: `—` (Plan-ban nem szerepelt)
-- **Indoklás**: Az `IS-05` implementálásakor egy meglévő edge case bug derült ki — a kód hibás állapotba kerül; a bug blokkolja az `IS-05` Failing test-jét, ezért itt és most javítható (külön ticketre halasztva regressziót okozna a Plan későbbi lépéseinek tesztjeiben).
-- **Delta**: Minimális javítás az érintett függvényben; az `IS-05` Failing test-je ezután már a tervezett viselkedést méri, a Plan többi lépését nem mozdítja.
+- **Indoklás**: Az [IS-05](#IS-05) implementálásakor egy meglévő edge case bug derült ki — a kód hibás állapotba kerül; a bug blokkolja az [IS-05](#IS-05) Failing test-jét, ezért itt és most javítható (külön ticketre halasztva regressziót okozna a Plan későbbi lépéseinek tesztjeiben).
+- **Delta**: Minimális javítás az érintett függvényben; az [IS-05](#IS-05) Failing test-je ezután már a tervezett viselkedést méri, a Plan többi lépését nem mozdítja.
 - **Nyitott**: a fix mellé tartozó regressziós teszt megírása későbbre halasztva — külön follow-up ticketre kerül, mert a Plan scope-ján kívül esik.
