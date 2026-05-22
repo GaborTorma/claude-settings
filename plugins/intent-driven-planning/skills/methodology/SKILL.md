@@ -27,6 +27,18 @@ A három tervezési fázis-command iteratív review-t használ a Plan harness-en
 
 **Branch** — `<prefix>/<slug>`. Ha a repo látható branch-konvenciót használ, ahhoz igazodj.
 
+## Hivatkozások
+
+A Spec-fájl prózájában (Intent / Spec / Plan / Megvalósítási napló) a kódbeli hivatkozások **relatív linkek** legyenek — a Spec-fájl helyéhez képest.
+
+- **Fájl**: a link szövege a fájl és útvonala, a target a relatív útvonal. Példa: `[src/auth/middleware.ts](../src/auth/middleware.ts)`.
+
+- **Konkrét, létező függvény / változó / symbol**: a link szövege **csak a symbol neve** (sor nélkül), a target relatív útvonal **`#LNN` sor-hash-sel**. A sorszám a link URL-jében legyen, a szövegben **ne**. Példa: `[validateToken](../src/auth/middleware.ts#L42)` — a felhasználó a `validateToken` szöveget látja, a kattintás a 42. sorra ugrik.
+
+- **Csak létező kódra**: ha a hivatkozott symbol még nem létezik (pl. tervezett új függvény a Plan-ben), **ne tegyél linket** — csak inline backtick kód-formázás (` `` `).
+
+- **Spec-fájlok közötti link**: a `.spec/` almappa-konvenciót követve relatív (pl. `[.spec/auth/oauth-token-rotation.md](./auth/oauth-token-rotation.md)`).
+
 ## Élő dokumentum fegyelem
 
 A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhagyás körül:

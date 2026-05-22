@@ -18,6 +18,10 @@ Ha viszont van draft, folytasd a check-kel.
 
 A draft állapotához igazodva, kumulatívan: minden szekció hozzáadja a saját check-jeit az előzőhöz.
 
+### Közös (minden fázis)
+
+- **Hivatkozás-konvenció** (lásd `methodology.Hivatkozások`): a kódbeli hivatkozások relatív linkek (a Spec-fájl helyéhez képest)? Létező symbol-ra hivatkozó link tartalmaz `#LNN` sor-anchor-t a target-ben, de a szövegben **nincs** sor-szám? Nem-létező (tervezett) symbol-ra nincs link, csak inline backtick?
+
 ### Csak `Intent`
 
 - A draft kötelező szakaszai megvannak? `Készítve` dátum kitöltve?
