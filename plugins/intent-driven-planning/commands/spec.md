@@ -24,6 +24,28 @@ A beszélgetésben legyen véglegesített `Intent`. Ha hiányzik, **kérdezz vis
 
 4. **STOP — itt véget ér.** Várj a user következő parancsára (`intent-driven-planning:plan`).
 
+## Szabályok
+
+### FR vs. AC megkülönböztetés
+
+- **FR** = mit kell tennie a rendszernek (deklaratív viselkedés).
+- **AC** = hogyan ellenőrizzük, hogy a rendszer ezt teszi (megfigyelhető feltétel konkrét forgatókönyvben). Given … When … Then …" formára tagolható megfigyelhető kimenettel: log-bejegyzés, DB-állapot, event, fájl, exit-kód, HTTP response, UI-állapot, stb...
+
+**Tilos** AC-t úgy írni, hogy 1:1 átfogalmazza az FR-t ("X történjen meg").
+
+**Lefedettség**:
+
+- Egy AC lefedhet több FR-t (end-to-end szekvencia).
+- Egy FR-hez tartozhat több AC.
+- 1:1 FR↔AC megfeleltetés **nem cél**, sőt anti-pattern.
+
+**Minimális AC-kategóriák**, amiket végig kell gondolni minden Spec-nél (ha nem releváns, explicit kihagyható):
+
+- happy path
+- negatív eset / hibakezelés
+- edge case / boundary (üres, max, race, timeout)
+- megfigyelhetőség (mit látunk a rendszer kívülről — log, metric, állapot)
+
 ---
 
 ## Sablon
