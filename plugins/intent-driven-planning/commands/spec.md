@@ -29,7 +29,7 @@ A beszélgetésben legyen véglegesített `Intent`. Ha hiányzik, **kérdezz vis
 ### FR vs. AC megkülönböztetés
 
 - **FR** = mit kell tennie a rendszernek (deklaratív viselkedés).
-- **AC** = hogyan ellenőrizzük, hogy a rendszer ezt teszi (megfigyelhető feltétel konkrét forgatókönyvben). Given … When … Then …" formára tagolható megfigyelhető kimenettel: log-bejegyzés, DB-állapot, event, fájl, exit-kód, HTTP response, UI-állapot, stb...
+- **AC** = hogyan ellenőrizzük, hogy a rendszer ezt teszi — megfigyelhető feltétel konkrét forgatókönyvben, megfigyelhető kimenettel: log-bejegyzés, DB-állapot, event, fájl, exit-kód, HTTP response, UI-állapot, stb.
 
 **Tilos** AC-t úgy írni, hogy 1:1 átfogalmazza az FR-t ("X történjen meg").
 
@@ -45,6 +45,16 @@ A beszélgetésben legyen véglegesített `Intent`. Ha hiányzik, **kérdezz vis
 - negatív eset / hibakezelés
 - edge case / boundary (üres, max, race, timeout)
 - megfigyelhetőség (mit látunk a rendszer kívülről — log, metric, állapot)
+
+### AC szerkezete (3 sor, sorszám prefixxel)
+
+Minden AC fejléce egy _dőlt_ egymondatos forgatókönyv-címke + `[FR-XX]` a kapcsolódó FR/NF-ekre, alatta **három sorszámozott al-pont** fix sorrendben — prefix (Given/When/Then) nem kell, a mondatok alakja hordozza a szerepet:
+
+1. **Kiinduló állapot** — főnévi szerkezet, jelen idő: mi áll fenn a rendszerben. _("Egy `<állapot>` állapotú entitás `<feltétellel>`.")_
+2. **Kiváltó esemény** — akció-ige, jelen idő: mi történik. _("Esemény érkezik / timer lejár / külső hívás történik.")_
+3. **Megfigyelhető eredmény** — eredmény-ige, jelen idő: mit látunk kívülről. _("Új rekord / log-bejegyzés / API-válasz / állapot-mező megjelenik.")_
+
+A három sor sorrendje **kötött**. Ha egy AC-hez 4+ sor kell, valószínűleg két különálló forgatókönyv keveredik — bontsd szét.
 
 ---
 
@@ -69,7 +79,13 @@ A `Spec` szakasz, amit az `Intent` mögé fűzünk:
 
 ### Elfogadási kritériumok
 
-- **AC-01** — <Mérhető kritérium #1 — pl. "X teszt zöld">. (Ref: FR-01)
-- **AC-02** — <Mérhető kritérium #2 — pl. "manual smoke: lépés A → B → C működik">. (Ref: FR-02)
-- **AC-03** — <Mérhető kritérium #3.>
+- **AC-01** — _<Forgatókönyv egymondatos címkéje.>_ [FR-01, NF-02]
+   1. <Mi áll fenn — előfeltétel főnévi szerkezettel.>
+   2. <Mi történik — kiváltó esemény akció-igével.>
+   3. <Mit látunk — megfigyelhető eredmény (log / DB / API / UI / állapot, stb...).>
+
+- **AC-02** — _<Másik forgatókönyv címkéje.>_ [FR-03]
+   1. <Mi áll fenn.>
+   2. <Mi történik.>
+   3. <Mit látunk.>
 ```
