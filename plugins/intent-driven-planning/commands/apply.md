@@ -36,17 +36,22 @@ Létezik egy lezárt **Spec-fájl** (`.spec/<slug>.md` vagy `.spec/<group>/<slug
 
 5. **Plan-lépések végrehajtása** — minden hátralévő `IS-XX` (vagy `MS-XX:IS-YY`) lépésnél:
    1. **Implementáció** a Plan `Művelet` / `Failing test` / `Implementáció` / `Verify` mezői szerint.
-   2. **Spec-jelölés**: zöld `Verify` után pipáld a lépés `[ ]` → `[x]` jelölését a Spec-fájlban — még commit előtt.
-   3. **Commit** a Plan `Commit` mezője szerint — **egy commit**: a kód-változás + a `[x]` jelölés együtt.
-   4. Delta esetén `IL-XX` napló-bejegyzés a `methodology` szabálya szerint.
+   2. **Spec-jelölés**: azonnal, amint a lépés **saját** `Verify`-ja zöld: `[ ]` → `[x]`.
+   3. Delta esetén `IL-XX` napló-bejegyzés a `methodology` szabálya szerint.
 
-   **Multi-stage milestone-zárás** — egy `MS-XX` **utolsó** `MS-XX:IS-YY` lépésénél a 2. és 3. pont közé beékelődik:
-   - `MS-XX:IS-YY` `[x]` után futtasd le az összes `MS-XX:MV-XX` `Milestone verify` lépést (integrációs smoke, AC, regresszió).
-   - Csak ha minden `MS-XX:MV-XX` zöld: pipáld mindegyiket `[x]`, és **csak ezután** mehet a commit (egy commit: utolsó IS kód + `MS-XX:IS-YY` `[x]` + minden `MS-XX:MV-XX` `[x]`). Az `MS-XX` heading-nek nincs külön checkbox-a — a milestone implicit lezárt, ha minden alá tartozó `IS` és `MV` `[x]`.
+   **Multi-stage milestone-zárás** — egy `MS-XX` **utolsó** `MS-XX:IS-YY` lépésénél, miután az utolsó IS `[x]`-ed:
+   - Futtasd le az összes `MS-XX:MV-XX` `Milestone verify` lépést.
+   - Csak ha minden `MS-XX:MV-XX` zöld: pipáld mindegyiket `[x]`.
+   - **Egy Milestone commit** a Plan `Milestone commit` mezője szerint: a milestone teljes felgyűlt kódváltozása + az összes `MS-XX:IS-YY` `[x]` + az összes `MS-XX:MV-XX` `[x]` egyetlen commitba kerül.
+   - Az `MS-XX` heading-nek nincs külön checkbox-a — a milestone implicit lezárt, ha minden alá tartozó `IS` és `MV` `[x]`.
    - Piros `MS-XX:MV-XX` blokkolja a commit-ot és a következő `MS-(XX+1)` indulását.
 
-6. **Globális verifikáció**:
-   - A `Plan.Globális verifikáció` (`GV-XX`) mind zöld.
+6. **Globális verifikáció + záró commit**:
+   - Futtasd le a `Plan.Globális verifikáció` (`GV-XX`) lépéseit. Zöldre váltás után azonnal pipáld `[x]`-szel.
+   - **Flat módban (nincs `MV-XX`)** — a Plan-lépésekre eddig nem volt commit. A `GV-XX`-ek `[x]`-elése után:
+      - **Állj meg.** Foglald össze a usernek mi történt: mely `IS-XX`-ek mentek le Plan szerint, mely fájlokat érinti a felgyűlt diff, milyen `GV-XX` ellenőrzések futottak, mi a végállapot, keletkezett-e `IL-XX` (és ha igen, az már külön commit-ban van-e).
+      - User-megerősítés után **egy záró Globális commit** a Plan `Globális commit` mezője szerint: az összes felgyűlt kódváltozás + minden `IS-XX` `[x]` + minden `GV-XX` `[x]` egyetlen commitba kerül.
+   - **Multi-stage módban** — a milestone-ok már commitolva vannak. A `GV-XX` általában nem keletkeztet kódváltozást; ha mégis (kis fix, regresszió), az `IL-XX` napló-bejegyzéssel és saját commit-tal kezelendő. A `GV-XX` `[x]` jelölések pedig a következő `IL-XX` commit-jával együtt mennek be, vagy ha nincs `IL-XX`, akkor külön `docs(spec)` commit-ban.
 
 7. **Zárás-jelentés**:
    - Röviden a usernek: hány `IS-XX` ment Plan szerint, hány `IL-XX` napló-bejegyzés keletkezett, mi a végállapot.

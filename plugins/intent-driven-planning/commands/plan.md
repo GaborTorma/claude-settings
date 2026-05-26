@@ -77,6 +77,14 @@ A sablon mezőit ezekkel a szabályokkal töltsd ki.
    - "Régi funkciók regressziómentesek" — nevesítsd a flow-t és a megfigyelhető állapotot.
 - **Jó `MS-XX:MV-XX` / `GV-XX` bejegyzés alak**: "<kiváltó állapot> → <megfigyelhető eredmény> <konkrét időkereten belül> (<eszköz> + <ellenőrzési mód>) [[AC-XX](#AC-XX)]"
 
+### `IS-XX` / `MS-XX:IS-YY` commit-stratégia
+
+A Plan-lépéseknek **nincs egyenkénti commit-ja**. A kódváltozások commit nélkül halmozódnak, a `[x]` jelölések pedig azonnal frissülnek minden `IS-XX` / `MS-XX:IS-YY` Verify-zöldülésekor (még commit nélkül). A commit aggregált, a verifikációs határvonalakon történik:
+
+- **Multi-stage Plan** → minden `MS-XX` végén, az összes `MS-XX:MV-XX` zöldje után **egy `Milestone commit`** rögzíti a milestone teljes kódváltozását és checkbox-állapotát.
+- **Flat Plan (nincs `MV-XX`)** → a teljes Plan végén, az összes `GV-XX` zöldje után **egy `Globális commit`** rögzíti a teljes felgyűlt változást.
+- A commit **előtt** stop-pont: összefoglaló a usernek + megerősítés.
+
 ---
 
 ## Sablon
@@ -128,11 +136,10 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
       - <…>
    - **Failing test**: <…> _vagy_ `—`
    - **Verify**: <…> _vagy_ `—`
-   - **Commit**: `<type>(<scope>): <subject> [IS-XX]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[IS-04, IL-02]`
 
-<!-- Továbbiak (- [ ] IS-02, - [ ] IS-03, ...) ugyanezzel a struktúrával. -->
+<!-- Továbbiak (- [ ] IS-02, - [ ] IS-03, ...) ugyanezzel a struktúrával. Flat módban az `IS-XX` lépéseknek nincs külön commit-ja — a kódváltozások commit nélkül halmozódnak, a `[x]` jelölés a Verify zöldjekor azonnal megtörténik. A záró commit a `Globális commit` szekcióban. -->
 
-<!-- OPCIÓ B — Multi-stage alak (mező-struktúra azonos a flat IS-szel; csak az ID-prefix és Commit-token tér el) -->
+<!-- OPCIÓ B — Multi-stage alak (mező-struktúra azonos a flat IS-szel; csak az ID-prefix tér el) -->
 
 #### <a id="MS-01"></a>MS-01 — <Milestone rövid címe, ami egy e2e-tesztelhető release-worthy egységet ír le>
 
@@ -143,9 +150,8 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
       - <…>
    - **Failing test**: <…> _vagy_ `—`
    - **Verify**: <…> _vagy_ `—`
-   - **Commit**: `<type>(<scope>): <subject> [MS-XX:IS-YY]` — ha `IL-XX` is keletkezik ugyanabban a commitban, pl. `[MS-02:IS-04, IL-02]`
 
-<!-- Továbbiak (- [ ] MS-01:IS-02, - [ ] MS-01:IS-03, ...) ugyanezzel a struktúrával. -->
+<!-- Továbbiak (- [ ] MS-01:IS-02, - [ ] MS-01:IS-03, ...) ugyanezzel a struktúrával. Az `MS-XX:IS-YY` lépéseknek nincs külön commit-ja — a `[x]` jelölés a Verify zöldjekor azonnal megtörténik, a commit a milestone végén, az MV-zöld után. -->
 
 **Milestone verify**
 
@@ -153,13 +159,27 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Továbbiak: - [ ] **MS-01:MV-02**, - [ ] **MS-01:MV-03**, ... -->
 
-<!-- További milestone-ok (#### MS-02, #### MS-03, ...) ugyanezzel a struktúrával, lokális IS-számozással és saját MV blokkal. -->
+**Milestone commit**
+
+- `<type>(<scope>): <subject> [MS-01]` — egy commit a milestone végén: az összes `MS-01:IS-YY` kódváltozást, a `[x]` jelöléseket és a `MS-01:MV-XX` `[x]` jelöléseket együtt rögzíti. Piros `MS-01:MV-XX` blokkolja a commit-ot és az `MS-02` indulását.
+
+<!-- További milestone-ok (#### MS-02, #### MS-03, ...) ugyanezzel a struktúrával, lokális IS-számozással, saját MV blokkal és saját Milestone commit-tal. -->
 
 ### Globális verifikáció (a teljes Plan végén)
 
 - [ ] <a id="GV-01"></a>**GV-01** — <konkrét ellenőrzési mód a teljes Plan szintjén (AC-coverage, golden path e2e, build parancs stb.).> [[AC-XX](#AC-XX)]
 
 <!-- Továbbiak: - [ ] **GV-02**, - [ ] **GV-03**, ... -->
+
+### Globális commit (csak flat módban) <Multi-stage Planben törölhető>
+
+<!--
+  Flat módban a Plan-lépéseknek nincs külön commit-ja — a kódváltozások commit nélkül halmozódnak, amíg minden `IS-XX` `[x]` és a `GV-XX` zöld nem lesz. A záró commit egyetlen lépésben rögzíti az egészet.
+  Multi-stage Planben ez a szekció törlendő: a commitok a milestone-onkénti `Milestone commit` mezőkön keresztül történnek.
+-->
+
+- `<type>(<scope>): <subject>` — egy záró commit, ami az összes `IS-XX` kódváltozást, `[x]` jelölést és `GV-XX` `[x]` jelölést együtt tartalmazza.
+- **Stop-pont**: a commit **előtt** összefoglaló a usernek (mely `IS-XX`-ek mentek le, milyen fájlokat érintenek, milyen `GV-XX` ellenőrzések futottak, mi a végállapot). User-megerősítés után jöhet a commit.
 
 ### Kockázat
 
