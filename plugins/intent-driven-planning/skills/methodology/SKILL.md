@@ -50,7 +50,7 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
    - Ha a `Plan` írásakor kiderül valami, ami a `Spec`-et vagy `Intent`-et érinti, azokat is frissíteni kell.
    - A `Plan`-jóváhagyás egy konzisztens, koherens dokumentumra menjen át.
 
-- **Plan-jóváhagyás után — fagyott állapot**: az `Intent`, `Spec`, `Plan` szakaszok **tartalma többé nem módosul**. Ezek tükrözik, mire vállalkoztunk a tervezéskor. **Egyetlen kivétel**: a Plan-lépés-bullet-ek (`IS-XX` / `MS-XX:IS-YY` / `MS-XX:MV-XX` / `GV-XX`) `[ ]` → `[x]` állapot-jelölése implementáció közben — ez nem tartalmi módosítás, csak haladás-tracking. Az `MS-XX` heading-nek nincs külön checkbox-a; a milestone-állapot a benne lévő `IS` és `MV` lépésekből olvasható.
+- **Plan-jóváhagyás után — fagyott állapot**: az `Intent`, `Spec`, `Plan` szakaszok **tartalma többé nem módosul**. Ezek tükrözik, mire vállalkoztunk a tervezéskor. **Kivételek** (nem tartalmi tervezés-módosítás, hanem haladás-rögzítés): (1) a Plan-lépés-bullet-ek (`IS-XX` / `MS-XX:IS-YY` / `MS-XX:MV-XX` / `GV-XX`) `[ ]` → `[x]` állapot-jelölése implementáció közben; (2) a `Milestone summary` / `Globális summary` placeholder-skeleton kitöltése a milestone- ill. Plan-záráskor valós tartalommal (eredmény, érintett fájlok, teljesült AC-k, delták, commit). Az `MS-XX` heading-nek nincs külön checkbox-a; a milestone-állapot a benne lévő `IS` és `MV` lépésekből olvasható.
 
 - **Implementáció közben — `## Megvalósítási napló` bővül**: az eltérések, fix-ek, follow-up-ok és refactorok a Plan után fűzött `Megvalósítási napló` szakaszba kerülnek **strukturált bejegyzésként** (sablon: `intent-driven-planning:plan` Sablon szakasza). Az eredeti három szakasz változatlan marad — a napló adja a "tényleges megvalósítás" rétegét.
 

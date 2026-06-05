@@ -42,15 +42,17 @@ Létezik egy lezárt **Spec-fájl** (`.spec/<slug>.md` vagy `.spec/<group>/<slug
    **Multi-stage milestone-zárás** — egy `MS-XX` **utolsó** `MS-XX:IS-YY` lépésénél, miután az utolsó IS `[x]`-ed:
    - Futtasd le az összes `MS-XX:MV-XX` `Milestone verify` lépést.
    - Csak ha minden `MS-XX:MV-XX` zöld: pipáld mindegyiket `[x]`.
-   - **Egy Milestone commit** a Plan `Milestone commit` mezője szerint: a milestone teljes felgyűlt kódváltozása + az összes `MS-XX:IS-YY` `[x]` + az összes `MS-XX:MV-XX` `[x]` egyetlen commitba kerül.
+   - **Töltsd ki a `Milestone summary` blokkot** a Plan placeholder-skeletonja szerint, valós tartalommal: a milestone eredménye 1-2 mondatban, logikai területenként egy sor a kiváltó `MS-XX:IS-YY` lépés(ek)re és az érintett fájl(ok)ra mutató linkkel, `Teljesült` AC-lista az `MS-XX:MV-XX` referenciájával, `Delták` a keletkezett `IL-XX`-ekkel. Ez a kitöltött summary a stop-pont előtti összefoglaló a usernek.
+   - **Egy Milestone commit** a summary `Commit` mezője szerint: a milestone teljes felgyűlt kódváltozása + az összes `MS-XX:IS-YY` `[x]` + az összes `MS-XX:MV-XX` `[x]` + a kitöltött summary egyetlen commitba kerül.
    - Az `MS-XX` heading-nek nincs külön checkbox-a — a milestone implicit lezárt, ha minden alá tartozó `IS` és `MV` `[x]`.
    - Piros `MS-XX:MV-XX` blokkolja a commit-ot és a következő `MS-(XX+1)` indulását.
 
 6. **Globális verifikáció + záró commit**:
    - Futtasd le a `Plan.Globális verifikáció` (`GV-XX`) lépéseit. Zöldre váltás után azonnal pipáld `[x]`-szel.
    - **Flat módban (nincs `MV-XX`)** — a Plan-lépésekre eddig nem volt commit. A `GV-XX`-ek `[x]`-elése után:
-      - **Állj meg.** Foglald össze a usernek mi történt: mely `IS-XX`-ek mentek le Plan szerint, mely fájlokat érinti a felgyűlt diff, milyen `GV-XX` ellenőrzések futottak, mi a végállapot, keletkezett-e `IL-XX` (és ha igen, az már külön commit-ban van-e).
-      - User-megerősítés után **egy záró Globális commit** a Plan `Globális commit` mezője szerint: az összes felgyűlt kódváltozás + minden `IS-XX` `[x]` + minden `GV-XX` `[x]` egyetlen commitba kerül.
+      - **Töltsd ki a `Globális summary` blokkot** a Plan placeholder-skeletonja szerint, valós tartalommal: a Plan eredménye 1-2 mondatban, logikai területenként egy sor a kiváltó `IS-XX` lépés(ek)re és az érintett fájl(ok)ra mutató linkkel, `Teljesült` AC-lista a `GV-XX` referenciájával, `Delták` a keletkezett `IL-XX`-ekkel (és hogy külön commit-ban vannak-e).
+      - **Állj meg.** A kitöltött summary az összefoglaló a usernek a végállapotról.
+      - User-megerősítés után **egy záró Globális commit** a summary `Commit` mezője szerint: az összes felgyűlt kódváltozás + minden `IS-XX` `[x]` + minden `GV-XX` `[x]` + a kitöltött summary egyetlen commitba kerül.
    - **Multi-stage módban** — a milestone-ok már commitolva vannak. A `GV-XX` általában nem keletkeztet kódváltozást; ha mégis (kis fix, regresszió), az `IL-XX` napló-bejegyzéssel és saját commit-tal kezelendő. A `GV-XX` `[x]` jelölések pedig a következő `IL-XX` commit-jával együtt mennek be, vagy ha nincs `IL-XX`, akkor külön `docs(spec)` commit-ban.
 
 7. **Zárás-jelentés**:

@@ -27,9 +27,7 @@ A beszélgetésben legyen véglegesített `Intent` + `Spec`. Új sessionben olva
 
 4. **Approve után — mentés**: kilépés a Plan harness-ből, és a véglegesített tartalom mentése a megegyezett **Spec-fájl** útvonalra.
 
-5. **Session-javaslat**: tegyél indoklással ellátott ajánlást, hogy a megvalósítás **új sessionben** induljon (tisztább kontextus, kevesebb plan-mód-zaj — nagyobb feladatnál ajánlott) vagy **az aktuálisban folytatódjon** (kicsi, gyors feladat; a kontextus még friss). A döntés a useré.
-
-6. **STOP**: implementáció csak a user explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
+5. **STOP**: implementáció csak a user explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
 
 ---
 
@@ -81,9 +79,9 @@ A sablon mezőit ezekkel a szabályokkal töltsd ki.
 
 A Plan-lépéseknek **nincs egyenkénti commit-ja**. A kódváltozások commit nélkül halmozódnak, a `[x]` jelölések pedig azonnal frissülnek minden `IS-XX` / `MS-XX:IS-YY` Verify-zöldülésekor (még commit nélkül). A commit aggregált, a verifikációs határvonalakon történik:
 
-- **Multi-stage Plan** → minden `MS-XX` végén, az összes `MS-XX:MV-XX` zöldje után **egy `Milestone commit`** rögzíti a milestone teljes kódváltozását és checkbox-állapotát.
-- **Flat Plan (nincs `MV-XX`)** → a teljes Plan végén, az összes `GV-XX` zöldje után **egy `Globális commit`** rögzíti a teljes felgyűlt változást.
-- A commit **előtt** stop-pont: összefoglaló a usernek + megerősítés.
+- **Multi-stage Plan** → minden `MS-XX` végén, az összes `MS-XX:MV-XX` zöldje után a milestone **`Milestone summary`** blokkja töltődik ki, és a benne lévő `Commit` rögzíti a milestone teljes kódváltozását és checkbox-állapotát.
+- **Flat Plan (nincs `MV-XX`)** → a teljes Plan végén, az összes `GV-XX` zöldje után a **`Globális summary`** blokkja töltődik ki, és a benne lévő `Commit` rögzíti a teljes felgyűlt változást.
+- A commit **előtt** stop-pont: a kitöltött summary maga az összefoglaló a usernek + megerősítés.
 
 ---
 
@@ -137,7 +135,7 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
    - **Failing test**: <…> _vagy_ `—`
    - **Verify**: <…> _vagy_ `—`
 
-<!-- Továbbiak (- [ ] IS-02, - [ ] IS-03, ...) ugyanezzel a struktúrával. Flat módban az `IS-XX` lépéseknek nincs külön commit-ja — a kódváltozások commit nélkül halmozódnak, a `[x]` jelölés a Verify zöldjekor azonnal megtörténik. A záró commit a `Globális commit` szekcióban. -->
+<!-- Továbbiak (- [ ] IS-02, - [ ] IS-03, ...) ugyanezzel a struktúrával. Flat módban az `IS-XX` lépéseknek nincs külön commit-ja — a kódváltozások commit nélkül halmozódnak, a `[x]` jelölés a Verify zöldjekor azonnal megtörténik. A záró commit a `Globális summary` szekció `Commit` mezőjében. -->
 
 <!-- OPCIÓ B — Multi-stage alak (mező-struktúra azonos a flat IS-szel; csak az ID-prefix tér el) -->
 
@@ -159,11 +157,17 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Továbbiak: - [ ] **MS-01:MV-02**, - [ ] **MS-01:MV-03**, ... -->
 
-**Milestone commit**
+**Milestone summary**
 
-- `<type>(<scope>): <subject> [MS-01]` — egy commit a milestone végén: az összes `MS-01:IS-YY` kódváltozást, a `[x]` jelöléseket és a `MS-01:MV-XX` `[x]` jelöléseket együtt rögzíti. Piros `MS-01:MV-XX` blokkolja a commit-ot és az `MS-02` indulását.
+<!-- Placeholder; a milestone záráskor töltődik ki (nem plan-időben). -->
 
-<!-- További milestone-ok (#### MS-02, #### MS-03, ...) ugyanezzel a struktúrával, lokális IS-számozással, saját MV blokkal és saját Milestone commit-tal. -->
+- <1-2 mondat: mit ér el a milestone egészében — a felhasználható, release-worthy eredmény.>
+   - **<összefoglaló rövid címe>** ([XX-XX](#XX:XX)): mi történt, mi új/változott [<fájl>](relatív-út)
+- **Teljesült**: [AC-XX](#AC-XX), [AC-YY](#AC-YY) — ([MS-01:MV-01](#MS-01:MV-01)).
+- **Delták** (csak ha van): [IL-XX](#IL-XX), [IL-YY](#IL-YY).
+- **Commit**: `<type>(<scope>): <subject> [MS-01]`
+
+<!-- További milestone-ok (#### MS-02, #### MS-03, ...) ugyanezzel a struktúrával, lokális IS-számozással, saját MV blokkal és saját Milestone summary-vel. -->
 
 ### Globális verifikáció (a teljes Plan végén)
 
@@ -171,15 +175,15 @@ A `Plan` szakasz + `Megvalósítási napló` placeholder, amit a véglegesített
 
 <!-- Továbbiak: - [ ] **GV-02**, - [ ] **GV-03**, ... -->
 
-### Globális commit (csak flat módban) <Multi-stage Planben törölhető>
+### Globális summary (csak flat módban) <Multi-stage Planben törölhető>
 
-<!--
-  Flat módban a Plan-lépéseknek nincs külön commit-ja — a kódváltozások commit nélkül halmozódnak, amíg minden `IS-XX` `[x]` és a `GV-XX` zöld nem lesz. A záró commit egyetlen lépésben rögzíti az egészet.
-  Multi-stage Planben ez a szekció törlendő: a commitok a milestone-onkénti `Milestone commit` mezőkön keresztül történnek.
--->
+<!-- Placeholder; a teljes Plan végén töltődik ki (nem plan-időben). Multi-stage Planben törlendő — ott a `Milestone summary` blokkok viszik. -->
 
-- `<type>(<scope>): <subject>` — egy záró commit, ami az összes `IS-XX` kódváltozást, `[x]` jelölést és `GV-XX` `[x]` jelölést együtt tartalmazza.
-- **Stop-pont**: a commit **előtt** összefoglaló a usernek (mely `IS-XX`-ek mentek le, milyen fájlokat érintenek, milyen `GV-XX` ellenőrzések futottak, mi a végállapot). User-megerősítés után jöhet a commit.
+- <1-2 mondat: mit ér el a Plan egészében — a felhasználható végállapot.>
+   - **<összefoglaló rövid címe>** ([XX-XX](#XX:XX)): mi történt, mi új/változott [<fájl>](relatív-út)
+- **Teljesült**: [AC-XX](#AC-XX), [AC-YY](#AC-YY) — ([GV-01](#GV-01)).
+- **Delták** (csak ha van): [IL-XX](#IL-XX), [IL-YY](#IL-YY).
+- **Commit**: `<type>(<scope>): <subject>`
 
 ### Kockázat
 

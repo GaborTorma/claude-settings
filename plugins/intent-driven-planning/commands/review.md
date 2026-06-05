@@ -55,7 +55,7 @@ A draft állapotához igazodva, kumulatívan: minden szekció hozzáadja a sajá
 - `Implementációs lépések`: pontosan **egy** alak (Flat `IS-XX` **vagy** Multi-stage `MS-XX` / `MS-XX:IS-YY`) van használatban, a másik blokk törölve?
 - Minden `#### IS-NN` / `#### MS-NN` / `##### MS-XX:IS-YY` heading-en megvan a `[ ]` (vagy `[x]`) checkbox?
 - Minden `IS-NN` (vagy `MS-XX:IS-YY`) lépésnél kitöltve `Művelet` / `Implementáció` / `Commit`? `Failing test` és `Verify` kitöltve **vagy** `—` explicit `MV-XX` / `GV-XX` cross-reference-szel?
-- Multi-stage alak: minden `MS-XX` milestone-hoz tartozik legalább egy `MV-XX` blokk?
+- Multi-stage alak: minden `MS-XX` milestone-hoz tartozik legalább egy `MV-XX` blokk és egy `Milestone summary` blokk (plan-időben placeholder skeleton, `Commit` mezővel)? Flat alak: van `Globális summary` blokk?
 - `Tervezett változtatások` (`CM-NN` / `CA-NN` / `CD-NN`) bulletjei `<hely> — <mit>` formátumban, tömören?
 - Minden Plan-mező megfelel a [Mező-szemantika](./plan.md#mező-szemantika) szabályainak (tilalmas frázisok, kötelező cross-reference-ek, `Commit` `[IS-XX]` / `[MS-XX:IS-YY]` ref)?
 
