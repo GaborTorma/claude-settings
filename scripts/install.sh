@@ -18,8 +18,8 @@ SYMLINK_TARGETS=(
   "settings.local.json"
 )
 
-# Mappa marad valódi directory, fájlonként symlink. Más eszközök (pluginok,
-# lean-ctx) is dobhatnak ide saját fájlt.
+# Mappa marad valódi directory, fájlonként symlink. Más eszközök (pluginok)
+# is dobhatnak ide saját fájlt.
 DIR_FILE_SYMLINK_TARGETS=(
   "commands"
   "hooks"
