@@ -1,6 +1,6 @@
 ---
 name: testflight
-description: iOS (és opcionálisan beágyazott watchOS) app feltöltése TestFlightre. Használd amikor a felhasználó TestFlight feltöltésről, build feldolgozásról, beta-tesztelésről, vagy a feltöltés előtti repó-/Info.plist-előkészítésről (build szám bump, export compliance, on-device név, permission stringek, Archive + Upload) beszél.
+description: iOS (és opcionálisan beágyazott watchOS) app feltöltése TestFlightre. Használd amikor a Fejlesztő TestFlight feltöltésről, build feldolgozásról, beta-tesztelésről, vagy a feltöltés előtti repó-/Info.plist-előkészítésről (build szám bump, export compliance, on-device név, permission stringek, Archive + Upload) beszél.
 ---
 
 # TestFlight feltöltés
@@ -12,8 +12,8 @@ beküldés a [app-store-release](../app-store-release/SKILL.md) skill; a screens
 ## Mit NE te csinálj
 
 Az **Apple credential / aláírás / archiválás / feltöltés** (Xcode → Archive →
-Organizer) kizárólag a felhasználóé — ne próbáld helyette. Te a helyes értékeket
-adod meg és a sign nélküli build-ellenőrzést végzed; a kattintás a felhasználóé.
+Organizer) kizárólag a Fejlesztőé — ne próbáld helyette. Te a helyes értékeket
+adod meg és a sign nélküli build-ellenőrzést végzed; a kattintás a Fejlesztőé.
 
 ## Fázis 0 — Pre-flight (repó)
 
@@ -30,8 +30,8 @@ adod meg és a sign nélküli build-ellenőrzést végzed; a kattintás a felhas
 ## Azonosítók
 
 - **Bundle ID** (`PRODUCT_BUNDLE_IDENTIFIER`): **ne találd ki** — `project.yml` /
-  Info.plistből olvasd ki, vagy **egyeztesd a felhasználóval**.
-- **Team ID** (10 char, signing → `DEVELOPMENT_TEAM`): a felhasználó env-fájlból
+  Info.plistből olvasd ki, vagy **egyeztesd a Fejlesztővel**.
+- **Team ID** (10 char, signing → `DEVELOPMENT_TEAM`): a Fejlesztő env-fájlból
   hozza, `APPLE_TEAM_ID` kulcsról.
 - **App Apple ID** (numerikus, store-link): az App Store Connect **generálja** az
   app létrehozásakor — feltöltés előtt még nincs.
@@ -44,10 +44,10 @@ Csak ha nem Xcode Organizerből, hanem `notarytool` / `xcrun altool` / Fastlane
 Users and Access → Integrations → App Store Connect API.
 
 ⚠️ **Az API kulcs / `.p8` éles feltöltést indít — használat előtt MINDIG kérdezd meg
-a felhasználót**, ne futtass vele upload-parancsot megerősítés nélkül. Titkok
+a Fejlesztőt**, ne futtass vele upload-parancsot megerősítés nélkül. Titkok
 `.gitignore`-olva: `.env`, `*.p8`.
 
-## Fázis 1 — TestFlight feltöltés (felhasználó)
+## Fázis 1 — TestFlight feltöltés (Fejlesztő)
 
 Xcode → **Product → Archive** → Organizer → **Distribute → App Store Connect →
 Upload** (automatic signing). A build ~5–15 perc alatt feldolgozódik, utána
@@ -69,5 +69,5 @@ választható a verzió-oldalon (a beküldéshez lásd [app-store-release](../ap
 
 1. [ ] Build szám bump, export-compliance flag, rövid on-device név → build OK
 2. [ ] Permission purpose stringek megvannak a használt feature-ökhöz
-3. [ ] Felhasználó: Archive + Upload, build feldolgozva (Processing kész)
+3. [ ] Fejlesztő: Archive + Upload, build feldolgozva (Processing kész)
 4. [ ] Kész → tovább az App Store beküldésre ([app-store-release](../app-store-release/SKILL.md))

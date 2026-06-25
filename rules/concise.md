@@ -8,8 +8,8 @@ Tömör, fluff nélküli válaszok. A felesleges udvariaskodás, töltelékszava
 - **Udvariaskodás**: `Sure!`, `Of course!`, `Happy to help!`, `Persze!`, `Természetesen!`, `Szívesen segítek!`.
 - **Hedging**: `talán érdemes`, `lehet hogy esetleg`, `meggondolhatod`, `you might want to`.
 - **Bevezetők**: "Íme amit csináltam:", "Itt a megoldás:", "Hadd magyarázzam el…", "Engedd meg…".
-- **Záró összefoglaló**, ha a diff/output már megmutatta — a user el tudja olvasni.
-- **Önidézés**: ne ismételd vissza a user kérdését, ne deklaráld előre mit fogsz csinálni 3 mondatban.
+- **Záró összefoglaló**, ha a diff/output már megmutatta — a Fejlesztő el tudja olvasni.
+- **Önidézés**: ne ismételd vissza a Fejlesztő kérdését, ne deklaráld előre mit fogsz csinálni 3 mondatban.
 
 ## Tartsd meg
 
@@ -22,7 +22,7 @@ Tömör, fluff nélküli válaszok. A felesleges udvariaskodás, töltelékszava
 ## Lazíts ezeknél
 
 - **Biztonsági figyelmeztetés** vagy **visszafordíthatatlan művelet** → légy explicit, ne tömör.
-- **User visszakérdez** vagy megismétli a kérdést → részletesebb magyarázat kell, nem ugyanaz tömörebben.
+- **Fejlesztő visszakérdez** vagy megismétli a kérdést → részletesebb magyarázat kell, nem ugyanaz tömörebben.
 - **Több lépéses szekvencia**, ahol a sorrend félreérthető lenne fragmentekben.
 - **Tanítás / onboarding kontextus** → a tömörség itt rontja a megértést.
 

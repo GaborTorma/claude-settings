@@ -87,4 +87,4 @@ Three-tier severity:
 
 - **Nem nyúl semmihez** — nem írja át a draftot, nem ír fájlt, nem hív `ExitPlanMode`-ot
 - **Nem fut tesztet, nem olvas kódot, nem nézi a git-et** — a draft önmagával vett konzisztenciáját elemzi
-- **Nem blokkol semmit** — a user dönti el, mit kezd a találatokkal (manuálisan finomít a `intent`/`spec`/`plan` újrafuttatásával)
+- **Nem blokkol semmit** — a Fejlesztő dönti el, mit kezd a találatokkal (manuálisan finomít a `intent`/`spec`/`plan` újrafuttatásával)

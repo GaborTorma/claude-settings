@@ -33,11 +33,11 @@ A repo cross-platform **parity-állapotát** auditálja a [multi-platform-parity
 
 4. **Riport** chatben, a lenti severity-formátumban. Minden találat: mi, hol (`file:line` link), miért parity-kockázat, javasolt fix. **Ennyi**, ha nincs `--fix`.
 
-5. **Remediáció** (csak `--fix`, vagy ha a user kéri). `AskUserQuestion`-nel ajánld fel a biztonságosakat, és csak jóváhagyás után alkalmazd:
+5. **Remediáció** (csak `--fix`, vagy ha a Fejlesztő kéri). `AskUserQuestion`-nel ajánld fel a biztonságosakat, és csak jóváhagyás után alkalmazd:
    - `PARITY.md` létrehozása → a [multi-platform-parity:init](./init.md) command (ha még hiányzik; lásd Workflow 2).
    - Verzió single-source bevezetésének konkrét diffje.
-   - Duplikált logika core-ba emelésének terve (kódmozgatás → user dönt).
-   - Visszafordíthatatlan/kifelé ható lépést (deploy, store, commit) **soha** — azt a user csinálja.
+   - Duplikált logika core-ba emelésének terve (kódmozgatás → Fejlesztő dönt).
+   - Visszafordíthatatlan/kifelé ható lépést (deploy, store, commit) **soha** — azt a Fejlesztő csinálja.
 
 ## Mit ellenőriz (5 dimenzió)
 
@@ -92,5 +92,5 @@ Záró sor: **összesítés** (platformok száma, találatok severity szerint), 
 ## Mit NEM csinál
 
 - **Alapból nem mutál** — nem ír fájlt, nem commitol, nem deploy-ol. Csak `--fix`/kérésre, megerősítéssel.
-- **Nem dönt szándékos divergenciáról** — a dokumentálatlan eltérést jelzi; hogy bug vagy szándékos, azt a user mondja meg (`AskUserQuestion`), és a `PARITY.md`-be kerül.
-- **Nem hajt végre store/deploy lépést** — kifelé ható, visszafordíthatatlan → user.
+- **Nem dönt szándékos divergenciáról** — a dokumentálatlan eltérést jelzi; hogy bug vagy szándékos, azt a Fejlesztő mondja meg (`AskUserQuestion`), és a `PARITY.md`-be kerül.
+- **Nem hajt végre store/deploy lépést** — kifelé ható, visszafordíthatatlan → Fejlesztő.

@@ -4,7 +4,7 @@ description: Multi-platform parity init — létrehozza a PARITY.md-t a repo gy�
 
 # Multi-platform parity — Init
 
-Kiírja a `PARITY.md`-t a repo gyökerébe: oszlop = felderített platform, sor = feature-leltár. **Bizonytalan cellát nem tippel** (`❓`); a fejléc jelzi, hogy a usernek a cellákat + eltérés-indokokat ellenőriznie/kitöltenie kell.
+Kiírja a `PARITY.md`-t a repo gyökerébe: oszlop = felderített platform, sor = feature-leltár. **Bizonytalan cellát nem tippel** (`❓`); a fejléc jelzi, hogy a Fejlesztőnek a cellákat + eltérés-indokokat ellenőriznie/kitöltenie kell.
 
 ## Argumentum (`$ARGUMENTS`, opcionális)
 
@@ -13,7 +13,7 @@ Kiírja a `PARITY.md`-t a repo gyökerébe: oszlop = felderített platform, sor 
 
 ## Előfeltétel
 
-Ha a célhelyen **már létezik `PARITY.md`** → **ne írd felül**. Jelezd, és ajánld a `multi-platform-parity:audit`-ot (az a meglévőt auditálja a valóság ellen). Felülírás csak explicit user-kérésre.
+Ha a célhelyen **már létezik `PARITY.md`** → **ne írd felül**. Jelezd, és ajánld a `multi-platform-parity:audit`-ot (az a meglévőt auditálja a valóság ellen). Felülírás csak explicit Fejlesztő-kérésre.
 
 ## Workflow
 

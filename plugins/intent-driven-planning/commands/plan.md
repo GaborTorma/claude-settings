@@ -8,18 +8,18 @@ Ez a command az elfogadott `Intent` + `Spec` alapján megírja a `Plan` szakaszt
 
 ## Előfeltétel
 
-A beszélgetésben legyen véglegesített `Intent` + `Spec`. Új sessionben olvasd a **Spec-fájl**t a lemezről, ha létezik. Ha bármelyik hiányzik, **kérdezz vissza** vagy küldd vissza a usert az előző fázishoz.
+A beszélgetésben legyen véglegesített `Intent` + `Spec`. Új sessionben olvasd a **Spec-fájl**t a lemezről, ha létezik. Ha bármelyik hiányzik, **kérdezz vissza** vagy küldd vissza a Fejlesztőt az előző fázishoz.
 
 ## Workflow
 
 1. **Bontás-döntés (flat vs. multi-stage)**: vizsgáld meg, hogy a Spec AC-i és a tervezett változtatások több, **e2e-tesztelhető és release-worthy egységre** bonthatók-e és szükséges/logikus-e a bontás vagy csak elaprózza a megvalósítást.
-   - **Ha milestone-bontás mellett döntenél**: a részletes `Plan` megírása **előtt** mutasd be a usernek:
+   - **Ha milestone-bontás mellett döntenél**: a részletes `Plan` megírása **előtt** mutasd be a Fejlesztőnek:
       - a döntés **indoklását**: miért nem fér be flat alakba, milyen e2e-tesztelhető egységekre bontható szét
       - a javasolt `MS-XX` milestone-okat (cím + 1 mondatos hatókör, kapcsolódó `AC-XX`-ek).
 
-      Kérj megerősítést `AskUserQuestion`-nel. A user pivot-olhat flat-re, módosíthatja vagy átszámozhatja a milestone-okat, vagy jóváhagyhatja. A részletes `IS` / `MV` lépések csak ezután készülnek.
+      Kérj megerősítést `AskUserQuestion`-nel. A Fejlesztő pivot-olhat flat-re, módosíthatja vagy átszámozhatja a milestone-okat, vagy jóváhagyhatja. A részletes `IS` / `MV` lépések csak ezután készülnek.
 
-   - **Ha flat alak (alapeset)**: folytasd közvetlenül a 2. lépéssel, külön user-checkpoint nélkül.
+   - **Ha flat alak (alapeset)**: folytasd közvetlenül a 2. lépéssel, külön Fejlesztő-checkpoint nélkül.
 
 2. **`Plan` tervezete** az elfogadott bontás-döntés szerint, az `Intent` + `Spec` alapján → iteratív finomítás (lépések pontosítása, edge case-ek, verifikáció erősítése). A `Branch` sorba **konkrét név** kerüljön, ne placeholder.
 
@@ -27,7 +27,7 @@ A beszélgetésben legyen véglegesített `Intent` + `Spec`. Új sessionben olva
 
 4. **Approve után — mentés**: kilépés a Plan harness-ből, és a véglegesített tartalom mentése a megegyezett **Spec-fájl** útvonalra.
 
-5. **STOP**: implementáció csak a user explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
+5. **STOP**: implementáció csak a Fejlesztő explicit jóváhagyása után, az `intent-driven-planning:apply` commanddal indul.
 
 ---
 
@@ -81,7 +81,7 @@ A Plan-lépéseknek **nincs egyenkénti commit-ja**. A kódváltozások commit n
 
 - **Multi-stage Plan** → minden `MS-XX` végén, az összes `MS-XX:MV-XX` zöldje után a milestone **`Milestone summary`** blokkja töltődik ki, és a benne lévő `Commit` rögzíti a milestone teljes kódváltozását és checkbox-állapotát.
 - **Flat Plan (nincs `MV-XX`)** → a teljes Plan végén, az összes `GV-XX` zöldje után a **`Globális summary`** blokkja töltődik ki, és a benne lévő `Commit` rögzíti a teljes felgyűlt változást.
-- A commit **előtt** stop-pont: a kitöltött summary maga az összefoglaló a usernek + megerősítés.
+- A commit **előtt** stop-pont: a kitöltött summary maga az összefoglaló a Fejlesztőnek + megerősítés.
 
 ---
 

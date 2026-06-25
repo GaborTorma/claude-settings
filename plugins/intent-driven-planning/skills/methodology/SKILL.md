@@ -1,6 +1,6 @@
 ---
 name: methodology
-description: Intent-Driven Planning módszertan kontextusa — slug/branch konvenciók, Spec-fájl elhelyezés, élő dokumentum fegyelem. Aktiválódik ha a user `intent-driven-planning:` slash commandot használ, `.spec/*.md` fájllal dolgozik, vagy a current branch slug-ja egyezik egy létező Spec-fájl basenamejével.
+description: Intent-Driven Planning módszertan kontextusa — slug/branch konvenciók, Spec-fájl elhelyezés, élő dokumentum fegyelem. Aktiválódik ha a Fejlesztő `intent-driven-planning:` slash commandot használ, `.spec/*.md` fájllal dolgozik, vagy a current branch slug-ja egyezik egy létező Spec-fájl basenamejével.
 ---
 
 # Intent-Driven Planning — Methodology
@@ -19,7 +19,7 @@ A három tervezési fázis-command iteratív review-t használ a Plan harness-en
 
 ## Elnevezés
 
-**Slug** — az `Intent` magvát tükröző kebab-case azonosító. Claude javasolja, a user hagyja jóvá. Ez köti össze a **Spec-fájl**t és a branchet.
+**Slug** — az `Intent` magvát tükröző kebab-case azonosító. Az AI javasolja, a Fejlesztő hagyja jóvá. Ez köti össze a **Spec-fájl**t és a branchet.
 
 **Spec-fájl** — `.spec/<slug>.md`. Kategorizáláshoz almappa is használható: `.spec/<group>/<slug>.md` (pl. `.spec/auth/oauth-token-rotation.md`).
 
@@ -33,7 +33,7 @@ A Spec-fájl prózájában (Intent / Spec / Plan / Megvalósítási napló) a k�
 
 - **Fájl**: a link szövege a fájl és útvonala, a target a relatív útvonal. Példa: `[src/auth/middleware.ts](../src/auth/middleware.ts)`.
 
-- **Konkrét, létező függvény / változó / symbol**: a link szövege **csak a symbol neve** (sor nélkül), a target relatív útvonal **`#LNN` sor-hash-sel**. A sorszám a link URL-jében legyen, a szövegben **ne**. Példa: `[validateToken](../src/auth/middleware.ts#L42)` — a felhasználó a `validateToken` szöveget látja, a kattintás a 42. sorra ugrik.
+- **Konkrét, létező függvény / változó / symbol**: a link szövege **csak a symbol neve** (sor nélkül), a target relatív útvonal **`#LNN` sor-hash-sel**. A sorszám a link URL-jében legyen, a szövegben **ne**. Példa: `[validateToken](../src/auth/middleware.ts#L42)` — a Fejlesztő a `validateToken` szöveget látja, a kattintás a 42. sorra ugrik.
 
 - **Csak létező kódra**: ha a hivatkozott symbol még nem létezik (pl. tervezett új függvény a Plan-ben), **ne tegyél linket** — csak inline backtick kód-formázás (` `` `).
 
@@ -43,7 +43,7 @@ A Spec-fájl prózájában (Intent / Spec / Plan / Megvalósítási napló) a k�
 
 A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhagyás körül:
 
-- **Session indulásakor**: ha a current branch slug-ja egyezik egy `.spec/<slug>.md` vagy `.spec/<group>/<slug>.md` fájl basenamejével, vagy a user explicit **Spec-fájl**ra hivatkozik, **olvasd el** a fájlt az első tájékozódó lépések között.
+- **Session indulásakor**: ha a current branch slug-ja egyezik egy `.spec/<slug>.md` vagy `.spec/<group>/<slug>.md` fájl basenamejével, vagy a Fejlesztő explicit **Spec-fájl**ra hivatkozik, **olvasd el** a fájlt az első tájékozódó lépések között.
 
 - **Tervezés közben — backward-propagation szükséges**:
    - Ha a `Spec` írásakor kiderül valami, ami módosítja az `Intent`-et, az `Intent`-et **frissíteni kell**.
@@ -58,7 +58,7 @@ A **Spec-fájl** szakaszai különböző életciklust követnek a Plan-jóváhag
 
    **Korábbi bejegyzés frissítése új helyett**: ha olyan dolog történik, ami egy **korábbi `IL-XX` bejegyzést érint** (pl. egy korábbi `Nyitott` tétel teljesül, egy korábbi delta tovább módosul vagy visszavonódik), akkor a **meglévő bejegyzést kell frissíteni** — ne nyiss újat. Új `IL-XX` csak független, új deltához készül.
 
-- **Intent szintű változás** (a probléma vagy cél maga változik): állj meg, és egyeztess a userrel.
+- **Intent szintű változás** (a probléma vagy cél maga változik): állj meg, és egyeztess a Fejlesztővel.
 
 ### Megvalósítási napló — példa bejegyzések
 

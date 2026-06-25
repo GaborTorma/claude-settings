@@ -1,6 +1,6 @@
 ---
 name: new-apple-project
-description: Új Apple (iOS / iPadOS / watchOS / macOS) projekt bootstrap-ja. Használd amikor a felhasználó új Apple/iOS/Swift/SwiftUI/Xcode appot kezd, új Xcode/XcodeGen projektet hoz létre, vagy a kezdeti repó-/projekt-struktúráról, azonosítókról (Bundle ID, Team ID), signingről, .gitignore-ról beszél egy natív Apple appnál. A kiadás (TestFlight/App Store) későbbi fázis — arra külön skillek vannak.
+description: Új Apple (iOS / iPadOS / watchOS / macOS) projekt bootstrap-ja. Használd amikor a Fejlesztő új Apple/iOS/Swift/SwiftUI/Xcode appot kezd, új Xcode/XcodeGen projektet hoz létre, vagy a kezdeti repó-/projekt-struktúráról, azonosítókról (Bundle ID, Team ID), signingről, .gitignore-ról beszél egy natív Apple appnál. A kiadás (TestFlight/App Store) későbbi fázis — arra külön skillek vannak.
 ---
 
 # Új Apple projekt — bootstrap
@@ -12,7 +12,7 @@ screenshotok: [screenshots](../screenshots/SKILL.md).
 
 ## Mikor aktiválódj
 
-A felhasználó **új** Apple appot kezd (üres repó, első Xcode/`project.yml`,
+A Fejlesztő **új** Apple appot kezd (üres repó, első Xcode/`project.yml`,
 `Package.swift`, „új iOS app" kérés). Ekkor a setup-döntéseket **most** rögzítsd —
 később drágább javítani (Bundle ID nem változtatható, signing átszövi a projektet).
 
@@ -26,8 +26,8 @@ SwiftData vs. Core Data vs. GRDB, dependency manager: SPM) **kérdezz és javaso
 ## 2. Azonosítók (kezdéskor rögzítsd)
 
 - **Bundle ID** (`PRODUCT_BUNDLE_IDENTIFIER`, reverse-DNS): **ne találd ki — mindig
-  egyeztesd a felhasználóval** (állandó identitás, utólag nem változtatható).
-- **Team ID** (10 char): signinghez `DEVELOPMENT_TEAM`. A felhasználó `~/.claude/.env`
+  egyeztesd a Fejlesztővel** (állandó identitás, utólag nem változtatható).
+- **Team ID** (10 char): signinghez `DEVELOPMENT_TEAM`. A Fejlesztő `~/.claude/.env`
   → **`APPLE_TEAM_ID`** kulcsról hozza.
 - **On-device név** (`CFBundleDisplayName`): rövid (~12 char), külön a store-névtől.
 - **Verzió**: SemVer marketing-verzió (`MARKETING_VERSION`) + külön `CURRENT_PROJECT_VERSION`
@@ -61,12 +61,12 @@ Headless feltöltéshez `APPLE_ISSUER_ID` + `APPLE_KEY_ID` + `.p8` (`AuthKey_<KE
 — App Store Connect → Users and Access → Integrations → App Store Connect API.
 
 ⚠️ **Az API kulcs / `.p8` éles feltöltést indít — használat előtt MINDIG kérdezd meg
-a felhasználót.** Bootstrap-kor csak bekötöd/dokumentálod; nem futtatsz vele.
+a Fejlesztőt.** Bootstrap-kor csak bekötöd/dokumentálod; nem futtatsz vele.
 
 ## Checklist
 
 1. [ ] Stack egyeztetve (min. iOS, persistence, SPM) — nem néma default
-2. [ ] Bundle ID **egyeztetve** a felhasználóval, `project.yml`-be kötve
+2. [ ] Bundle ID **egyeztetve** a Fejlesztővel, `project.yml`-be kötve
 3. [ ] Team ID `APPLE_TEAM_ID`-ből → `DEVELOPMENT_TEAM`
 4. [ ] `xcodegen generate` → build OK (sign nélkül is)
 5. [ ] `.gitignore` (Apple minták + `.env`/`*.p8`) + `.env.example` az első commitban

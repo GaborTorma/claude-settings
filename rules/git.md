@@ -2,7 +2,7 @@
 
 - **Új projekt**: `git init` → `.gitignore` → `git commit -m "Initial commit"`.
 - **Commit**: automtikusan a tesztelt és **JÓVÁHAGYOTT** TODO lépések után.
-- **Auto-commit**: Csak auto-plan/TODO végrejatáskor, ha nincs user interakció.
+- **Auto-commit**: Csak auto-plan/TODO végrejatáskor, ha nincs Fejlesztő-interakció.
 - **Visszavonás**: `git revert <sha>` — nem patchek!
 - **Tilos**: `--no-verify`, `push --force` main-re, `reset --hard` vagy `pr` megerősítés nélkül.
 

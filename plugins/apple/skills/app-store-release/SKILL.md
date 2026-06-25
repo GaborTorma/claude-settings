@@ -1,6 +1,6 @@
 ---
 name: app-store-release
-description: iOS app beküldése és kiadása az App Store-ra. Használd amikor a felhasználó App Store beküldésről/kiadásról, App Store Connect listingről, vagy App Privacy / Age Rating / Export Compliance / Copyright / Content Rights kérdésről beszél — akkor is, ha csak annyit mond, hogy "kiadom/beküldöm az appot". A folyamatot fázisokra bontja és kiemeli a tipikus blokkolókat.
+description: iOS app beküldése és kiadása az App Store-ra. Használd amikor a Fejlesztő App Store beküldésről/kiadásról, App Store Connect listingről, vagy App Privacy / Age Rating / Export Compliance / Copyright / Content Rights kérdésről beszél — akkor is, ha csak annyit mond, hogy "kiadom/beküldöm az appot". A folyamatot fázisokra bontja és kiemeli a tipikus blokkolókat.
 ---
 
 # App Store beküldés és kiadás
@@ -13,7 +13,7 @@ listing-részletek (limitek, kérdőív-válaszok):
 
 ## Mit NE te csinálj
 
-**Felhasználó**: a **Submit / Release gombok** és a kérdőívek **véglegesítése
+**Fejlesztő**: a **Submit / Release gombok** és a kérdőívek **véglegesítése
 (Publish / Submit)** — te a helyes értékeket adod, a kattintás az övé. **Te**:
 listing-szövegek, Privacy/Support oldalak, a teljes checklist előkészítése.
 
@@ -46,7 +46,7 @@ screenshot blokkolja az „Add for Review"-t.
   → „No, we do not collect data".
 - **Content Rights**, **Pricing & Availability** (Free + országok).
 
-## Fázis 5 — Beküldés (felhasználó)
+## Fázis 5 — Beküldés (Fejlesztő)
 
 A verzió-oldalon a feldolgozott **buildet** kiválasztani; **Version Release** =
 **Manually** (ajánlott — te időzíted a go-live-ot); **Notes for Review** (ha nincs

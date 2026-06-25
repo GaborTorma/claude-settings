@@ -1,6 +1,6 @@
 ---
 name: changelog
-description: Magyar nyelvű CHANGELOG.md bejegyzés generálása az aktuális branch tényleges kódváltozásai alapján. Használd amikor a felhasználó /changelog-ot ír, vagy egy feature/fix branch munkájának végén changelog bejegyzést szeretne készíteni. A skill a commit üzenetek helyett a tényleges diff-et elemzi és emberi, érthető magyar leírást ír.
+description: Magyar nyelvű CHANGELOG.md bejegyzés generálása az aktuális branch tényleges kódváltozásai alapján. Használd amikor a Fejlesztő /changelog-ot ír, vagy egy feature/fix branch munkájának végén changelog bejegyzést szeretne készíteni. A skill a commit üzenetek helyett a tényleges diff-et elemzi és emberi, érthető magyar leírást ír.
 ---
 
 # Changelog skill
@@ -27,7 +27,7 @@ git diff main...HEAD
 git log main..HEAD --oneline
 ```
 
-Ha a `main` nem létezik, próbáld `master`-rel. Ha a repo nincs git alatt, jelezd a felhasználónak.
+Ha a `main` nem létezik, próbáld `master`-rel. Ha a repo nincs git alatt, jelezd a Fejlesztőnek.
 
 ### 2. Változások elemzése
 
@@ -44,7 +44,7 @@ Fontos: **ne a commit üzenetekből dolgozz**, hanem a tényleges kódváltozás
 
 ### 3. Magyar szöveg írása
 
-Írj természetes, érthető magyar leírásokat. Ne fordítsd le gépiesen az angol kód/commit szövegeket — magyarázd el mit jelent a változás a felhasználó szempontjából.
+Írj természetes, érthető magyar leírásokat. Ne fordítsd le gépiesen az angol kód/commit szövegeket — magyarázd el mit jelent a változás az end-user szempontjából.
 
 Példák jó leírásra:
 
@@ -52,7 +52,7 @@ Példák jó leírásra:
 - ✅ "Bevezetésre került a kérésszám-korlátozás a bejelentkezési végpontokon, hogy megakadályozza a brute-force támadásokat"
 
 - ❌ "fix null pointer in user service"
-- ✅ "Javítva egy összeomlást, ami akkor lépett fel, ha a felhasználói profil nem tartalmazott e-mail címet"
+- ✅ "Javítva egy összeomlást, ami akkor lépett fel, ha az end-user profilja nem tartalmazott e-mail címet"
 
 ### 4. Bejegyzés formátuma
 
@@ -83,4 +83,4 @@ Példák jó leírásra:
 - Ha nem létezik: hozd létre az új bejegyzéssel
 - Ne töröld a meglévő bejegyzéseket
 
-A módosítás után írd ki a terminálba az elkészült bejegyzést, hogy a felhasználó lássa.
+A módosítás után írd ki a terminálba az elkészült bejegyzést, hogy a Fejlesztő lássa.

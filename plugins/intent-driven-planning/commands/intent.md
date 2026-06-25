@@ -20,8 +20,8 @@ Iteráció során a próza tendenciózusan hízik, és részletek szivárognak b
 ## Workflow
 
 1. **Re-invokálás detektálása — downstream draft eldobása**: ha a beszélgetésben már van élő `Spec` vagy `Plan` draft korábbi `intent-driven-planning:spec` / `intent-driven-planning:plan` futtatásból, **kérdezz rá `AskUserQuestion`-nel** az eldobásukra.
-   - **Ha a user megerősíti**: a Spec/Plan draftokat tekintsd érvénytelennek, és csak az új `Intent`-tel haladj tovább.
-   - **Ha elutasítja**: állj le, és egyeztess a userrel, a folytatásról.
+   - **Ha a Fejlesztő megerősíti**: a Spec/Plan draftokat tekintsd érvénytelennek, és csak az új `Intent`-tel haladj tovább.
+   - **Ha elutasítja**: állj le, és egyeztess a Fejlesztővel, a folytatásról.
 
 2. **Orientáció**:
    - **Branch** — current branch (`git branch --show-current`); ha `<prefix>/<slug>` konvenciót követ, a slug a step 4 fájlnév-javaslat alapja.
@@ -31,14 +31,14 @@ Iteráció során a próza tendenciózusan hízik, és részletek szivárognak b
 
 3. **`Intent` tervezete** az első prompt + orientáció alapján: Probléma + Célok + NEM-célok + Későbbi megvalósítás.
 
-4. **Slug + fájlnév egyeztetés**: javasold a slug-ot és — ha indokolt — az opcionális almappát; a user vagy elfogadja, vagy ad másikat.
+4. **Slug + fájlnév egyeztetés**: javasold a slug-ot és — ha indokolt — az opcionális almappát; a Fejlesztő vagy elfogadja, vagy ad másikat.
    A javasolt **Spec-fájl** útvonal rögzítendő a beszélgetésben.
 
 5. **`ExitPlanMode` hívás** review-hoz: a tervezet kizárólag `Intent` tartalommal megy.
    Nyitott kérdés ne maradjon — a review előtt rendezd (`AskUserQuestion`).
    Visszajelzés → iteráció → újra `ExitPlanMode`.
 
-6. **STOP — itt véget ér.** Várj a user következő parancsára (`intent-driven-planning:spec`).
+6. **STOP — itt véget ér.** Várj a Fejlesztő következő parancsára (`intent-driven-planning:spec`).
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: multi-platform-parity
-description: Egy app több kliens-platformjának (PWA, iOS, iPad, watchOS, Android, desktop) verzió- és feature-paritásának fenntartása. Használd amikor a felhasználó ugyanazon app több platformján dolgozik — feature-t implementál EGY platformra, verziót/release-t koordinál, azt kérdezi "szinkronban vannak-e a platformok", PARITY.md-ről / feature-mátrixról, shared core-ról, API backward compat-ról régi kliensekkel, vagy app-store review skew-ról beszél. Akkor is, ha nem mondja ki a "parity" szót.
+description: Egy app több kliens-platformjának (PWA, iOS, iPad, watchOS, Android, desktop) verzió- és feature-paritásának fenntartása. Használd amikor a Fejlesztő ugyanazon app több platformján dolgozik — feature-t implementál EGY platformra, verziót/release-t koordinál, azt kérdezi "szinkronban vannak-e a platformok", PARITY.md-ről / feature-mátrixról, shared core-ról, API backward compat-ról régi kliensekkel, vagy app-store review skew-ról beszél. Akkor is, ha nem mondja ki a "parity" szót.
 ---
 
 # Multi-platform parity
@@ -9,7 +9,7 @@ Cél több-platformos appnál: **azonos képesség** minden cél-platformon, idi
 
 ## Mikor aktiválódj
 
-A repo több kliens-platformot tartalmaz ugyanarra az appra (pl. `apps/web/` vagy `pwa/` PWA + `ios/` + `android/` + watch target), VAGY a felhasználó egy platformra implementál és a többi érintett. Ekkor a paritás **passzív felelősséged**: ha egy változás szétcsúsztatná a platformokat, jelezd — ne hagyd csendben.
+A repo több kliens-platformot tartalmaz ugyanarra az appra (pl. `apps/web/` vagy `pwa/` PWA + `ios/` + `android/` + watch target), VAGY a Fejlesztő egy platformra implementál és a többi érintett. Ekkor a paritás **passzív felelősséged**: ha egy változás szétcsúsztatná a platformokat, jelezd — ne hagyd csendben.
 
 ## 1. Verzió- és release-koordináció
 
@@ -17,7 +17,7 @@ A repo több kliens-platformot tartalmaz ugyanarra az appra (pl. `apps/web/` vag
 - **Store-lag tény**: iOS/Android review napokig tart, PWA instant → a release nem megy egyszerre élesbe; a rollout-ablakban több kliensverzió él egyszerre.
 - **Forced-update gate**: backend `minSupportedVersion`; régi kliensnek feature-specifikus elutasítás + natív forced-update UX.
 - **Breaking-et ne deploy-olj előre**: a backend/PWA a leglassabb platform rollout-jához igazodjon (canary → teljes).
-- **PWA service worker = verziózott kliens**: a cache-elt bundle a store-lag analógja. Verzió-bélyegzett SW + explicit frissítés (`skipWaiting`+`clients.claim`, vagy waiting+user-prompt reload); a `minSupportedVersion` gate a stale bundle-t is zárja.
+- **PWA service worker = verziózott kliens**: a cache-elt bundle a store-lag analógja. Verzió-bélyegzett SW + explicit frissítés (`skipWaiting`+`clients.claim`, vagy waiting+end-user-prompt reload); a `minSupportedVersion` gate a stale bundle-t is zárja.
 
 ## 2. Shared core architektúra
 
@@ -42,7 +42,7 @@ A repo több kliens-platformot tartalmaz ugyanarra az appra (pl. `apps/web/` vag
 
 - **`PARITY.md` a repo gyökerében**: sor = feature, oszlop = platform, cella `✅/🚧/❌/➖` + eltérésnél a **MIÉRT** egy mondatban (HIG, hardver-limit, store-policy). Feature-rel egy körben frissítsd; parity-kérdésnél ELŐSZÖR ezt olvasd, ne a kliensek kódjából találgass.
 - **DoD = minden cél-platform**: a feature kész, ha mindenhol zöld (lint/typecheck/test, `git.md`) VAGY `PARITY.md`-ben explicit kivétel (ok + visszazárási trigger: dátum/verzió/„store-jóváhagyás után"). Store-csúszás `🗓️`, nem `➖`. Néma rés tilos.
-- **Egy platform előtt kérdezz** (`AskUserQuestion`): a többi érintett platform most menjen, vagy ütemezett skew? A platform-érintettség intent/prioritás → user dönt; a kód-tényt (hol van már meg) `grep`/`Read` olvassa ki (`exploration.md`).
+- **Egy platform előtt kérdezz** (`AskUserQuestion`): a többi érintett platform most menjen, vagy ütemezett skew? A platform-érintettség intent/prioritás → Fejlesztő dönt; a kód-tényt (hol van már meg) `grep`/`Read` olvassa ki (`exploration.md`).
 - **Közös acceptance + fixtures**: platform-független `Given/When/Then` + nyelvfüggetlen fixture-forrás (JSON/YAML), amit minden suite beolvas. Bugfix → reprodukáló teszt (`karpathy`), majd a TÖBBI platformon is ellenőrizd.
 - **Repo-struktúra** (`claude.md`): platform-alrész saját `CLAUDE.md` a build/version/release paranccsal; a root a core-határt és a parity-forrást dokumentálja, ne ismételd.
 

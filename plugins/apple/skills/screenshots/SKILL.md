@@ -1,6 +1,6 @@
 ---
 name: screenshots
-description: App Store screenshotok generálása szimulátorból — pontos App Store Connect méret, RGB alfa nélkül, launch-argumentumos navigáció (defaults write helyett), többnyelvű batch YAML configból. Használd amikor a felhasználó App Store / TestFlight screenshot-méretekről, szimulátoros felvételről, vagy a screenshot-automatizálásról beszél. Eszköz: scripts/appstore_screenshots.py.
+description: App Store screenshotok generálása szimulátorból — pontos App Store Connect méret, RGB alfa nélkül, launch-argumentumos navigáció (defaults write helyett), többnyelvű batch YAML configból. Használd amikor a Fejlesztő App Store / TestFlight screenshot-méretekről, szimulátoros felvételről, vagy a screenshot-automatizálásról beszél. Eszköz: scripts/appstore_screenshots.py.
 ---
 
 # App Store screenshotok ⚠️
