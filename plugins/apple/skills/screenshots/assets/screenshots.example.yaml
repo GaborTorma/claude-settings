@@ -1,0 +1,28 @@
+# Dummy screenshot config — másold a projektedbe és igazítsd.
+#
+# Minden shot minden nyelven elkészül. Az `args:` map launch-argumentként megy az
+# appnak (`-key value` → NSArgumentDomain → UserDefaults.standard), NEM
+# defaults-write-tal (azt a cfprefsd cache-eli). Az ilyen debug-kulcsokat gateeld
+# DEBUG-ra, hogy release-ben no-op legyenek.
+#
+# Futtatás:  appstore_screenshots.py generate --config screenshots.yaml --out .
+
+languages: [hu, en]                 # minden shot ennyi nyelven
+locale_arg: locale                  # ehhez a launch-arg kulcshoz kerül a nyelv ( -locale hu )
+settle: 5                           # másodperc várakozás indítás után, felvétel előtt
+status_bar: { time: "9:41", battery: 100, wifi: 3, cellular: 4 }
+
+devices:
+  iphone:
+    name: "iPhone 14 Plus"          # 6.5" App Store slot, natív 1284x2778 → nincs resize
+    bundle: com.example.app
+    size: 1284x2778                 # opcionális: ha megadod, alfa-strip + pontos méretre vág
+  watch:
+    name: "Apple Watch Ultra 3 (49mm)"
+    bundle: com.example.app.watchkitapp
+
+# device: melyik eszközön; args: tetszőleges launch-arg kulcs=érték az appodból.
+shots:
+  - { name: 01-timetable, device: iphone, args: { startTab: "0" } }
+  - { name: 02-now,       device: iphone, args: { startTab: "1" } }
+  - { name: 03-now,       device: watch,  args: { stage: main } }

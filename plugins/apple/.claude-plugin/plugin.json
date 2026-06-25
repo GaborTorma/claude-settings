@@ -1,0 +1,9 @@
+{
+  "name": "apple",
+  "description": "Apple platform (iOS / watchOS) fejlesztés és kiadás — új projekt bootstrap, TestFlight feltöltés, App Store beküldés/kiadás és screenshot-generálás.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Gábor Torma",
+    "email": "gabor@torma.ai"
+  }
+}

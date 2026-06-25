@@ -1,0 +1,31 @@
+# XcodeGen starter — másold `project.yml` néven a repo gyökerébe, igazítsd, majd
+# `xcodegen generate`. A project.yml a FORRÁS; az .xcodeproj generált (gitignore-olt).
+# Env-referencia (${VAR}) a `xcodegen generate` futtatásakor oldódik fel — előtte
+# exportáld: `export $(grep -v '^#' .env | xargs)`.
+
+name: MyApp
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"           # SemVer single-source (versioning.md)
+    CURRENT_PROJECT_VERSION: "1"         # build szám — minden feltöltéshez bump
+    DEVELOPMENT_TEAM: ${APPLE_TEAM_ID}   # env-ből, ne hardkódold a repóba
+
+targets:
+  MyApp:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.myapp  # ⚠️ EGYEZTESD a felhasználóval
+        INFOPLIST_KEY_CFBundleDisplayName: MyApp       # rövid on-device név (~12 char)
+    info:
+      path: Info.plist
+      properties:
+        ITSAppUsesNonExemptEncryption: false           # HTTPS-only → export-compliance exempt
+        # NSLocationWhenInUseUsageDescription: "Miért kell a hely…"  # csak ha a feature használja

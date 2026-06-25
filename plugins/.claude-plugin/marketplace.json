@@ -15,6 +15,12 @@
       "description": "Multi-platform parity — egy app több kliens-platformjának verzió- és feature-szinkronja",
       "version": "0.1.0",
       "source": "./multi-platform-parity"
+    },
+    {
+      "name": "apple",
+      "description": "Apple platform — új projekt bootstrap, TestFlight, App Store beküldés/kiadás, screenshotok",
+      "version": "0.1.0",
+      "source": "./apple"
     }
   ]
 }

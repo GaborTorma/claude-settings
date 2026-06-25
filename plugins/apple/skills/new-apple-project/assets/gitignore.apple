@@ -1,0 +1,20 @@
+# Apple / Xcode .gitignore — másold a repo gyökerébe `.gitignore` néven.
+
+# Env / secrets (enviroment.md)
+.env
+.env.*
+!.env.example
+*.p8
+*.pem
+*.key
+
+# Build output
+build/
+DerivedData/
+
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+
+# XcodeGen — a project.yml a forrás, az .xcodeproj generált
+*.xcodeproj
