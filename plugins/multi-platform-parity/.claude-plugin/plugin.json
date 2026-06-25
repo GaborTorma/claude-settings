@@ -1,0 +1,9 @@
+{
+  "name": "multi-platform-parity",
+  "description": "Multi-platform parity — egy app több kliens-platformjának (PWA, iOS, iPad, watchOS, Android, desktop) verzió- és feature-szinkronja.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Gábor Torma",
+    "email": "gabor@torma.ai"
+  }
+}

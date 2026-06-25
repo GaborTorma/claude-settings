@@ -8,7 +8,8 @@
     }
   },
   "enabledPlugins": {
-    "intent-driven-planning@torma-ai": true
+    "intent-driven-planning@torma-ai": true,
+    "multi-platform-parity@torma-ai": true
   },
   "permissions": {
     "allow": [

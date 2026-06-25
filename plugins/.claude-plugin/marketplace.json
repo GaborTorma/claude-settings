@@ -9,6 +9,12 @@
       "description": "Intent-Driven Planning — Intent → Spec → Plan három fázisú workflow",
       "version": "0.1.0",
       "source": "./intent-driven-planning"
+    },
+    {
+      "name": "multi-platform-parity",
+      "description": "Multi-platform parity — egy app több kliens-platformjának verzió- és feature-szinkronja",
+      "version": "0.1.0",
+      "source": "./multi-platform-parity"
     }
   ]
 }
