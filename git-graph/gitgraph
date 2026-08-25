@@ -14,6 +14,7 @@ aktuális) könyvtárból oldja fel, magától a script helyétől függetlenül
     gg ~/dev/masik-repo           # másik repó
     gg --out graf.html            # máshova (relatív út a CWD-hez)
     gg --limit 200                # csak az utolsó 200 commit (alap: mind)
+    gg --open artifact            # a közzétett Artifact oldal (ha van)
 
 A kimenet a repón belül, MINDIG ugyanott keletkezik — így frissíthető belőle
 ugyanaz az Artifact oldal. A `.git-graph/` mappát a script a repó LOKÁLIS
@@ -241,6 +242,33 @@ def ensure_excluded() -> bool:
     with exclude.open("a", encoding="utf-8") as fh:
         fh.write(f"{prefix}# gitgraph kimenete (lokális, nem commitolandó)\n{entry}\n")
     return True
+
+
+def config_get(key: str) -> str:
+    """Érték a repó lokális git configjából (hiányzó kulcsnál üres sztring)."""
+    try:
+        return git("config", "--local", "--get", f"gitgraph.{key}").strip()
+    except subprocess.CalledProcessError:
+        return ""
+
+
+def remember_artifact(url: str) -> None:
+    """Az Artifact URL-je + a publikáláskori HEAD a `.git/config`-ba.
+
+    A HEAD azért kell, hogy az `--open` tudja: a közzétett oldal az aktuális
+    állapotot mutatja-e, vagy azóta jött új commit. A `.git/config` sosem
+    commitolódik, és repónként külön tárol — pont, ami ide kell.
+    """
+    git("config", "--local", "gitgraph.artifact", url)
+    git("config", "--local", "gitgraph.artifactHead", git("rev-parse", "HEAD").strip())
+
+
+def artifact_state() -> tuple[str, bool]:
+    """(URL, naprakész-e). URL nélkül ("", False)."""
+    url = config_get("artifact")
+    if not url:
+        return "", False
+    return url, config_get("artifactHead") == git("rev-parse", "HEAD").strip()
 
 
 def collect_branches() -> list[dict]:
@@ -822,12 +850,26 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0,
                     help="max. commit (0 = a teljes history, ez az alap)")
     ap.add_argument("--title", default=None, help="oldalcím")
-    ap.add_argument("--open", action="store_true", dest="open_after",
-                    help="megnyitás az alapértelmezett böngészőben")
+    ap.add_argument("--open", nargs="?", const="auto", default=None,
+                    choices=["auto", "local", "artifact"], dest="open_mode",
+                    help="megnyitás a böngészőben: auto (alap) = a közzétett "
+                         "Artifact, ha az aktuális állapotot mutatja, különben a "
+                         "helyi fájl; a local/artifact kényszerít")
+    ap.add_argument("--set-artifact", metavar="URL", default=None,
+                    help="a repóhoz tartozó Artifact URL megjegyzése "
+                         "(a /git-graph slash command hívja publikálás után)")
     args = ap.parse_args()
 
     global REPO
     REPO = resolve_repo(Path(args.repo).expanduser().resolve())
+
+    if args.set_artifact:
+        if not args.set_artifact.startswith("https://"):
+            raise SystemExit("HIBA: az URL-nek https://-sel kell kezdődnie.")
+        remember_artifact(args.set_artifact)
+        print(f"✓ Artifact megjegyezve: {args.set_artifact}")
+        print(f"  {repo_name()} @ {git('rev-parse', '--short', 'HEAD').strip()}")
+        return 0
 
     limit = args.limit or None
     commits = collect_commits(limit)
@@ -860,8 +902,23 @@ def main() -> int:
 
     if excluded:
         print(f"  ({OUT_DIR}/ felvéve a .git/info/exclude-ba)")
-    if args.open_after:
-        webbrowser.open(out.as_uri())
+
+    url, fresh = artifact_state()
+    if url:
+        print(f"  Artifact: {url}"
+              f"{'' if fresh else '  ← ELAVULT (azóta új commit; /git-graph frissíti)'}")
+
+    if args.open_mode:
+        mode = args.open_mode
+        if mode == "artifact" and not url:
+            print("  Nincs megjegyzett Artifact ehhez a repóhoz — a helyi fájlt nyitom.")
+            mode = "local"
+        elif mode == "auto":
+            # Az Artifact pillanatkép: csak akkor nyitjuk, ha az aktuális HEAD-et
+            # mutatja — különben a frissen generált helyi fájl a helyes válasz.
+            mode = "artifact" if (url and fresh) else "local"
+        webbrowser.open(url if mode == "artifact" else out.as_uri())
+        print(f"  Megnyitva: {'Artifact' if mode == 'artifact' else 'helyi fájl'}")
     return 0
 
 

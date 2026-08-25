@@ -46,7 +46,19 @@ Mindkét esetben:
 > A `label` paraméterbe tedd a commitszámot (pl. `122 commit`) — a verzió-
 > választóban ez különbözteti meg a korábbi publikálásoktól.
 
-### 3. Jelentsd vissza
+### 3. Jegyeztesd meg az URL-t
+
+A publikálás után **mindig** futtasd:
+
+```
+gg --set-artifact <az Artifact URL-je>
+```
+
+Ez a repó lokális git configjába teszi az URL-t és a mostani HEAD-et, amitől a
+`gg --open` a közzétett oldalt tudja nyitni a helyi fájl helyett (és látja, ha
+azóta elavult). Akkor is futtasd, ha a link nem változott — a HEAD igen.
+
+### 4. Jelentsd vissza
 
 Egy rövid mondat + a link. Mondd meg, **frissítés** volt-e vagy új oldal, és
 hány commit került rá. Ha a repóban pusholatlan commit van (a `git status -sb`

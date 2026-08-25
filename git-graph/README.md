@@ -35,6 +35,28 @@ A publikálás nem CLI — a Claude `/git-graph` parancsa végzi. A cím konvenc
 szerint `<repónév> Git Graph`, ez alapján találja meg és **frissíti** a meglévő
 oldalt ahelyett, hogy duplikátumot hozna létre. Repónként külön Artifact.
 
+Publikálás után a parancs lefuttatja a `gg --set-artifact <url>`-t, ami a repó
+**lokális** git configjába (`.git/config`, sosem commitolódik) elteszi:
+
+| Kulcs | Mi |
+| --- | --- |
+| `gitgraph.artifact` | a közzétett oldal URL-je |
+| `gitgraph.artifactHead` | a HEAD a publikálás pillanatában |
+
+Ettől a `gg` minden futásnál kiírja a linket, és jelzi, ha azóta új commit jött
+(`← ELAVULT`).
+
+## `--open`
+
+Az Artifact **pillanatkép**, a helyi fájl mindig friss — a `--open` ezért nem
+vakon választ:
+
+| Parancs | Mit nyit |
+| --- | --- |
+| `gg --open` | az Artifactot, **ha** az a mostani HEAD-et mutatja; különben a helyi fájlt |
+| `gg --open artifact` | mindig az Artifactot (ha nincs megjegyezve, a helyit) |
+| `gg --open local` | mindig a frissen generált helyi fájlt |
+
 ## Hogyan rajzol
 
 A git saját lane-kiosztását követi: a commit abba a sávba ül, amelyik már rá
