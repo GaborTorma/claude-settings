@@ -3,6 +3,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CLAUDE_DIR="$HOME/.claude"
+BIN_DIR="$HOME/.local/bin"
 MARKER="# claude-settings auto-update"
 UPDATE_CMD="bash \"$REPO_DIR/scripts/sync.sh\" --quiet 2>/dev/null || true"
 HOOK_LINE="${MARKER}"$'\n'"${UPDATE_CMD}"
@@ -142,6 +143,26 @@ install_symlinks() {
   # Plugin marketplace: a repo plugins/ mappáját ~/.claude/local-plugins-be
   # symlinkeljük (mivel ~/.claude/plugins/ a Claude Code saját mappája).
   link_one "$REPO_DIR/plugins" "$CLAUDE_DIR/local-plugins"
+
+  # PATH-ra kerülő parancsok: a bin/ minden futtatható fájlja ~/.local/bin-be.
+  install_bin
+}
+
+# A bin/ tartalma a PATH-ra. Fájlonként symlink, a fájlnév = a parancs neve;
+# a README-t (és bármi nem futtatható fájlt) kihagyjuk.
+install_bin() {
+  [ -d "$REPO_DIR/bin" ] || return 0
+
+  mkdir -p "$BIN_DIR"
+  for src in "$REPO_DIR/bin"/*; do
+    [ -f "$src" ] && [ -x "$src" ] || continue
+    link_one "$src" "$BIN_DIR/$(basename "$src")"
+  done
+
+  case ":$PATH:" in
+    *":$BIN_DIR:"*) ;;
+    *) echo "FIGYELEM: $BIN_DIR nincs a PATH-on — add hozzá a shell rc-dhez." ;;
+  esac
 }
 
 main() {
