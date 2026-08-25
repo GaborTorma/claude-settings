@@ -9,8 +9,9 @@ argument-hint: "[commit-limit, alap: a teljes history]"
 - **Friss gráf generálva** (a `gg` írja a repón belüli stabil helyre):
   !`gg`
 
-- **Repó neve** (ebből jön az Artifact címe):
-  !`basename "$(git rev-parse --show-toplevel)"`
+- **Repó neve** (ebből jön az Artifact címe — az `origin` remote-ból, ahogy a
+  `gg` is teszi; mappanév csak fallback, mert a mappa neve eltérhet a repóétól):
+  !`n=$(git remote get-url origin 2>/dev/null); n=${n%.git}; n=${n##*/}; n=${n##*:}; echo "${n:-$(basename "$(git rev-parse --show-toplevel)")}"`
 
 - **Ág és push-állapot**:
   !`git status -sb | head -1`
@@ -26,8 +27,12 @@ a fenti (teljes history) kimenet marad — ne futtasd újra feleslegesen.
 
 ### 2. Keresd meg a meglévő Artifactot
 
-A cím **mindig** `<repónév> Git Graph` (pontosan ezt írja a `gg` a `<title>`-be).
-Hívd az Artifact eszközt `action: "list"`-tel, és keress erre a címre.
+A cím **mindig** `<repónév> Git Graph` — pontosan ezt írja a `gg` a `<title>`-be,
+és a fenti „Repó neve" sor ugyanazt a nevet adja. Hívd az Artifact eszközt
+`action: "list"`-tel, és keress erre a címre.
+
+> Ha a listában más néven szerepel egy korábbi verzió (pl. régi cím-konvenció),
+> **azt frissítsd** az URL-jével — ne hozz létre újat mellé.
 
 - **Van találat** → publikálj a talált **URL-lel** (`url` paraméter) ÉS a `gg`
   kiírta fájlútvonallal. Így ugyanaz az oldal frissül, a link nem változik.
