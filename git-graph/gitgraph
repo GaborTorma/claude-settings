@@ -852,9 +852,11 @@ def main() -> int:
     ap.add_argument("--title", default=None, help="oldalcím")
     ap.add_argument("--open", nargs="?", const="auto", default=None,
                     choices=["auto", "local", "artifact"], dest="open_mode",
-                    help="megnyitás a böngészőben: auto (alap) = a közzétett "
+                    help="megnyitás a BÖNGÉSZŐBEN: auto (alap) = a közzétett "
                          "Artifact, ha az aktuális állapotot mutatja, különben a "
-                         "helyi fájl; a local/artifact kényszerít")
+                         "helyi fájl; a local/artifact kényszerít. (A Claude "
+                         "Artifact-ablakát külső folyamat nem tudja nyitni — "
+                         "arra a /git-graph parancs való.)")
     ap.add_argument("--set-artifact", metavar="URL", default=None,
                     help="a repóhoz tartozó Artifact URL megjegyzése "
                          "(a /git-graph slash command hívja publikálás után)")
@@ -918,7 +920,8 @@ def main() -> int:
             # mutatja — különben a frissen generált helyi fájl a helyes válasz.
             mode = "artifact" if (url and fresh) else "local"
         webbrowser.open(url if mode == "artifact" else out.as_uri())
-        print(f"  Megnyitva: {'Artifact' if mode == 'artifact' else 'helyi fájl'}")
+        where = "Artifact (böngészőben)" if mode == "artifact" else "helyi fájl"
+        print(f"  Megnyitva: {where}")
     return 0
 
 

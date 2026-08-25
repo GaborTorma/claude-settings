@@ -57,6 +57,17 @@ vakon választ:
 | `gg --open artifact` | mindig az Artifactot (ha nincs megjegyezve, a helyit) |
 | `gg --open local` | mindig a frissen generált helyi fájlt |
 
+Mindegyik a **rendszer böngészőjében** nyit. A Claude **Artifact-ablakát** külső
+folyamat nem tudja vezérelni: nincs rá CLI-parancs (`claude --help` → nincs
+artifact-alparancs) és nincs dokumentált deep link. Az Artifact-panelt a
+sessionön belülről lehet előhozni:
+
+- `/git-graph` — publikál, és az oldal megjelenik a beszélgetésben
+- `ctrl+]` — a session legutóbbi Artifactját nyitja a panelben
+
+(A beépített `/artifacts` lista `o` billentyűje szintén **böngészőben** nyit —
+nem a panelben.)
+
 ## Hogyan rajzol
 
 A git saját lane-kiosztását követi: a commit abba a sávba ül, amelyik már rá
