@@ -1,5 +1,5 @@
 ---
-description: Intent-Driven Planning Phase 4 — Apply: az utolsó elkészült Spec-fájl Plan-lépéseinek megvalósítása.
+description: "Intent-Driven Planning Phase 4 — Apply: az utolsó elkészült Spec-fájl Plan-lépéseinek megvalósítása."
 ---
 
 # Intent-Driven Planning — Apply (Phase 4)
