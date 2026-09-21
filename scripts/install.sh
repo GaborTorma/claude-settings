@@ -121,6 +121,21 @@ link_dir_files() {
 
   mkdir -p "$dst_dir"
 
+  # Árva linkek: a repóból törölt (vagy pluginba költözött) fájlok symlinkjei.
+  local dst target
+  for dst in "$dst_dir"/*; do
+    [ -L "$dst" ] || continue
+    target="$(readlink "$dst")"
+    case "$target" in
+      "$REPO_DIR"/*)
+        [ -e "$target" ] || {
+          rm "$dst"
+          echo "Eltávolítva (a repóból törölve): $dst"
+        }
+        ;;
+    esac
+  done
+
   for src in "$src_dir"/*; do
     [ -e "$src" ] || continue
     link_one "$src" "$dst_dir/$(basename "$src")"
