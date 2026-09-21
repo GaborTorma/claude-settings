@@ -18,6 +18,7 @@ make update      # sync + újratelepítés, ha a HEAD elmozdult
 | `rules/` | globális instrukciók, minden sessionben betöltődnek | symlink → `~/.claude/rules` |
 | `CLAUDE.md` | globális user memory | symlink → `~/.claude/CLAUDE.md` |
 | `commands/` | slash commandok | fájlonkénti symlink → `~/.claude/commands/` |
+| `inbox/` | más sessionökből érkezett tanulságok a kurációig | nem kerül ki sehova |
 | `settings.user.json` | permission-szabályok | **kézzel** a `~/.claude/settings.json`-ba |
 
 ## Miért kézi a settings.user.json
@@ -36,6 +37,32 @@ kell bemásolni; az `install.sh` figyelmeztet, ha hiányzik.
 A plugin-engedélyezést (`enabledPlugins`) és a marketplace-regisztrációt a
 Claude Code saját állományai tartják (`~/.claude/settings.json`,
 `~/.claude/plugins/known_marketplaces.json`) — ezeket nem duplikáljuk.
+
+## Bővítés más sessionből
+
+Ha egy másik projektben olyan tanulság születik, amit a jövőbeli sessionöknek
+tudniuk kellene:
+
+```
+/capture <amit megtanultunk>
+```
+
+A command megkeresi ezt a repót a `~/.claude/rules` symlinkből, ír egy
+append-only fájlt az `inbox/`-ba, commitol és pushol. A `rules/`-hoz **nem**
+nyúl — az inbox tartalma egyetlen session kontextusába sem kerül be.
+
+Amikor összegyűlt néhány bejegyzés:
+
+```
+/curate
+```
+
+Ez dönti el bejegyzésenként, hogy rule lesz belőle (ide, a `rules/`-ba), skill
+(a plugin-repóba, verzió-bumppal és taggel), vagy elvetjük.
+
+A kétlépcsős mechanizmus oka a kontextus-költség: a `rules/` minden sessionbe
+betöltődik, teljes egészében — oda csak az kerülhet, ami mindig igaz. A skillből
+viszont csak a `description` látszik, amíg nem hívják; ott a növekedés olcsó.
 
 ## Pluginok
 
