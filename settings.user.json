@@ -21,7 +21,6 @@
       "Bash(curl -sL https://api.github.com/*)",
       "Bash(curl -sI *)",
       "mcp__context7__*",
-      "mcp__plugin_socraticode_socraticode__*",
       "mcp__plugin_episodic-memory_episodic-memory__*"
     ],
     "deny": [
