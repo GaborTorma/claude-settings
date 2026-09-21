@@ -1,16 +1,4 @@
 {
-  "extraKnownMarketplaces": {
-    "torma-ai": {
-      "source": {
-        "source": "file",
-        "path": "~/.claude/local-plugins/.claude-plugin/marketplace.json"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "intent-driven-planning@torma-ai": true,
-    "multi-platform-parity@torma-ai": true
-  },
   "permissions": {
     "allow": [
       "Bash(npm run *)",
@@ -20,7 +8,8 @@
       "Bash(ruff *)",
       "Bash(make *)",
       "Bash(git init)",
-      "Bash(git status)", "Bash(git status *)",
+      "Bash(git status)",
+      "Bash(git status *)",
       "Bash(git log *)",
       "Bash(git diff *)",
       "Bash(git branch *)",
@@ -34,9 +23,9 @@
       "mcp__context7__*",
       "mcp__plugin_socraticode_socraticode__*",
       "mcp__plugin_episodic-memory_episodic-memory__*"
-    ],    
+    ],
     "deny": [
-      "mongosh *",
+      "Bash(mongosh *)",
       "Read(**/.env)",
       "Read(**/.env.local)",
       "Read(**/.env.production)",

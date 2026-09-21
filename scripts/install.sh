@@ -15,7 +15,6 @@ NO_HOOK=0
 SYMLINK_TARGETS=(
   "rules"
   "CLAUDE.md"
-  "settings.local.json"
 )
 
 # Mappa marad valódi directory, fájlonként symlink. Más eszközök (pluginok)
@@ -128,8 +127,33 @@ link_dir_files() {
   done
 }
 
+# A ~/.claude/settings.local.json nem settings-precedencia-szint (managed > CLI >
+# .claude/settings.local.json > .claude/settings.json > ~/.claude/settings.json),
+# ezért az oda mutató symlink tartalma soha nem hatott. A permissions helye a
+# settings.user.json, amit a ~/.claude/settings.json-ba kell bemásolni.
+drop_dead_settings_link() {
+  local dst="$CLAUDE_DIR/settings.local.json"
+  [ -L "$dst" ] || return 0
+  case "$(readlink "$dst")" in
+    "$REPO_DIR"/*)
+      rm "$dst"
+      echo "Eltávolítva (nem olvasott szint): $dst"
+      ;;
+  esac
+}
+
+warn_missing_permissions() {
+  local user_settings="$CLAUDE_DIR/settings.json"
+  grep -q '"permissions"' "$user_settings" 2>/dev/null && return 0
+  echo
+  echo "FIGYELEM: nincs permissions blokk itt: $user_settings"
+  echo "Másold be a $REPO_DIR/settings.user.json \"permissions\" blokkját —"
+  echo "a szabályok csak user scope-ban hatnak."
+}
+
 install_symlinks() {
   mkdir -p "$CLAUDE_DIR"
+  drop_dead_settings_link
 
   for name in "${SYMLINK_TARGETS[@]}"; do
     link_one "$REPO_DIR/$name" "$CLAUDE_DIR/$name"
@@ -146,6 +170,7 @@ install_symlinks() {
 
 main() {
   install_symlinks
+  warn_missing_permissions
 
   if [ "$NO_HOOK" -eq 1 ]; then
     echo "Kész (shell rc érintetlen — --no-hook)."
