@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Két-irányú git sync — a remote az igazság forrása.
-# Divergencia esetén a lokális commitok eldobódnak (reflog 90 napig megőrzi),
-# dirty working tree stash-be kerül. Force-push soha.
+# Két-irányú git sync. Divergencia esetén rebase --autostash: a lokális commitok
+# a remote fölé kerülnek, a dirty working tree automatikusan stash-elődik és
+# visszakerül. Konfliktusnál megáll és szól — semmit nem dob el. Force-push soha.
 set -uo pipefail
 
 QUIET=0
@@ -32,19 +32,15 @@ if [ "$behind" -gt 0 ] && [ "$ahead" -eq 0 ]; then
     warn "sync: 'git pull --ff-only' nem sikerült."
   fi
 elif [ "$behind" -gt 0 ] && [ "$ahead" -gt 0 ]; then
-  dropped=$(git rev-parse HEAD)
-  log "sync: divergens ($ahead lokális / $behind remote) — reset $upstream."
+  log "sync: divergens ($ahead lokális / $behind remote) — rebase."
 
-  if ! git diff --quiet --ignore-submodules HEAD 2>/dev/null; then
-    git stash push --include-untracked --quiet \
-      -m "sync.sh autostash $(date +%Y-%m-%d_%H:%M:%S)" 2>/dev/null \
-      && warn "sync: dirty tree stash-elve ('git stash list')."
-  fi
-
-  if git reset --hard --quiet "$upstream" 2>/dev/null; then
-    warn "sync: $ahead lokális commit eldobva (visszaállítás: 'git reset --hard $dropped')."
+  if git pull --rebase --autostash --quiet 2>/dev/null; then
+    log "sync: rebase OK ($ahead lokális commit a remote fölé került)."
   else
-    warn "sync: 'git reset --hard $upstream' nem sikerült."
+    git rebase --abort 2>/dev/null
+    warn "sync: rebase konfliktus — a lokális commitok ($ahead db) érintetlenek."
+    warn "sync: oldd fel kézzel: cd $REPO_DIR && git pull --rebase"
+    exit 1
   fi
 fi
 
