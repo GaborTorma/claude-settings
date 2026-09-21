@@ -127,17 +127,15 @@ link_dir_files() {
   done
 }
 
-# A ~/.claude/settings.local.json nem settings-precedencia-szint (managed > CLI >
-# .claude/settings.local.json > .claude/settings.json > ~/.claude/settings.json),
-# ezért az oda mutató symlink tartalma soha nem hatott. A permissions helye a
-# settings.user.json, amit a ~/.claude/settings.json-ba kell bemásolni.
-drop_dead_settings_link() {
-  local dst="$CLAUDE_DIR/settings.local.json"
+# Korábbi telepítések maradványai: a repóra mutató symlinkek, amelyeknek már
+# nincs dolguk. Idegen célra mutató linkhez nem nyúlunk.
+drop_stale_link() {
+  local dst="$1" why="$2"
   [ -L "$dst" ] || return 0
   case "$(readlink "$dst")" in
     "$REPO_DIR"/*)
       rm "$dst"
-      echo "Eltávolítva (nem olvasott szint): $dst"
+      echo "Eltávolítva ($why): $dst"
       ;;
   esac
 }
@@ -153,7 +151,11 @@ warn_missing_permissions() {
 
 install_symlinks() {
   mkdir -p "$CLAUDE_DIR"
-  drop_dead_settings_link
+  # ~/.claude/settings.local.json nem settings-precedencia-szint; a permissions
+  # helye a settings.user.json → ~/.claude/settings.json.
+  drop_stale_link "$CLAUDE_DIR/settings.local.json" "nem olvasott szint"
+  # A pluginok a claude-plugins repóba költöztek, a marketplace git remote.
+  drop_stale_link "$CLAUDE_DIR/local-plugins" "a pluginok külön repóban"
 
   for name in "${SYMLINK_TARGETS[@]}"; do
     link_one "$REPO_DIR/$name" "$CLAUDE_DIR/$name"
@@ -163,9 +165,6 @@ install_symlinks() {
     link_dir_files "$REPO_DIR/$dir" "$CLAUDE_DIR/$dir"
   done
 
-  # Plugin marketplace: a repo plugins/ mappáját ~/.claude/local-plugins-be
-  # symlinkeljük (mivel ~/.claude/plugins/ a Claude Code saját mappája).
-  link_one "$REPO_DIR/plugins" "$CLAUDE_DIR/local-plugins"
 }
 
 main() {

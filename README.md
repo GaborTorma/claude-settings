@@ -18,7 +18,6 @@ make update      # sync + újratelepítés, ha a HEAD elmozdult
 | `rules/` | globális instrukciók, minden sessionben betöltődnek | symlink → `~/.claude/rules` |
 | `CLAUDE.md` | globális user memory | symlink → `~/.claude/CLAUDE.md` |
 | `commands/` | slash commandok | fájlonkénti symlink → `~/.claude/commands/` |
-| `plugins/` | a `torma-ai` marketplace | symlink → `~/.claude/local-plugins` |
 | `settings.user.json` | permission-szabályok | **kézzel** a `~/.claude/settings.json`-ba |
 
 ## Miért kézi a settings.user.json
@@ -38,25 +37,13 @@ A plugin-engedélyezést (`enabledPlugins`) és a marketplace-regisztrációt a
 Claude Code saját állományai tartják (`~/.claude/settings.json`,
 `~/.claude/plugins/known_marketplaces.json`) — ezeket nem duplikáljuk.
 
-## Plugin-fejlesztés
+## Pluginok
 
-A `torma-ai` marketplace `directory` source-ként van regisztrálva
-(`~/.claude/local-plugins`), de a Claude Code a pluginokat **verzió-mappába
-másolja** (`~/.claude/plugins/cache/torma-ai/<plugin>/<verzió>`) — a repóban
-végzett szerkesztés nem hat, amíg a `plugin.json` verziója nem változik.
-
-Bump nélküli teszteléshez indítsd a sessiont a plugin könyvtárával:
+A `torma-ai` marketplace külön repóban él: `GaborTorma/claude-plugins` (privát).
+A Claude Code a git remote-ból húzza, ezért az ott végzett szerkesztés csak push
+után hat — a plugin-fejlesztés loopját az a repó README-je írja le.
 
 ```bash
-claude --plugin-dir plugins/apple
+claude plugin marketplace add git@github.com:GaborTorma/claude-plugins.git
+claude plugin marketplace update torma-ai   # kézi frissítés
 ```
-
-Kiadás után a cache frissítése:
-
-```bash
-claude plugin marketplace update torma-ai
-claude plugin update <plugin>@torma-ai
-```
-
-A `claude plugin tag` `{name}--v{version}` alakú git taget készít, és ellenőrzi,
-hogy a `plugin.json` és a marketplace-bejegyzés verziója egyezik.
