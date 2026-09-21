@@ -25,12 +25,38 @@ make update      # sync + újratelepítés, ha a HEAD elmozdult
 
 A settings-precedencia öt szintje: managed → CLI → `.claude/settings.local.json`
 (projekt) → `.claude/settings.json` (projekt) → `~/.claude/settings.json` (user).
-**`~/.claude/settings.local.json` nincs köztük**, ezért az oda symlinkelt
-szabályok soha nem hatnak. A `permissions` blokk helye a user settings, amit a
-Claude Code maga is ír — ezért nem symlinkeljük ide, hanem a
-`settings.user.json` a verziózott forrás, és a tartalmát kézzel kell bemásolni.
-Az `install.sh` figyelmeztet, ha hiányzik.
+**User-szintű `settings.local.json` nincs köztük.** A `~/.claude/settings.local.json`
+csak akkor számít, ha a Claude Code-ot magából a home-könyvtárból indítod — ott
+az `.claude/settings.local.json` a *projekt*-local fájl. Minden más projektben az
+oda symlinkelt szabályok nem hatnak.
+
+A `permissions` helye ezért a user settings, amit a Claude Code maga is ír — nem
+symlinkeljük ide. A `settings.user.json` a verziózott forrás, a tartalmát kézzel
+kell bemásolni; az `install.sh` figyelmeztet, ha hiányzik.
 
 A plugin-engedélyezést (`enabledPlugins`) és a marketplace-regisztrációt a
 Claude Code saját állományai tartják (`~/.claude/settings.json`,
 `~/.claude/plugins/known_marketplaces.json`) — ezeket nem duplikáljuk.
+
+## Plugin-fejlesztés
+
+A `torma-ai` marketplace `directory` source-ként van regisztrálva
+(`~/.claude/local-plugins`), de a Claude Code a pluginokat **verzió-mappába
+másolja** (`~/.claude/plugins/cache/torma-ai/<plugin>/<verzió>`) — a repóban
+végzett szerkesztés nem hat, amíg a `plugin.json` verziója nem változik.
+
+Bump nélküli teszteléshez indítsd a sessiont a plugin könyvtárával:
+
+```bash
+claude --plugin-dir plugins/apple
+```
+
+Kiadás után a cache frissítése:
+
+```bash
+claude plugin marketplace update torma-ai
+claude plugin update <plugin>@torma-ai
+```
+
+A `claude plugin tag` `{name}--v{version}` alakú git taget készít, és ellenőrzi,
+hogy a `plugin.json` és a marketplace-bejegyzés verziója egyezik.
