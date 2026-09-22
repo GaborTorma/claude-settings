@@ -18,7 +18,7 @@ alapján. Ami nem létezik, azt hagyd ki; ami létezik és elbukik, ott **állj 
 ## 2. Commit, push, PR
 
 Hívd a `commit-commands:commit-push-pr` commandot a `Skill` toollal. Ha a
-Fejlesztő adott argumentumot, add át `args`-ként — abból lesz a PR kontextusa.
+*Fejlesztő* adott argumentumot, add át `args`-ként — abból lesz a PR kontextusa.
 
 A command dönti el, kell-e új branch (ha `main`-en állunk), megírja a commitot,
 pushol és megnyitja a PR-t.
@@ -34,7 +34,7 @@ gh pr merge --merge --delete-branch
 
 Ne használj `--admin`-t, és ne kerüld meg a branch protectiont. Ha a `gh` azt
 mondja, a PR nem mergelhető (konfliktus, kötelező review, blokkoló check),
-**állj meg** és írd le, mi a blokkoló — onnan a Fejlesztő dönt.
+**állj meg** és írd le, mi a blokkoló — onnan a *Fejlesztő* dönt.
 
 ## 4. Lezárás
 

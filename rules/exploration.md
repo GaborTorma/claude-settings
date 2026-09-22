@@ -1,8 +1,8 @@
 # Kérdés vs. exploráció
 
-Ha egy kérdést **kódból, fájlból, MCP-vel, vagy CLI-eszközzel meg lehet válaszolni, használd** — ne kérdezd a Fejlesztőt.
+Ha egy kérdést **kódból, fájlból, MCP-vel, vagy CLI-eszközzel meg lehet válaszolni, használd** — ne kérdezd a *Fejlesztőt*.
 
-- **Mit kérdezz a Fejlesztőtől**:
+- **Mit kérdezz a _Fejlesztőtől_**:
    - **szándék** (mi a cél, miért most)
    - **kompromisszum** (melyik opció, melyik költségen)
    - **prioritás** (mi szorít, mi várhat)

@@ -27,7 +27,7 @@ git diff main...HEAD
 git log main..HEAD --oneline
 ```
 
-Ha a `main` nem létezik, próbáld `master`-rel. Ha a repo nincs git alatt, jelezd a Fejlesztőnek.
+Ha a `main` nem létezik, próbáld `master`-rel. Ha a repo nincs git alatt, jelezd a *Fejlesztőnek*.
 
 ### 2. Változások elemzése
 
@@ -44,7 +44,7 @@ Fontos: **ne a commit üzenetekből dolgozz**, hanem a tényleges kódváltozás
 
 ### 3. Magyar szöveg írása
 
-Írj természetes, érthető magyar leírásokat. Ne fordítsd le gépiesen az angol kód/commit szövegeket — magyarázd el mit jelent a változás az end-user szempontjából.
+Írj természetes, érthető magyar leírásokat. Ne fordítsd le gépiesen az angol kód/commit szövegeket — magyarázd el mit jelent a változás a *User* szempontjából.
 
 Példák jó leírásra:
 
@@ -83,4 +83,4 @@ Példák jó leírásra:
 - Ha nem létezik: hozd létre az új bejegyzéssel
 - Ne töröld a meglévő bejegyzéseket
 
-A módosítás után írd ki a terminálba az elkészült bejegyzést, hogy a Fejlesztő lássa.
+A módosítás után írd ki a terminálba az elkészült bejegyzést, hogy a *Fejlesztő* lássa.

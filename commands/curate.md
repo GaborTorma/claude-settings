@@ -4,7 +4,7 @@ description: A claude-settings inbox feldolgozása — minden összegyűlt tanul
 ---
 
 Az `inbox/` a más projektekből érkezett tanulságok gyűjtőhelye. Ez a parancs
-dönti el a sorsukat. Felderítéssel kezdj; mutáció csak a Fejlesztő jóváhagyása
+dönti el a sorsukat. Felderítéssel kezdj; mutáció csak a *Fejlesztő* jóváhagyása
 után.
 
 ## 1. Leltár

@@ -4,7 +4,7 @@ description: Tanulság rögzítése a claude-settings inboxába — bárhonnan, 
 argument-hint: "mit tanultunk (üresen a beszélgetésből következtetek)"
 ---
 
-A Fejlesztő egy tanulságot akar megőrizni a globális Claude Code környezet
+A *Fejlesztő* egy tanulságot akar megőrizni a globális Claude Code környezet
 számára. Ez **nem** azonnali szabály: az inboxba kerül, a sorsáról a `/curate`
 dönt.
 
@@ -19,7 +19,7 @@ telepítve ezen a gépen.
 
 ## 2. A tanulság megfogalmazása
 
-Ha a Fejlesztő adott argumentumot, abból indulj ki; ha nem, a beszélgetésből
+Ha a *Fejlesztő* adott argumentumot, abból indulj ki; ha nem, a beszélgetésből
 következtess — de **csak arra, ami általánosítható**. Ami csak az aktuális
 repóban igaz, az annak a projektnek a `CLAUDE.md`-jébe való, nem ide.
 
