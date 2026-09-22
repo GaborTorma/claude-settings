@@ -1,6 +1,6 @@
 ---
-name: merge
-description: Commit + push + PR + merge a mainbe egy menetben. Használd amikor a Fejlesztő /merge-öt ír, vagy egy kész branch munkáját azonnal a mainbe akarja vinni.
+name: commit-push-pr-merge
+description: Commit + push + PR + merge a mainbe egy menetben. Használd amikor a Fejlesztő /commit-push-pr-merge-öt ír, vagy egy kész branch munkáját azonnal a mainbe akarja vinni.
 argument-hint: "PR cím vagy kontextus (opcionális)"
 ---
 
