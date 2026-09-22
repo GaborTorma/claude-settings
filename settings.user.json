@@ -1,30 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(npm run *)",
-      "Bash(npx tsc *)",
-      "Bash(tsc *)",
-      "Bash(pytest *)",
-      "Bash(ruff *)",
-      "Bash(make *)",
-      "Bash(git init)",
-      "Bash(git status)",
-      "Bash(git status *)",
-      "Bash(git log *)",
-      "Bash(git diff *)",
-      "Bash(git branch *)",
-      "Bash(git show *)",
-      "Bash(git add *)",
-      "Bash(curl -s http://localhost*)",
-      "Bash(curl -s http://127.0.0.1*)",
-      "Bash(curl -sL https://raw.githubusercontent.com/*)",
-      "Bash(curl -sL https://api.github.com/*)",
-      "Bash(curl -sI *)",
-      "mcp__context7__*",
-      "mcp__plugin_episodic-memory_episodic-memory__*"
-    ],
     "deny": [
-      "Bash(mongosh *)",
       "Read(**/credentials.json)",
       "Read(**/*.pem)",
       "Read(**/*.key)"

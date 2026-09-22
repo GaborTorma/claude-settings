@@ -21,7 +21,6 @@ SYMLINK_TARGETS=(
 # is dobhatnak ide saját fájlt.
 DIR_FILE_SYMLINK_TARGETS=(
   "commands"
-  "hooks"
 )
 
 detect_shell() { basename "${SHELL:-}"; }
