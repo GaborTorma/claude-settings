@@ -1,14 +1,2 @@
 # macOS
 .DS_Store
-
-# Claude Code projekt-local settings — a Claude Code írja, gépfüggő
-.claude/settings.local.json
-
-# Titkok (lásd rules/enviroment.md)
-.env
-.env.*
-!.env.example
-credentials.json
-*.pem
-*.key
-*.p8
