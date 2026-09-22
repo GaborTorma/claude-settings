@@ -9,3 +9,7 @@ ható változtatással.
 
 Append-only: egy fájl egy tanulság, a neve `<YYYY-MM-DD>-<slug>.md`. Két
 párhuzamos session így soha nem ütközik ugyanazon a fájlon.
+
+`deferred/` — halasztott bejegyzések: a `/curate` még nem tudott dönteni róluk.
+Ugyanúgy nem hatnak semmire; a fájl elején a **Miért halasztva** bekezdés
+mondja meg, mi hiányzik a döntéshez.

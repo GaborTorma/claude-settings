@@ -58,7 +58,8 @@ Amikor összegyűlt néhány bejegyzés:
 ```
 
 Ez dönti el bejegyzésenként, hogy rule lesz belőle (ide, a `rules/`-ba), skill
-(a plugin-repóba, verzió-bumppal és taggel), vagy elvetjük.
+(a plugin-repóba, verzió-bumppal és taggel), elvetjük, vagy halasztjuk
+(`inbox/deferred/`).
 
 A kétlépcsős mechanizmus oka a kontextus-költség: a `rules/` minden sessionbe
 betöltődik, teljes egészében — oda csak az kerülhet, ami mindig igaz. A skillből

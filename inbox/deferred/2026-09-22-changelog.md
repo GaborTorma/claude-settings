@@ -1,7 +1,13 @@
 ---
+date: 2026-09-22
+source: claude-settings (korábban commands/changelog.md)
+kind: skill
+deferred: 2026-09-22
 name: changelog
 description: Magyar nyelvű CHANGELOG.md bejegyzés generálása az aktuális branch tényleges kódváltozásai alapján. Használd amikor a Fejlesztő /changelog-ot ír, vagy egy feature/fix branch munkájának végén changelog bejegyzést szeretne készíteni. A skill a commit üzenetek helyett a tényleges diff-et elemzi és emberi, érthető magyar leírást ír.
 ---
+
+**Miért halasztva**: a `/changelog` saját, magyar CHANGELOG-bejegyzést ír a diff alapján, ez ütközik a halasztott versioning-bejegyzéssel (`release-it` + `conventional-changelog` generálja a CHANGELOG-ot). A kettőről együtt kell dönteni: melyik a CHANGELOG forrása, és hová kerül (jelölt: `ship` plugin).
 
 # Changelog skill
 
