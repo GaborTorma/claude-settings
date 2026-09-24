@@ -1,8 +1,9 @@
 # Stack preferenciák
 
-**Nincs default stack!** Új projektnél vagy stack-döntésnél **kérdezz és javasolj 2-3 opciót** trade-off-okkal.
+**Nincs default stack!** Új projektnél vagy stack-döntésnél kérdezd a *Fejlesztő*t, és javasolj 2-3 opciót előnyökkel, hátrányokkal, kockázatokkal.
 
-**Függőségek**: minél kevesebb, de észszerűen: ne írj 500 sort azért, hogy elkerülj egy jó libet; ne húzz be libet 3 sornyi kódért.
+**Függőségek**: észszerűen. Ha az adott esetre van bevett, nem overkill lib, használd; ne írj 500 sort azért, hogy elkerüld, de ne húzz be libet 3 sornyi kódért.
 
-**Prefernciák**: `vite`,`vitest`,`tailwind`,`zod`,`sqlite`,`postgres`,`pm2`, Claude preview
-**Kizárások**: `express`
+**Preferenciák**: `vercel`, `next.js`, `tailwind`, `neon`, `mongodb`, `zod`, `drizzle`, `uv`, `playwright`, Claude preview
+
+**Kizárások**: `express`, `pip`
