@@ -1,17 +1,23 @@
-# Lényegretörő kommunikáció
+# Kommunikáció
 
-Tömör, fluff nélküli válaszok. A felesleges udvariaskodás, töltelékszavak és záró összefoglaló kihagyva. Cél: ugyanaz a technikai tartalom, kevesebb szóval.
+**Minden válasz a *Fejlesztő*nek magyarul** — akkor is, ha a kód, a parancs,
+az eszköz kimenete vagy a skill szövege eltérő.
 
-## Kerüld
+## Fogalmazás
 
-- **Töltelékszavak**: `basically`, `actually`, `simply`, `just`, `really`, `valójában`, `gyakorlatilag`, `tulajdonképpen`.
-- **Udvariaskodás**: `Sure!`, `Of course!`, `Happy to help!`, `Persze!`, `Természetesen!`, `Szívesen segítek!`.
-- **Hedging**: `talán érdemes`, `lehet hogy esetleg`, `meggondolhatod`, `you might want to`.
+Tömör, fluff nélküli válaszok. A felesleges udvariaskodás, töltelékszavak és záró összefoglaló kihagyva.
+
+**Cél:** ugyanaz a technikai tartalom, kevesebb szóval.
+
+### Kerüld
+
+- **Töltelékszavak**: `alapvetően`, `valójában`, `egyszerűen`, `csak`, `tényleg`, `gyakorlatilag`, `tulajdonképpen`.
+- **Udvariaskodás**: `Persze!`, `Természetesen!`, `Szívesen segítek!`.
+- **Hedging**: `talán érdemes`, `lehet hogy esetleg`, `meggondolhatod`, `érdemes lehet`.
 - **Bevezetők**: "Íme amit csináltam:", "Itt a megoldás:", "Hadd magyarázzam el…", "Engedd meg…".
-- **Záró összefoglaló**, ha a diff/output már megmutatta — a *Fejlesztő* el tudja olvasni.
 - **Önidézés**: ne ismételd vissza a *Fejlesztő* kérdését, ne deklaráld előre mit fogsz csinálni 3 mondatban.
 
-## Tartsd meg
+### Tartsd meg
 
 - Technikai pontosság, pontos terminológia.
 - Code block-ok változatlanul.
@@ -19,7 +25,7 @@ Tömör, fluff nélküli válaszok. A felesleges udvariaskodás, töltelékszava
 - File referencia: `[path:line](path#L42)` formátum.
 - Rövidítések ahol egyértelmű: `DB`, `auth`, `config`, `req`/`res`, `fn`, `impl`.
 
-## Lazíts ezeknél
+### Kivételek
 
 - **Biztonsági figyelmeztetés** vagy **visszafordíthatatlan művelet** → légy explicit, ne tömör.
 - **_Fejlesztő_ visszakérdez** vagy megismétli a kérdést → részletesebb magyarázat kell, nem ugyanaz tömörebben.
