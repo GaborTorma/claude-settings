@@ -17,9 +17,12 @@ bővítése, vagy a deferred `ship` plugin (lásd `deferred/2026-09-22-pm2.md`).
 **Hogyan alkalmazd**: új projekt vagy új app-mappa bekötésekor ezen a listán
 végigmenni, lépésenként a hivatkozott skillre ugrani.
 
-## 1. Vercel init
+## 0. Stack-döntés
 
 - stack-döntés előbb (`rules/stack.md`: nincs default, 2–3 opció)
+
+## 1. Vercel init
+
 - `git init` → `.gitignore` + `.env.example` az első commitban
 - `vercel link --scope <team>` — app-mappánként, monorepóban több `.vercel/`
 - régió **`fra1`**: `vercel.json` `"regions"` + projekt `serverlessFunctionRegion`
