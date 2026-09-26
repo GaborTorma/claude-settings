@@ -4,6 +4,10 @@
       "Read(**/credentials.json)",
       "Read(**/*.pem)",
       "Read(**/*.key)"
+    ],
+    "additionalDirectories": [
+      "/Users/tgc/Development/Claude/claude-settings",
+      "/Users/tgc/Development/Claude/claude-plugins"
     ]
   }
 }

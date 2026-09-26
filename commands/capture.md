@@ -58,4 +58,13 @@ cd "$REPO" && git add inbox/ && git commit -m "chore(inbox): <slug>" && git push
 A push azért kell, mert a `sync.sh` csak shell-indításkor fut — enélkül a
 tanulság ezen a gépen ragadna.
 
+## 5. Visszajelzés
+
+A válaszban a mentett fájlra **abszolút úttal** hivatkozz, markdown linkként:
+`[<fájlnév>](/abszolút/út/inbox/<fájlnév>)`. Az inbox másik repóban van, mint
+amiben a session fut, ezért a munkamappához mért relatív link nem nyílik meg.
+A megnyitáshoz a `claude-settings` mappának a session mappái között kell
+lennie: a `settings.user.json` → `permissions.additionalDirectories` ezt
+adja.
+
 Ne nyúlj a `rules/` mappához és a plugin-repóhoz: az a `/curate` dolga.

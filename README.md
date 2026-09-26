@@ -19,7 +19,7 @@ make update      # sync + újratelepítés, ha a HEAD elmozdult
 | `CLAUDE.md` | globális user memory | symlink → `~/.claude/CLAUDE.md` |
 | `commands/` | slash commandok | fájlonkénti symlink → `~/.claude/commands/` |
 | `inbox/` | más sessionökből érkezett tanulságok a kurációig | nem kerül ki sehova |
-| `settings.user.json` | permission-szabályok | **kézzel** a `~/.claude/settings.json`-ba |
+| `settings.user.json` | permission-szabályok, `additionalDirectories` (claude-settings, claude-plugins) | **kézzel** a `~/.claude/settings.json`-ba |
 
 ## Miért kézi a settings.user.json
 
