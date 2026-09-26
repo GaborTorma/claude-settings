@@ -1,6 +1,6 @@
 # Git workflow
 
-- **Új projekt**: `git init` → `gitgraph --launch-config` → `.gitignore` → `git commit -m "Initial commit"`.
+- **Új projekt**: `git init` → `git-graph --launch-config` → `.gitignore` → `git commit -m "Initial commit"`.
 - **Commit**: automtikusan a tesztelt és **JÓVÁHAGYOTT** TODO lépések után.
 - **Auto-commit**: Csak auto-plan/TODO végrehajtáskor, ha nincs *Fejlesztő*-interakció.
 - **Visszavonás**: `git revert <sha>` — nem patchek!
