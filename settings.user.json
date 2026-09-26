@@ -1,16 +1,17 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(gh pr merge *)"
+    ],
     "deny": [
       "Read(**/credentials.json)",
       "Read(**/*.pem)",
-      "Read(**/*.key)"
+      "Read(**/*.key)",
+      "Bash(npm *)"
     ],
     "additionalDirectories": [
       "/Users/tgc/Development/Claude/claude-settings",
       "/Users/tgc/Development/Claude/claude-plugins"
-    ],
-    "allow": [
-      "Bash(gh pr merge *)"
     ]
   }
 }
