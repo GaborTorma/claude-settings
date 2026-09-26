@@ -8,6 +8,9 @@
     "additionalDirectories": [
       "/Users/tgc/Development/Claude/claude-settings",
       "/Users/tgc/Development/Claude/claude-plugins"
+    ],
+    "allow": [
+      "Bash(gh pr merge *)"
     ]
   }
 }
