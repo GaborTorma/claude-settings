@@ -4,9 +4,9 @@
 
 **Függőségek**: észszerűen. Ha az adott esetre van bevett, nem overkill lib, használd; ne írj 500 sort azért, hogy elkerüld, de ne húzz be libet 3 sornyi kódért.
 
-**Preferenciák**: `vercel`, `next.js`, `tailwind`, `neon`, `mongodb`, `zod`, `drizzle`, `uv`, `playwright`, Claude preview
+**Preferenciák**: `vercel`, `next.js`, `pnpm`, `tailwind`, `neon`, `mongodb`, `zod`, `drizzle`, `uv`, `playwright`, Claude preview
 
-**Kizárások**: `express`, `pip`
+**Kizárások**: `express`, `pip`, `npm`
 
 ## Ha Vercel + Neon
 
@@ -18,6 +18,7 @@ A hogyan: `vercel-neon` plugin (`/vercel-neon:check`).
   - Neon MCP (claude.ai connector, UUID-prefixű eszközök — a prefix sessiononként változik).
 - **Topológia**: egy app = egy Vercel projekt = egy Neon projekt, azonos névvel. → `vercel-neon:vercel-neon`
 - **Régió**: `fra1` ↔ `aws-eu-central-1` — a driver előfeltétele: eltérésnél a TCP-kapcsolódás minden oda-vissza útja régiók között megy. → `vercel-neon:vercel-neon`
+- **Engine**: Node 24.x
 - **Driver**: `pg` Pool + `drizzle-orm/node-postgres` + kötelező `attachDatabasePool` → `vercel-neon:neon-driver`
 - **Migráció**: verziózott `drizzle-kit`; `push` éles ellen soha. → `vercel-neon:neon-branching`
 - **Neon-ágak**: `main` éles · `dev` lokális · `preview/<git-ág>` feature-enként. → `vercel-neon:neon-branching`
