@@ -5,3 +5,8 @@ ezért a repó saját tényei ide kerülnek.
 
 - **Pre-commit gate**: nincs lint, typecheck vagy teszt — ne keresd, commit előtt nincs mit futtatni.
 - **Parancsok**: `make install` / `make link` / `make update` / `make sync` (lásd `README.md`).
+
+## Git
+
+- A globális `workflow.md` utasításai ebben a repóban **nem érvényesek**.
+- Minden commit közvetlenül a `main`-re megy — nincs `dev`, nincs feature-ág, nincs PR.
