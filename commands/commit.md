@@ -85,6 +85,5 @@ Commit: `[c96661da]` · <commit subject>
 ```
 
 - **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak.
-- **Commit-sor**: 8 karakteres rövid SHA-val.
 - **Nem volt mit commitolni**: csak ennyi — `Nincs új commit.`
-- **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta a hiba lényege; Commit-sor nincs.
+- **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta Commit-sor helyett: Hiba: röviden a hiba lényege

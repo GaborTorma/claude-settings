@@ -65,8 +65,7 @@ commit legalább egy témához tartozik; vegyes commit mindegyikhez.
   - Bekezdések sorrendje: mi történt → miért → döntések (ha volt) → mi maradt
     nyitva (ha van). Folyó szöveg, alcímek nélkül; ahogy egy kollégának elmondanád.
   - Commitlista a szöveg után, címsor nélkül: a témához tartozó összes commit,
-    időrendben, 8 karakteres rövid SHA-val. GitHub-remote nélkül link nélkül:
-    `` - `[<rövid SHA>]` · <subject> ``.
+    időrendben. GitHub-remote nélkül link nélkül.
 
 **Nem ez**: changelog. A szöveg ne fájl- vagy commitlista legyen — a commitok csak a
 végén, hivatkozásként.
