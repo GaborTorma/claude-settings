@@ -24,6 +24,14 @@ git fetch --quiet 2>/dev/null || warn "sync: 'git fetch' nem sikerült (hálóza
 ahead=$(git rev-list --count "$upstream..HEAD"  2>/dev/null || echo 0)
 behind=$(git rev-list --count "HEAD..$upstream" 2>/dev/null || echo 0)
 
+# A settings.user.json managed drop-in-ként él: érvénytelen JSON-nal a Claude
+# Code el sem indul, ezért ilyen remote állapotot nem húzunk le.
+if [ "$behind" -gt 0 ] \
+   && ! git show "$upstream:settings.user.json" 2>/dev/null | python3 -m json.tool >/dev/null 2>&1; then
+  warn "sync: a remote settings.user.json érvénytelen JSON — pull kihagyva."
+  exit 1
+fi
+
 # Pull
 if [ "$behind" -gt 0 ] && [ "$ahead" -eq 0 ]; then
   if git pull --ff-only --quiet 2>/dev/null; then

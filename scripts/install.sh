@@ -154,19 +154,53 @@ drop_stale_link() {
   esac
 }
 
-warn_missing_permissions() {
-  local user_settings="$CLAUDE_DIR/settings.json"
-  grep -q '"permissions"' "$user_settings" 2>/dev/null && return 0
-  echo
-  echo "FIGYELEM: nincs permissions blokk itt: $user_settings"
-  echo "Másold be a $REPO_DIR/settings.user.json \"permissions\" blokkját —"
-  echo "a szabályok csak user scope-ban hatnak."
+# A settings.user.json managed drop-in fájlként symlinkelődik: a Claude Code
+# ezt a szintet olvassa, de sosem írja, a listák (allow/deny) pedig összeadódnak
+# a user settings-szel. Rendszerkönyvtár, ezért sudo kell.
+managed_dropin_dir() {
+  case "$(uname -s)" in
+    Darwin) echo "/Library/Application Support/ClaudeCode/managed-settings.d" ;;
+    Linux)  echo "/etc/claude-code/managed-settings.d" ;;
+    *)      echo "" ;;
+  esac
+}
+
+link_managed_settings() {
+  local src="$REPO_DIR/settings.user.json"
+  local dir; dir="$(managed_dropin_dir)"
+  local dst="$dir/claude-settings.json"
+
+  if [ -z "$dir" ]; then
+    echo "Kihagyva (nem támogatott OS: $(uname -s)): managed settings drop-in"
+    return
+  fi
+
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+    return
+  fi
+
+  # Érvénytelen managed JSON-nal a Claude Code el sem indul.
+  if ! python3 -m json.tool "$src" >/dev/null 2>&1; then
+    echo "HIBA: érvénytelen JSON: $src — a managed symlink kihagyva."
+    return
+  fi
+
+  if [ -t 0 ] && confirm "Managed settings symlink (sudo): $dst → $src?"; then
+    sudo mkdir -p "$dir"
+    sudo ln -sfn "$src" "$dst"
+    echo "Symlink: $dst → $src"
+  else
+    echo
+    echo "FIGYELEM: a permission-szabályok nem élnek. Futtasd:"
+    echo "  sudo mkdir -p \"$dir\""
+    echo "  sudo ln -sfn \"$src\" \"$dst\""
+  fi
 }
 
 install_symlinks() {
   mkdir -p "$CLAUDE_DIR"
   # ~/.claude/settings.local.json nem settings-precedencia-szint; a permissions
-  # helye a settings.user.json → ~/.claude/settings.json.
+  # helye a settings.user.json → managed settings drop-in.
   drop_stale_link "$CLAUDE_DIR/settings.local.json" "nem olvasott szint"
   # A pluginok a claude-plugins repóba költöztek, a marketplace git remote.
   drop_stale_link "$CLAUDE_DIR/local-plugins" "a pluginok külön repóban"
@@ -183,7 +217,7 @@ install_symlinks() {
 
 main() {
   install_symlinks
-  warn_missing_permissions
+  link_managed_settings
 
   if [ "$NO_HOOK" -eq 1 ]; then
     echo "Kész (shell rc érintetlen — --no-hook)."

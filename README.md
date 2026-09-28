@@ -19,20 +19,36 @@ make update      # sync + újratelepítés, ha a HEAD elmozdult
 | `CLAUDE.md` | globális user memory | symlink → `~/.claude/CLAUDE.md` |
 | `commands/` | slash commandok | fájlonkénti symlink → `~/.claude/commands/` |
 | `inbox/` | más sessionökből érkezett tanulságok a kurációig | nem kerül ki sehova |
-| `settings.user.json` | permission-szabályok, `additionalDirectories` (claude-settings, claude-plugins) | **kézzel** a `~/.claude/settings.json`-ba |
+| `settings.user.json` | gépfüggetlen permission-szabályok (`allow`, `deny`) | symlink → managed settings drop-in (`sudo`, lásd lent) |
 
-## Miért kézi a settings.user.json
+## Miért managed drop-in a settings.user.json
 
 A settings-precedencia öt szintje: managed → CLI → `.claude/settings.local.json`
 (projekt) → `.claude/settings.json` (projekt) → `~/.claude/settings.json` (user).
-**User-szintű `settings.local.json` nincs köztük.** A `~/.claude/settings.local.json`
-csak akkor számít, ha a Claude Code-ot magából a home-könyvtárból indítod — ott
-az `.claude/settings.local.json` a *projekt*-local fájl. Minden más projektben az
-oda symlinkelt szabályok nem hatnak.
+**User-szintű `settings.local.json` nincs köztük**, a `~/.claude/settings.json`-t
+pedig a Claude Code maga is írja (`enabledPlugins`, modell, `/config`) — ezért nem
+symlinkeljük ide.
 
-A `permissions` helye ezért a user settings, amit a Claude Code maga is ír — nem
-symlinkeljük ide. A `settings.user.json` a verziózott forrás, a tartalmát kézzel
-kell bemásolni; az `install.sh` figyelmeztet, ha hiányzik.
+A managed szint `managed-settings.d/` drop-in könyvtárát a Claude Code olvassa, de
+sosem írja, és a listák (`permissions.allow`, `deny`) összeadódnak a user
+settings-szel. Az `install.sh` ide symlinkeli a `settings.user.json`-t:
+
+| OS | Könyvtár |
+| --- | --- |
+| macOS | `/Library/Application Support/ClaudeCode/managed-settings.d/` |
+| Linux, WSL | `/etc/claude-code/managed-settings.d/` |
+
+Rendszerkönyvtár, ezért `sudo` kell; nem interaktív futásnál az `install.sh` kiírja
+a két parancsot. Ellenőrzés: `/status` → `Setting sources` sorában `(drop-ins)`.
+
+**Kockázatok**:
+
+- Érvénytelen JSON-nal a Claude Code **el sem indul** — szerkesztés után
+  `python3 -m json.tool settings.user.json`. A `sync.sh` érvénytelen remote
+  állapotot nem húz le.
+- Céges claude.ai-policy vagy MDM esetén a drop-in figyelmeztetés nélkül kiesik
+  (`first-wins`).
+- Cloud sessionökre nem hat.
 
 A plugin-engedélyezést (`enabledPlugins`) és a marketplace-regisztrációt a
 Claude Code saját állományai tartják (`~/.claude/settings.json`,
