@@ -22,5 +22,6 @@ már a `main`-en van, de élesítés és tag nincs — javítás után újra `/r
 
 Végül írd ki: PR szám + URL, merge SHA, kiadott verzió, deploy URL, GitHub Release URL.
 
-Minden lépés után azonnal írd ki annak a válaszát, a lépés saját formájában.
+Minden lépés válaszát a lépés saját formájában írd ki: az egysorosat azonnal, amint
+a lépés kész; a többsorosat a lánc végén, a többivel együtt sorrendben.
 Más köztes szöveg nincs.

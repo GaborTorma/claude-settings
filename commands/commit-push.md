@@ -7,6 +7,7 @@ argument-hint: "commit üzenet vagy kontextus (opcionális)"
 `/commit` (az argumentumot add át `args`-ként), majd `/push`.
 Ha a `/commit` megállt, a `/push` elmarad.
 
-Minden lépés után azonnal írd ki annak a válaszát, a lépés saját formájában.
+Minden lépés válaszát a lépés saját formájában írd ki: az egysorosat azonnal, amint
+a lépés kész; a többsorosat a lánc végén, a többivel együtt sorrendben.
 Ha nem volt mit commitolni, a `/commit` válasza elmarad.
 Más köztes szöveg nincs.
