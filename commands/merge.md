@@ -16,7 +16,7 @@ hibátlanul lefutnak. A `main` pusholása nem deploy — kiadás csak `/release`
 - **`main`** → **állj meg — ez hiba**.
 - **Van nyitott PR** → **A. PR-merge**.
 - **`dev`, PR nélkül** → **B. Lokális merge**.
-- **Más ág, PR nélkül** → **állj meg**: előbb `/pr`.
+- **Más ág, PR nélkül** → **állj meg**: előbb `/pull-request`.
 
 A pre-commit gate mindkét útvonalon a `~/.claude/commands/commit.md` /
 2. Pre-commit gate szerint fut.
