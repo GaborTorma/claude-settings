@@ -10,3 +10,6 @@ A `dev` ág munkája a `main`-be, PR nélkül. Sorban — ha egy lépés megáll
 1. `/commit` (a *Fejlesztő* argumentumát add át `args`-ként)
 2. `/worklog`
 3. `/merge`
+
+Minden lépés után azonnal írd ki annak a válaszát, a lépés saját formájában.
+Más köztes szöveg nincs.

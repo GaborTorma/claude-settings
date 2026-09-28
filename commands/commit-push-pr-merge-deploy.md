@@ -21,3 +21,6 @@ meg** — deploy nincs.
 már a `main`-en van, de élesítés és tag nincs — javítás után újra `/release`.
 
 Végül írd ki: PR szám + URL, merge SHA, kiadott verzió, deploy URL, GitHub Release URL.
+
+Minden lépés után azonnal írd ki annak a válaszát, a lépés saját formájában.
+Más köztes szöveg nincs.
