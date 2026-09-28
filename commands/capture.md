@@ -47,12 +47,16 @@ kind: rule | skill | ?
 A `kind` a legjobb tipped; a `/curate` felülbírálhatja. Rövid, mindig igaz,
 viselkedést állító tanulság → `rule`. Feltételes vagy lépésekből álló → `skill`.
 
-Append-only: soha ne szerkessz meglévő inbox-fájlt, mindig újat írj.
+Előbb nézd meg, van-e már azonos témájú bejegyzés az `inbox/`-ban (a `deferred/`
+nem számít): ha van, **azt egészítsd ki** új szakasszal — címében a dátum és a
+forrás: `## <téma> (<YYYY-MM-DD>, <projekt>)` —, ne írj mellé újat. A
+`/curate` így egy helyen látja a témát. Más témájú vagy már kurált bejegyzést ne
+szerkessz.
 
 ## 4. Commit és push
 
 ```bash
-cd "$REPO" && git add inbox/ && git commit -m "chore(inbox): <slug>" && git push
+cd "$REPO" && git add inbox/ && git commit -m "chore(inbox): <slug>" && git push   # kiegészítésnél: "chore(inbox): extend <slug>"
 ```
 
 A push azért kell, mert a `sync.sh` csak shell-indításkor fut — enélkül a
