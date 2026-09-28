@@ -1,6 +1,7 @@
 ---
 name: merge
 description: Az aktuális ág mergelése a mainbe — feature-ágnál a PR-t próba-merge és gate után, dev ágnál lokális fast-forwarddal —, majd takarítás. Használd amikor a Fejlesztő /merge-et ír, vagy egy kész ágat a mainbe akar vinni.
+model: sonnet
 allowed-tools: Bash(git branch --show-current), Bash(gh pr view *)
 ---
 

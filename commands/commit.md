@@ -1,6 +1,7 @@
 ---
 name: commit
 description: Git commit a jelenlegi változásokból — pre-commit gate után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
+model: sonnet
 argument-hint: 'commit üzenet vagy kontextus (opcionális)'
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ---
