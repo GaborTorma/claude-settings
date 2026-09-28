@@ -64,7 +64,7 @@ A válaszban a mentett fájlra **abszolút úttal** hivatkozz, markdown linkkén
 `[<fájlnév>](/abszolút/út/inbox/<fájlnév>)`. Az inbox másik repóban van, mint
 amiben a session fut, ezért a munkamappához mért relatív link nem nyílik meg.
 A megnyitáshoz a `claude-settings` mappának a session mappái között kell
-lennie: a `settings.user.json` → `permissions.additionalDirectories` ezt
-adja.
+lennie: a `~/.claude/settings.json` → `permissions.additionalDirectories` ezt
+adja (gépfüggő útvonal, ezért nem a `settings.user.json`-ban van).
 
 Ne nyúlj a `rules/` mappához és a plugin-repóhoz: az a `/curate` dolga.
