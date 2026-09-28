@@ -1,7 +1,7 @@
 ---
 name: commit
 description: Egyetlen git commit a jelenlegi változásokból — pre-commit gate után, Conventional Commits üzenettel. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
-argument-hint: "commit üzenet vagy kontextus (opcionális)"
+argument-hint: 'commit üzenet vagy kontextus (opcionális)'
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ---
 
@@ -31,7 +31,7 @@ Ha elbukik, **állj meg** és mutasd a hibát — ne commitolj.
 
 ## 3. Commit
 
-Egyetlen commit, Conventional Commits üzenettel. Ha a *Fejlesztő* adott
+Egyetlen commit, Conventional Commits üzenettel. Ha a _Fejlesztő_ adott
 argumentumot, abból jön az üzenet vagy a kontextusa.
 
 Formátum: `<type>(<scope>): <subject>` — scope opcionális, kebab-case.
@@ -74,3 +74,17 @@ feat!: remove deprecated v1 API endpoints
 **Body (opcionális)**: akkor írj, ha a _miért_ nem triviális. Magyarázd a motivációt, ne a mit.
 
 **Footer**: `Fixes #123`, `Closes #456`, `BREAKING CHANGE: ...`.
+
+## 4. Válasz
+
+Mindig ebben a formában:
+
+```markdown
+Check: lint ✓ · typecheck ✓ · test ✓
+Commit: [c96661da] <commit subject>
+```
+
+- **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak.
+- **Commit-sor**: 8 karakteres rövid SHA-val.
+- **Nem volt mit commitolni**: csak ennyi — `Nincs új commit.`
+- **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta a hiba lényege; Commit-sor nincs.
