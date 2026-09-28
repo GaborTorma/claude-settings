@@ -60,14 +60,11 @@ gh repo create <owner>/<név> --private|--public --source . --remote origin
 
 - **Most létrehozott remote**: minden helyi ág felmegy, upstreammel:
   `git push -u origin --all`
-- **Meglévő remote**: előbb nézd meg, van-e mit pusholni:
+- **Meglévő remote**: van-e mit pusholni — a Kontextus **Állapot** sora (`[ahead N]`,
+  vagy upstream nélküli ág → pusholandó). Fetch nincs: ha a remote közben
+  elmozdult, a push elutasítja, és csak akkor kell `git pull --rebase`.
 
-  ```bash
-  git fetch
-  git rev-list --count @{u}..HEAD   # hiba: az ágnak még nincs upstreamje → pusholandó
-  ```
-
-  - `0` → **állj meg**: nincs mit pusholni. Ha a munkakönyvtár nem tiszta, jelezd,
+  - Nincs `[ahead N]` (és van upstream) → **állj meg**: nincs mit pusholni. Ha a munkakönyvtár nem tiszta, jelezd,
     hogy commitolatlan változás van (az nem megy fel).
   - Egyébként az aktuális ág: `git push -u origin HEAD`. Ha a remote elmozdult:
     `git pull --rebase`, majd újra push.
@@ -88,8 +85,9 @@ Push: `<ág>` (`<előtte>` → `<utána>`)
 - ...
 ```
 
-- **„Új repó…” sor**: csak ha a 2. lépés most hozta létre
-  (`gh repo view --json nameWithOwner,url`); meglévő repónál nincs repó-sor.
+- **„Új repó…” sor**: csak ha a 2. lépés most hozta létre; meglévő repónál nincs repó-sor.
+- **Repó URL**: a Kontextus Remote sorából
+  (`git@github.com:<owner>/<név>.git` → `https://github.com/<owner>/<név>`).
 - **Ágak**: minden pusholt ágnak saját blokk; új ágnál `<előtte>` helyén `új ág`.
 - **Commitok**: a pusholt tartomány, `<előtte>..<utána>` (új ágnál `<utána>` önmagában).
   20 fölött csak az utolsó 20, a lista végén új sorban: `… és még N commit`.
