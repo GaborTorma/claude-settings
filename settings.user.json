@@ -4,10 +4,13 @@
       "Bash(gh pr merge *)"
     ],
     "deny": [
-      "Read(**/credentials.json)",
+      "Read(**/.env)",
+      "Read(**/.env.local)",
       "Read(**/*.pem)",
       "Read(**/*.key)",
-      "Bash(npm *)"
+      "Read(**/credentials.json)",
+      "Bash(npm *)",
+      "Bash(pip *)"
     ],
     "additionalDirectories": [
       "/Users/tgc/Development/Claude/claude-settings",
