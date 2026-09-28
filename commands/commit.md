@@ -66,7 +66,7 @@ Formátum: `<type>(<scope>): <subject>` — scope opcionális, kebab-case.
 
 **Subject szabályok:**
 
-- Imperatív, jelen idő: `add`, `fix` — ne `added`/`fixed`.
+- Angolul, imperatív, jelen idő: `add`, `fix` — ne `added`/`fixed`.
 - Max 100 karakter, kisbetűvel, végén nincs pont.
 - Konkrét (`feat: improve API` ❌ → `feat: add rate limiting to auth endpoints` ✅).
 
@@ -81,7 +81,7 @@ refactor: extract user service for testability
 feat!: remove deprecated v1 API endpoints
 ```
 
-**Body (opcionális)**: akkor írj, ha a _miért_ nem triviális. Magyarázd a motivációt, ne a mit.
+**Body (opcionális)**: magyarul; akkor írj, ha a _miért_ nem triviális. Magyarázd a motivációt, ne a mit.
 
 **Footer**: `Fixes #123`, `Closes #456`, `BREAKING CHANGE: ...`.
 
