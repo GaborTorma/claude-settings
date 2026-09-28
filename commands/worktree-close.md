@@ -1,0 +1,56 @@
+---
+name: worktree-close
+description: A feature-worktree lezárása — kilépés a fő checkoutba (dev), a worktree és az ág törlése helyben és a remote-on; mergeletlen munkánál rákérdez. Használd amikor a Fejlesztő /worktree-close-t ír, vagy egy feature-t lezárna vagy eldobna.
+allowed-tools: Bash(git branch --show-current), Bash(gh pr view *)
+---
+
+## Kontextus
+
+- Ág: !`git branch --show-current`
+- PR: !`gh pr view --json number,url,state`
+
+Ha nem worktree-ben vagy (az ág `dev` vagy `main`), **állj meg**: nincs mit lezárni.
+Jegyezd fel az ág nevét — a kilépés után már nem ez az aktuális ág.
+
+## 1. Mergelve van?
+
+```bash
+git fetch
+git merge-base --is-ancestor HEAD origin/main   # 0: mergelve
+```
+
+Mergelt az is, ha a Kontextus szerint a PR `MERGED`.
+
+**Nincs mergelve** → mutasd, mi veszne el (`git status --short`,
+`git log --oneline origin/main..HEAD`), és kérdezd meg az `AskUserQuestion`-nel:
+
+- **Megtartom** → `ExitWorktree`, `action: keep` — és kész; az ág és a worktree marad.
+- **Eldobom** → a lenti lépések, `discard_changes: true`-val és `git branch -D`-vel;
+  a nyitott PR-t `gh pr close`.
+
+## 2. Kilépés
+
+`ExitWorktree`, `action: remove`. A session visszakerül a fő checkoutba, a `dev`-re.
+
+Ha a tool a worktree-t nem távolítja el (korábbi sessionben nyitották, vagy
+`path`-szal léptünk be): `ExitWorktree`, `action: keep`, majd a fő checkoutból
+`git worktree remove .claude/worktrees/<slug>`.
+
+## 3. Ág törlése
+
+```bash
+git branch -d <ág>                 # ha megmaradt; eldobásnál -D
+git push origin --delete <ág>      # ha a remote-on létezik
+```
+
+## 4. A `dev` utoléri a `main`-t
+
+```bash
+git fetch
+git merge --ff-only origin/main
+```
+
+Ha nem fast-forward (a `dev`-en mergeletlen munka van): egyeztess a *Fejlesztő*vel.
+
+Végül írd ki, mi törlődött (worktree, helyi és remote ág), és hogy a session a
+`dev`-en áll.
