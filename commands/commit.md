@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Egyetlen git commit a jelenlegi változásokból — pre-commit gate után, Conventional Commits üzenettel. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
+description: Git commit a jelenlegi változásokból — pre-commit gate után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
 argument-hint: 'commit üzenet vagy kontextus (opcionális)'
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ---
@@ -31,8 +31,15 @@ Ha elbukik, **állj meg** és mutasd a hibát — ne commitolj.
 
 ## 3. Commit
 
-Egyetlen commit, Conventional Commits üzenettel. Ha a _Fejlesztő_ adott
-argumentumot, abból jön az üzenet vagy a kontextusa.
+Témánként egy atomic commit, Conventional Commits üzenettel:
+
+- **Csoportosítás**: a változásokat témák szerint válaszd szét. Ha a témák
+  **fájlszinten** tisztán elkülönülnek, mindegyik külön commit a saját típusával
+  (`git add <fájlok>` → `git commit`), logikus sorrendben.
+- **Egy fájlon belül kevert témák** → egy commit. Ha a szétválasztás fontos lenne,
+  kérdezz rá a *Fejlesztő*nél.
+- **A *Fejlesztő* argumentuma**: ha fájlokat nevez meg, csak azok kerülnek bele; ha
+  szöveget ad, abból jön az üzenet vagy a kontextusa.
 
 Formátum: `<type>(<scope>): <subject>` — scope opcionális, kebab-case.
 
@@ -77,13 +84,25 @@ feat!: remove deprecated v1 API endpoints
 
 ## 4. Válasz
 
-Mindig ebben a formában:
+Mindig ebben a formában!
 
+Egy commit esetén:
 ```markdown
 Check: lint ✓ · typecheck ✓ · test ✓ · format ✓
-Commit: `[c96661da]` · <commit subject>
+
+Commit: `[62ad1820]` · <commit subject>
 ```
 
-- **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak.
+Több commit esetén:
+```markdown
+Check: lint ✓ · typecheck ✓ · test ✓ · format ✓
+
+Commits:
+- `[c96661da]` · <commit subject>
+- `[62ad1820]` · <commit subject>
+```
+
+- **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak; egyszer, az összes commit előtt.
 - **Nem volt mit commitolni**: csak ennyi — `Nincs új commit.`
-- **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta Commit-sor helyett: Hiba: röviden a hiba lényege
+- **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta üres sor, majd Commit-sor helyett:
+  `Hiba: <röviden a hiba lényege>`
