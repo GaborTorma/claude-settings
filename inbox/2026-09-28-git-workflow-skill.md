@@ -36,3 +36,18 @@ később egy plugin workflow-skilljévé válhatnak.
   deploy (`git.deploymentEnabled.main: false`), élesítés csak `/release`-szel,
   tag csak sikeres deploy után; feature mindig worktree-ben, PR-ral.
 - Addig a script-kérdés nyitva marad: a ciklus inline a commandban.
+
+## Script-jelöltek (2026-09-28, claude-settings)
+
+- **`/worktree-open` include-másolás**: a `git ls-files --others --ignored
+  --exclude-from=.worktreeinclude` + `cp` ciklus.
+- **`/push` gépies része**: ahead-ellenőrzés, `git push -u origin HEAD`,
+  `git log --reverse --abbrev=8 --format='%h %H %s' <előtte>..<utána>`, a repó URL
+  a remote-ból — egy Bash-hívásban, a formázott választ (`Push: …` + linkelt
+  commitlista) kész markdownként adva vissza. A `/commit-push` futásidejének nagy
+  része a modell köreiből jön (két `Skill`-hívás, teljes command-szöveggel, plusz
+  a Bash-hívások), nem a gitből. A repó-létrehozás (név, láthatóság) marad a
+  commandban.
+- Engedély mindkettőhöz egy-egy `Bash(<script> *)` szabály; a helyük a skill
+  `scripts/` mappája — addig nincs géptől független útvonal (a `commands/`
+  fájlonként symlinkelt).
