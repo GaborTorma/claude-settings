@@ -24,9 +24,11 @@ Commit előtt minden változáshoz le kell futtatni a releváns ellenőrzéseket
 (**lint, typecheck, unit/e2e tests**). Ha a projektben létezik az adott eszköz,
 **kötelező** futtatni — ha hiányzik, kihagyható.
 
-**Detektálás**: `package.json` scripts, `pyproject.toml`, `Makefile`, vagy projekt
-`CLAUDE.md` alapján. Ha nem egyértelmű mi a parancs, kérdezd meg egyszer és
-jegyezd meg.
+**Detektálás**: elsőként a projekt `CLAUDE.md`-je (**Pre-commit gate** sor). Ha ott
+nincs, `package.json` scripts, `pyproject.toml`, `Makefile` alapján — vagy ha nem
+egyértelmű, kérdezd meg egyszer —, és az eredményt írd be egy sorban a projekt
+`CLAUDE.md`-jébe (`- **Pre-commit gate**: <parancsok>`), hogy legközelebb ne
+kelljen keresni.
 
 Ha elbukik, **állj meg** és mutasd a hibát — ne commitolj.
 
