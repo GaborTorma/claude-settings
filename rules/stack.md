@@ -4,7 +4,7 @@
 
 **Függőségek**: észszerűen. Ha az adott esetre van bevett, nem overkill lib, használd; ne írj 500 sort azért, hogy elkerüld, de ne húzz be libet 3 sornyi kódért.
 
-**Preferenciák**: `vercel`, `next.js`, `pnpm`, `tailwind`, `neon`, `mongodb`, `zod`, `drizzle`, `uv`, `playwright`, Claude preview
+**Preferenciák**: `vercel`, `next.js`, `pnpm`, `tailwind`, `neon`, `mongodb`, `zod`, `drizzle`, `playwright`, `uv`, `pydantic-settings`, Claude preview
 
 **Kizárások**: `express`, `pip`, `npm`
 
