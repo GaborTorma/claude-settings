@@ -81,15 +81,16 @@ Mindig ebben a formában:
 ```markdown
 Új <private|public> repó létrehozva: [[<owner>/<név>]](<repó URL>).
 
-`<ág>`: `<előtte>` → `<utána>`
+Push: `<ág>` (`<előtte>` → `<utána>`)
 
-- [[2a13d131]](<repó URL>/commit/<teljes SHA>) <commit subject>
-- [[62ad1820]](<repó URL>/commit/<teljes SHA>) <commit subject>
+- [`[2a13d131]`](<repó URL>/commit/<teljes SHA>) · <commit subject>
+- [`[62ad1820]`](<repó URL>/commit/<teljes SHA>) · <commit subject>
 ```
 
 - **„Új repó…” sor**: csak ha a 2. lépés most hozta létre
   (`gh repo view --json nameWithOwner,url`); meglévő repónál nincs repó-sor.
 - **Ágak**: minden pusholt ágnak saját blokk; új ágnál `<előtte>` helyén `új ág`.
-- **Commitok**: a pusholt tartomány, időrendben, 8 karakteres rövid SHA-val:
+- **Commitok**: a pusholt tartomány, időrendben, 8 karakteres rövid SHA-val, a link
+  szövege mono (`` [`[2a13d131]`](…) ``):
   `git log --reverse --abbrev=8 --format='%h %H %s' <előtte>..<utána>` (új ágnál
   `<utána>` önmagában). 20 fölött csak az utolsó 20, a lista végén `… és még N commit`.

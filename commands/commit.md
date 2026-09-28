@@ -80,8 +80,8 @@ feat!: remove deprecated v1 API endpoints
 Mindig ebben a formában:
 
 ```markdown
-Check: lint ✓ · typecheck ✓ · test ✓
-Commit: [c96661da] <commit subject>
+Check: lint ✓ · typecheck ✓ · test ✓ · format ✓
+Commit: `[c96661da]` · <commit subject>
 ```
 
 - **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak.

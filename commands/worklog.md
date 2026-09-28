@@ -58,10 +58,8 @@ commit legalább egy témához tartozik; vegyes commit mindegyikhez.
   Nyitva maradt: az Apple-belépés, és mi legyen, ha két fiók ugyanazzal az e-maillel
   jön.
 
-  ## Commitok
-
-  - [[94c9d32a]](https://github.com/<owner>/<repo>/commit/<teljes SHA>) feat(auth): add google oauth provider
-  - [[62ad1820]](https://github.com/<owner>/<repo>/commit/<teljes SHA>) test(auth): cover oauth callback
+  - [`[94c9d32a]`](https://github.com/<owner>/<repo>/commit/<teljes SHA>) · feat(auth): add google oauth provider
+  - [`[62ad1820]`](https://github.com/<owner>/<repo>/commit/<teljes SHA>) · test(auth): cover oauth callback
   ```
 
   - Bekezdések sorrendje: mi történt → miért → döntések (ha volt) → mi maradt
