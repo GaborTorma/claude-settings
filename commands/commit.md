@@ -33,7 +33,7 @@ Ha elbukik, **állj meg** és mutasd a hibát — ne commitolj.
 
 ## 3. Commit
 
-Témánként egy atomic commit, Conventional Commits üzenettel:
+Témánként (nem fájlonként) egy atomic commit, Conventional Commits üzenettel:
 
 - **Csoportosítás**: a változásokat témák szerint válaszd szét. Ha a témák
   **fájlszinten** tisztán elkülönülnek, mindegyik külön commit a saját típusával
