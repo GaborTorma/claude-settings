@@ -108,6 +108,10 @@ Végül írd ki a PR számát és URL-jét, valamint a merge commit rövid SHA-j
 
 ## B. Lokális merge
 
+**CI**: ha a `dev` HEAD-jén futott CI (`gh run list --branch dev --commit <sha>`;
+üres → nincs CI), mindnek zöldnek kell lennie. Még fut → `gh run watch <id>`.
+Piros → **állj meg**, mutasd a hibás futást.
+
 ```bash
 git switch main
 git pull --ff-only
