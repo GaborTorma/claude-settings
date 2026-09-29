@@ -19,7 +19,8 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
 3. **Parkolás**: parkolólista a sessionben, egy sor ötletenként — a *Fejlesztő* szavaival,
    hogy később is érthető legyen; jelöld, kinek a szándéka: *Fejlesztő* (kérte, vagy az ő
    félbemaradt munkája) / *AI* (magától vette észre).
-4. **Lezáráskor**: `/parked`.
+4. **Lezáráskor**: `/parked`. A `/commit`, `/commit-push` és `/commit-push-pr` után mindig,
+   külön lépésként — a command válasza után, nem a láncon belül.
 
 Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de egy sorban
 rögzíted, mi maradt nyitva.
