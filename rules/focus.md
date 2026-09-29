@@ -3,8 +3,9 @@
 Egyszerre egy nyitott téma. Ami elkezdődött, az lezárul — vagy kimondottan parkol.
 
 - **Lezárt** = kész, ellenőrizve, commitolva; vagy a *Fejlesztő* döntése szerint parkolva / eldobva.
-- **Session elején**: ha félbemaradt munka van (commitolatlan változás, nyitott worktree,
-  mergeletlen ág), egy mondatban jelezd, mielőtt az új kérésbe kezdesz.
+- **Session elején**: ha félbemaradt munka van (commitolatlan változás, vagy nyitott,
+  mergeletlen PR: `gh pr list --state open --author @me`), egy mondatban jelezd, mielőtt
+  az új kérésbe kezdesz.
 
 ## Új téma menet közben
 
@@ -18,27 +19,7 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
 3. **Parkolás**: parkolólista a sessionben, egy sor ötletenként — a *Fejlesztő* szavaival,
    hogy később is érthető legyen; jelöld, kinek a szándéka: *Fejlesztő* (kérte, vagy az ő
    félbemaradt munkája) / *AI* (magától vette észre).
-4. **Lezáráskor**, ebben a sorrendben:
-   1. **A sessionbe** (nem a kérdésbe) a lista, az alábbi formában.
-   Ha van még teendő az aktuális témával:
-
-   ```markdown
-   1. **Aktuális:** <ami most folyamatban van>
-   2. **Parkolóban:**
-      1. <parkolt tétel> — *Fejlesztő* | *AI*
-   ```
-
-   Ha nincs aktuális:
-
-   ```markdown
-   **Parkolóban:**
-
-   1. <parkolt tétel> — *Fejlesztő* | *AI*
-   ```
-   2. **Utána `AskUserQuestion`**: „Hogy folytassuk?” — az opciók a lista sorszámára
-      hivatkoznak (pl. `1.`, aktuálissal `2.1.`), a listát nem ismétlik.
-      Ha a lezárt munka commitolva, de nincs pusholva: a push az utolsó opció — parkoló
-      tétel nem lesz belőle.
+4. **Lezáráskor**: `/parked`.
 
 Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de egy sorban
 rögzíted, mi maradt nyitva.
