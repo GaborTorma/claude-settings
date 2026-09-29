@@ -16,15 +16,35 @@ allowed-tools: Bash(git status *)
 - **Parkolóban**: a session parkolólistája (→ `focus.md` 3. Parkolás), a
   *Fejlesztő* / *AI* jelöléssel.
 
-Ha nincs se aktuális, se parkoló tétel: csak ennyi — `Nincs nyitott vagy parkoló téma.`,
+Ha nincs se aktuális, se parkoló tétel: csak ennyi — `Nincs aktuális/parkoló téma.`,
 és nincs kérdés.
 
-## 2. Kérdés
+## 2. Lista
 
-`AskUserQuestion`, header: `Folytatás`, kérdés: „Hogy folytassuk?”. A lista maga az
-opciók: minden tétel egy opció, a `label` pontosan a tétel sora, ebben a formában; a
-sessionbe külön nem írod ki — a Desktop app a tool-hívások közti többsoros szöveget
-összefoglalja, az opciókat nem.
+A sessionbe, ebben a formában:
+
+Ha van aktuális:
+
+```markdown
+1. **Aktuális:** <ami most folyamatban van>
+2. **Parkolóban:**
+   1. <parkolt tétel> — *Fejlesztő* | *AI*
+```
+
+Ha nincs aktuális:
+
+```markdown
+**Parkolóban:**
+
+1. <parkolt tétel> — *Fejlesztő* | *AI*
+```
+
+## 3. Kérdés
+
+Utána `AskUserQuestion`, header: `Folytatás`, kérdés: „Hogy folytassuk?”. A lista
+tételei az opciók is: minden tétel egy opció, a `label` pontosan a tétel sora, ebben a
+formában — a Desktop app a tool-hívások közti többsoros szöveget összefoglalhatja, az
+opciókat nem, így a lista akkor is látszik.
 
 Ha van aktuális:
 
@@ -37,8 +57,8 @@ Ha van aktuális:
 Ha nincs aktuális:
 
 ```text
-a) <parkolt tétel> — Fejlesztő | AI
-b) <parkolt tétel> — Fejlesztő | AI
+1. <parkolt tétel> — Fejlesztő | AI
+2. <parkolt tétel> — Fejlesztő | AI
 ```
 
 - **Sorrend**: a lista sorrendje; a `label` nem kap jelölést.
