@@ -60,6 +60,8 @@ mutasd a hibás checket.
 A merge commit leírása egy ideiglenes fájlba kerül:
 
 - első sor: `PR: <PR URL>` (a Kontextusból);
+- alatta a PR leírásának `## Élesítés` szakasza változatlanul (`gh pr view --json body`),
+  ha van — a `/release` innen gyűjti;
 - alatta `## Worklog`, benne az ágon létrejött összes worklog-fájl teljes
   tartalma, időrendben:
 

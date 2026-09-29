@@ -13,7 +13,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git des
 
 A `main` állapotát adod ki. Az élesben lévő állapotot a legutóbbi `v*` tag jelzi;
 ami utána jött, az kiadatlan — akárhány merge is. A command meghívása maga a
-deploy-engedély.
+deploy-engedély — kivéve, ha élesítési teendő van (→ 4. Deploy).
 
 ## 1. Előfeltételek
 
@@ -63,7 +63,18 @@ kiadni. (Minden más commit léptet: breaking → MAJOR, `feat` → MINOR, a tö
 
 ## 4. Deploy
 
-Ebből a commitból, az első találat szerint:
+**Élesítési teendők** a kiadandó merge-ek leírásából:
+
+```bash
+git log $last..main --merges --format=%B   # első kiadásnál: git log main --merges --format=%B
+```
+
+Ha valamelyikben van `## Élesítés` szakasz: a tételeket gyűjtsd egy listába, a
+`PR:` sorból vett PR-számmal (`- #<szám> · <tétel>`), mutasd meg, és a deploy
+előtt kérj megerősítést — a teendők egy része (pl. env beállítása) a deployt
+megelőzi. Ha egyikben sincs, ez a lépés elmarad.
+
+Deploy ebből a commitból, az első találat szerint:
 
 1. **Projekt `CLAUDE.md`** vagy a **stack skillje** deploy-módot ír → azt.
 2. **`package.json` `deploy` script** → a lockfile szerinti package managerrel;
