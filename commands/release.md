@@ -1,7 +1,6 @@
 ---
 name: release
 description: Kiadás a main-ről — git-cliff verzió, CHANGELOG, release-commit, deploy, és csak sikeres deploy után tag, push és GitHub Release a worklogokból. Használd amikor a Fejlesztő /release-t ír, vagy élesíteni / új verziót kiadni akar.
-model: opus
 argument-hint: "major | minor | patch (opcionális, felülírja a számított verziót)"
 allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git describe *)
 ---
