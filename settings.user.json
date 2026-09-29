@@ -1,15 +1,16 @@
 {
   "permissions": {
     "allow": [
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr checks *)",
       "Bash(gh pr merge *)",
+      "Bash(gh repo view *)",
       "Bash(git status *)",
       "Bash(git branch --show-current)",
       "Bash(git remote get-url *)",
       "Bash(git log *)",
       "Bash(git describe *)",
-      "Bash(gh pr view *)",
-      "Bash(gh repo view *)",
-      "Bash(gh pr list *)",
       "Bash(git ls-remote *)",
       "Bash(git worktree list *)",
       "Bash(git branch --list *)"

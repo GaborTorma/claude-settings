@@ -53,6 +53,10 @@ Végül mindenképp: `git merge --abort` — az ág érintetlen marad.
 
 ### 2. Merge
 
+**CI**: ha a PR-en van check (`gh pr checks`; „no checks reported” → nincs CI),
+mindnek zöldnek kell lennie. Még fut → `gh pr checks --watch`. Piros → **állj meg**,
+mutasd a hibás checket.
+
 A merge commit leírása egy ideiglenes fájlba kerül:
 
 - első sor: `PR: <PR URL>` (a Kontextusból);
