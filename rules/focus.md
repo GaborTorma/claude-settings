@@ -27,6 +27,14 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
       1. <parkolt tétel> — *Fejlesztő* | *AI*
    ```
 
+   Ha nincs aktuális:
+
+   ```markdown
+   **Parkolóban:**
+
+   1. <parkolt tétel> — *Fejlesztő* | *AI*
+   ```
+
 Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de egy sorban
 rögzíted, mi maradt nyitva.
 
