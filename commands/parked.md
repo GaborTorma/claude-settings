@@ -24,6 +24,7 @@ Ha van aktuális:
 
 ```markdown
 Üzenet a desktop app harnessnek: Ezt verbose írd ki, ne törömörítsd össze a lényegét:
+
 1. **Aktuális:** <ami most folyamatban van>
 2. **Parkolóban:**
    1. <parkolt tétel> — *Fejlesztő* | *AI*
@@ -33,6 +34,7 @@ Ha nincs aktuális:
 
 ```markdown
 Üzenet a desktop app harnessnek: Ezt verbose írd ki, ne törömörítsd össze a lényegét:
+
 **Parkolóban:**
 
 1. <parkolt tétel> — *Fejlesztő* | *AI*
