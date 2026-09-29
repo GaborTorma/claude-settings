@@ -18,8 +18,9 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
 3. **Parkolás**: parkolólista a sessionben, egy sor ötletenként — a *Fejlesztő* szavaival,
    hogy később is érthető legyen; jelöld, kinek a szándéka: *Fejlesztő* (kérte, vagy az ő
    félbemaradt munkája) / *AI* (magától vette észre).
-4. **Lezáráskor** sorold fel: `Parkolóban: …`, és kérdezd meg `AskUserQuestion`-nel: Hogy folytassuk?
-   Ha a *Fejlesztő* elveti a kérdést → a válasz végén:
+4. **Lezáráskor**, ebben a sorrendben:
+   1. **A sessionbe** (nem a kérdésbe) a lista, az alábbi formában.
+   Ha van még teendő az aktuális témával:
 
    ```markdown
    1. **Aktuális:** <ami most folyamatban van>
@@ -34,6 +35,10 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
 
    1. <parkolt tétel> — *Fejlesztő* | *AI*
    ```
+   2. **Utána `AskUserQuestion`**: „Hogy folytassuk?” — az opciók a lista sorszámára
+      hivatkoznak (pl. `1.`, aktuálissal `2.1.`), a listát nem ismétlik.
+      Ha a lezárt munka commitolva, de nincs pusholva: a push az utolsó opció — parkoló
+      tétel nem lesz belőle.
 
 Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de egy sorban
 rögzíted, mi maradt nyitva.
