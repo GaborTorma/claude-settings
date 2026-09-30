@@ -30,7 +30,7 @@ Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 - **Issue**: ha a munka egy issue-ból indult (`/pick #<szám>`, vagy a *Fejlesztő*
   megnevezte az argumentumban vagy a beszélgetésben), az összefoglaló alá `Closes #<szám>` — a
   merge lezárja. Ha nem volt, a sor elmarad; ne keress és ne találd ki.
-- **`## Ellenőrzés`**: csak ami ténylegesen lefutott — a gate eredménye (a
+- **`## Ellenőrzés`**: csak ami ténylegesen lefutott — a `/check` eredménye (a
   `/commit` Check-sora vagy a CI), és amit kézzel megnéztünk. UI-változásnál
   képernyőkép.
 - **`## Élesítés`**: ami a deploy előtt vagy közben teendő — migráció, új vagy

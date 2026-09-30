@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Git commit a jelenlegi változásokból — pre-commit gate után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
+description: Git commit a jelenlegi változásokból — /check után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
 argument-hint: 'commit üzenet vagy kontextus (opcionális)'
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ---
@@ -14,22 +14,12 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 
 ## 1. Van mit commitolni?
 
-Ha a munkakönyvtár tiszta: nincs commit, nincs gate — ez nem hiba, a hívó
+Ha a munkakönyvtár tiszta: nincs commit, nincs check — ez nem hiba, a hívó
 command folytatja.
 
-## 2. Pre-commit gate
+## 2. Check
 
-Commit előtt minden változáshoz le kell futtatni a releváns ellenőrzéseket
-(**lint, typecheck, unit/e2e tests**). Ha a projektben létezik az adott eszköz,
-**kötelező** futtatni — ha hiányzik, kihagyható.
-
-**Detektálás**: elsőként a projekt `CLAUDE.md`-je (**Pre-commit gate** sor). Ha ott
-nincs, `package.json` scripts, `pyproject.toml`, `Makefile` alapján — vagy ha nem
-egyértelmű, kérdezd meg egyszer —, és az eredményt írd be egy sorban a projekt
-`CLAUDE.md`-jébe (`- **Pre-commit gate**: <parancsok>`), hogy legközelebb ne
-kelljen keresni.
-
-Ha elbukik, **állj meg** és mutasd a hibát — ne commitolj.
+`/check`. Ha elbukik, **állj meg**!
 
 ## 3. Commit
 
@@ -108,7 +98,7 @@ Commits:
 - `[62ad1820]` · <commit subject>
 ```
 
-- **Check-sor**: csak ha futott ellenőrzés — a ténylegesen lefutottak; egyszer, az összes commit előtt.
+- **Check-sor**: a `/check` válasza, egyszer, az összes commit előtt; ha nem futott ellenőrzés, elmarad.
 - **Nem volt mit commitolni**: csak ennyi — `Nincs új commit.`
 - **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta üres sor, majd Commit-sor helyett:
   `Hiba: <röviden a hiba lényege>`

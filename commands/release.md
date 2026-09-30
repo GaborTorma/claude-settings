@@ -27,8 +27,7 @@ git switch main
 git pull --ff-only
 ```
 
-- **Pre-commit gate** a `main`-en (`~/.claude/commands/commit.md` / 2. Pre-commit
-  gate): végső ellenőrzés a merge-ek együttes eredményén, deploy előtt.
+- **`/check`** a `main`-en: végső ellenőrzés a merge-ek együttes eredményén, deploy előtt.
   Elbukik → **állj meg**, mutasd a hibát.
 - Ha a `HEAD` egy pusholatlan `chore(release): …` commit (egy korábbi bukott
   kiadásból), azt használd újra: ugorj a **4. Deploy**-ra.

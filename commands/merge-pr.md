@@ -1,6 +1,6 @@
 ---
 name: merge-pr
-description: Feature-ág PR-jének mergelése a mainbe — próba-merge és gate, zöld CI, merge commit a worklogokkal, majd takarítás. Csak a /merge és a láncok hívják, nyitott PR esetén.
+description: Feature-ág PR-jének mergelése a mainbe — próba-merge és check, zöld CI, merge commit a worklogokkal, majd takarítás. Csak nyitott PR esetén.
 user-invocable: false
 allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr view *), Bash(gh pr checks *)
 ---
@@ -27,8 +27,6 @@ hibátlanul lefutnak. A `main` pusholása nem deploy — kiadás csak `/release`
   - Még fut → `gh pr checks --watch`, várd meg.
   - Piros → mutasd a hibás checket.
 
-A pre-commit gate a `~/.claude/commands/commit.md` / 2. Pre-commit gate szerint fut.
-
 ## 1. Próba-merge
 
 A PR csak a saját commitjait tartalmazza; a `main` az ágba nem kerül be. Ha a
@@ -52,7 +50,7 @@ git merge --no-commit --no-ff origin/main
   git diff --name-only --diff-filter=A $base HEAD -- <migrációs könyvtár>
   ```
 
-- **Pre-commit gate** a próba-merge eredményén. Elbukik → `git merge --abort`,
+- **`/check`** a próba-merge eredményén. Elbukik → `git merge --abort`,
   **állj meg**, mutasd a hibát.
 
 Végül mindenképp: `git merge --abort` — az ág érintetlen marad.
@@ -84,14 +82,15 @@ Merge commit a `main`-en; `--delete-branch` nincs (a takarítás a 4. lépés). 
 
 ## 3. Ütközés
 
-Csak a *Fejlesztő* jóváhagyásával. A merge a feature-munka befejezése, ezért a feloldás
-az ágba kerül, a saját worktree-jében.
+Tegyél javaslatot a megoldásra, folytatás csak a *Fejlesztő* jóváhagyásával.
+A merge a feature-munka befejezése, ezért a feloldás az ágba kerül, a saját
+worktree-jében.
 
 ```bash
 git merge origin/main        # ütközések feloldása
 ```
 
-Feloldás után `/commit-push` (benne a gate), majd újra `/merge-pr`.
+Feloldás után `/commit-push` (benne a `/check`), majd újra `/merge-pr`.
 
 ## 4. Takarítás
 
