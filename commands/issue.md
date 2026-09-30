@@ -31,7 +31,7 @@ Hasonló nyitott issue → mutasd, és kérdezd meg: új legyen, vagy a meglév�
 
 ## 3. Felvétel
 
-- **Cím**: angol, rövid, konkrét (nem Conventional Commits prefix).
+- **Cím**: magyar, rövid, konkrét (nem Conventional Commits prefix).
 - **Body**: magyar — mi a gond vagy a cél, miért, és ha van: reprodukció, hibaüzenet szó
   szerint, érintett fájlok.
 - **Címke**: `~/.claude/rules/workflow.md` útválasztása szerint — `fix` vagy `feature`.
