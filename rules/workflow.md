@@ -14,6 +14,9 @@ workflow-skillje (DB-ág, preview, deploy), az erre épül, nem írja felül.
 **`<slug>`**: a feladat tartalmából, a munka indulásakor — angol, ASCII kebab-case,
 2–4 szó (pl. `oauth-login`, `extract-user-service`). Ugyanez a worktree neve és az ág vége (pl. `feat/oauth-login`).
 
+**Teendők**: tartós → GitHub issue (`/issue`, `/issues`), `fix` / `feature` címkével;
+rövid távú, félretett → `.parked.md` (`/park`). Indulás mindkettőből: `/pick`.
+
 **Útválasztás a feladat típusa szerint**, a munka indulásakor. A kategóriák a
 Conventional Commits type-jai (→ `/commit`):
 

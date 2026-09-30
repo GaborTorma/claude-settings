@@ -1,8 +1,8 @@
 ---
 name: pick
-description: Egy parkoló tétel kiválasztása aktuális munkának ID alapján — a nyitott munka lezárása vagy parkolása után. Használd amikor a Fejlesztő /pick-et ír, vagy egy parkoló témával akar folytatni.
-argument-hint: "P02"
-allowed-tools: Bash(cat .parked.md), Bash(git status *)
+description: Egy parkoló tétel (P-ID) vagy GitHub issue (#szám) kiválasztása aktuális munkának — a nyitott munka lezárása vagy parkolása után. Használd amikor a Fejlesztő /pick-et ír, vagy egy parkoló témával vagy issue-val akar folytatni.
+argument-hint: "P02 | #12"
+allowed-tools: Bash(cat .parked.md), Bash(git status *), Bash(gh issue view *)
 ---
 
 ## Kontextus
@@ -12,11 +12,14 @@ allowed-tools: Bash(cat .parked.md), Bash(git status *)
 
 ## 1. Melyik
 
-- **Argumentum**: egy ID (`P02`; a `P` és a vezető nulla elhagyható: `2`). Nem létező ID → **állj meg**, jelezd.
+- **P-ID** (`P02`; a `P` és a vezető nulla elhagyható: `2`): parkoló tétel. Nem létező
+  ID → **állj meg**, jelezd.
+- **Issue** (`#12`): `gh issue view 12 --json number,title,body,labels,state,url`.
+  Lezárt vagy nem létező → **állj meg**, jelezd.
 - **Nincs argumentum**: `AskUserQuestion`, header: `Kiválasztás`, az opciók a parkoló
-  tételek, a `label` pontosan a tétel sora.
-- **Üres parkoló** (Kontextus-hiba `No such file`, vagy nincs tétel): csak ennyi —
-  `Nincs parkoló tétel.`
+  tételek, a `label` pontosan a tétel sora. Issue-hoz: `/issues`.
+- **Üres parkoló** (Kontextus-hiba `No such file`, vagy nincs tétel) és nincs
+  argumentum: csak ennyi — `Nincs parkoló tétel.`
 
 ## 2. A nyitott munka
 
@@ -26,7 +29,9 @@ parkoljuk (`/park`), vagy eldobjuk. A választás után folytasd.
 
 ## 3. Váltás
 
-1. `/unpark <ID>` — a tétel kikerül a parkolóból.
-2. Egy sorban: `Aktuális: <ID> · <tétel>`.
+1. **P-ID**: `/unpark <ID>` — a tétel kikerül a parkolóból. **Issue**: nyitva marad; a
+   száma a munka végéig a kontextusban marad (→ `/commit` Footer, `/pull-request` Issue).
+2. Egy sorban: `Aktuális: <ID> · <tétel>`, ill. `Aktuális: [#<szám>](<URL>) · <cím>`.
 3. Indulás a `~/.claude/rules/workflow.md` útválasztása szerint (fix-jellegű → `dev`,
-   feature-jellegű → `/worktree-open`); ha nem egyértelmű, melyik, kérdezz.
+   feature-jellegű → `/worktree-open`). Issue-nál a címke dönt (`fix` / `feature`), a
+   slug a címéből; ha nincs címke vagy nem egyértelmű, kérdezz.
