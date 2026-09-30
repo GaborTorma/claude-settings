@@ -2,12 +2,13 @@
 name: park
 description: Új tétel felvétele a projekt .parked.md parkolójába. Használd amikor a Fejlesztő /park-ot ír, vagy menet közben egy témát parkolni kell (→ focus.md).
 argument-hint: "a parkolandó téma (opcionális)"
-allowed-tools: Bash(cat .parked.md *), Bash(git rev-parse *), Bash(git remote get-url *), Write(.parked.md), Edit(.parked.md)
+allowed-tools: Bash(cat .parked.md *), Bash(grep *), Bash(git rev-parse *), Bash(git remote get-url *), Write(.parked.md), Edit(.parked.md), Write(.gitignore), Edit(.gitignore), Bash(git add .gitignore), Bash(git commit *)
 ---
 
 ## Kontextus
 
 - Parkoló: !`cat .parked.md || true`
+- A `.gitignore`-ban: !`grep -qxF .parked.md .gitignore 2>/dev/null && echo igen || echo nem`
 - Remote: !`git remote get-url origin || true`
 
 ## 1. A tétel
@@ -54,8 +55,16 @@ sosem ismétlődik, a kivett tételeké sem. A számláló mindig a **fő checko
 él — worktree-be parkolásnál is onnan veszed és ott növeled, így az ID-k egyediek.
 Kivétel: `/unpark <ID>`.
 
-A fájl globálisan gitignored (`~/.config/git/ignore`), nem commitolod. Ha a Kontextus
-szerint már van ugyanilyen tétel, ne vedd fel újra — jelezd.
+A `.parked.md`-t nem commitolod. Ha a Kontextus szerint nincs a `.gitignore`-ban
+(`nem`), a létrehozásakor vedd fel egy `.parked.md` sorral (ha nincs `.gitignore`, hozd
+létre), és commitold külön, csak ezt a fájlt — a többi, már stage-elt változás kimarad:
+
+```bash
+git add .gitignore
+git commit -m "chore: ignore the parked list" -- .gitignore
+```
+
+Ha a Kontextus szerint már van ugyanilyen tétel, ne vedd fel újra — jelezd.
 
 ## 4. Válasz
 
