@@ -82,7 +82,9 @@ feat!: remove deprecated v1 API endpoints
 
 **Body (opcionális)**: magyarul; akkor írj, ha a _miért_ nem triviális. Magyarázd a motivációt, ne a mit.
 
-**Footer**: `Fixes #123`, `Closes #456`, `BREAKING CHANGE: ...`.
+**Footer**: `BREAKING CHANGE: ...` (→ Breaking change). `Fixes #<szám>` csak ha a munka
+issue-ból indult (`/pick #<szám>`), vagy a *Fejlesztő* megnevezte — soha ne találd ki.
+Fix-jellegű munkánál ez zárja le az issue-t, amikor a commit a `main`-re kerül.
 
 ## 4. Válasz
 
