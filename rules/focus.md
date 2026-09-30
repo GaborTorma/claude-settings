@@ -4,8 +4,8 @@ Egyszerre egy nyitott téma. Ami elkezdődött, az lezárul — vagy kimondottan
 
 - **Lezárt** = kész, ellenőrizve, commitolva; vagy a *Fejlesztő* döntése szerint parkolva / eldobva.
 - **Session elején**: ha félbemaradt munka van (commitolatlan változás, vagy nyitott,
-  mergeletlen PR: `gh pr list --state open --author @me`), egy mondatban jelezd, mielőtt
-  az új kérésbe kezdesz.
+  mergeletlen PR: `gh pr list --state open --author @me`), vagy a `.parked.md`-ben parkoló
+  tétel van (hány), egy mondatban jelezd, mielőtt az új kérésbe kezdesz.
 
 ## Új téma menet közben
 
@@ -13,17 +13,14 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
 
 1. **Ne válts csendben.** Egy sorban: mi a nyitott feladat, hol tart, mi van hátra.
 2. **Kérdezd meg** (`AskUserQuestion`):
-   - **Előbb lezárjuk** — ajánlott, ha a maradék rövid. Az új ötlet automatikusan parkol.
-   - **Váltunk** — a nyitott munka parkol: commitolva vagy saját ágon, egy sorral, hogy mi van hátra.
+   - **Előbb lezárjuk** — ajánlott, ha a maradék rövid. Az új ötlet `/park`.
+   - **Váltunk** — a nyitott munka commitolva vagy saját ágon marad, és `/park` egy sorral, hogy mi van hátra.
    - **A nyitottat eldobjuk.**
-3. **Parkolás**: parkolólista a sessionben, egy sor ötletenként — a *Fejlesztő* szavaival,
-   hogy később is érthető legyen; jelöld, kinek a szándéka: *Fejlesztő* (kérte, vagy az ő
-   félbemaradt munkája) / *AI* (magától vette észre).
-4. **Lezáráskor**: `/parked`. A `/commit`, `/commit-push` és `/commit-push-pr` után mindig,
-   külön lépésként — a command válasza után, nem a láncon belül.
+3. **Parkolás**: `/park <téma>` — a projekt `.parked.md`-jébe.
+4. **Lezáráskor**: `/parked`. A `/commit`, `/commit-push` és `/commit-push-pr` után mindig.
 
-Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de egy sorban
-rögzíted, mi maradt nyitva.
+Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de a nyitva
+maradtat `/park`.
 
 **Nem új téma**: a nyitott feladathoz tartozó kérdés vagy finomítás; rövid, kódot nem
 érintő kérdés — válaszolj röviden, utána egy mondattal vissza a nyitott feladathoz.
@@ -32,5 +29,5 @@ rögzíted, mi maradt nyitva.
 
 ## Az *AI* se csapongjon
 
-- Menet közben észrevett, nem kért javítás → ne csináld meg, parkold.
-- Mellékszálat ("közben ezt is megnézem") ne nyiss a *Fejlesztő* kérése nélkül, de parkold.
+- Menet közben észrevett, nem kért javítás → ne csináld meg, `/park`.
+- Mellékszálat ("közben ezt is megnézem") ne nyiss a *Fejlesztő* kérése nélkül, de `/park`.
