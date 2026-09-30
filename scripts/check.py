@@ -19,6 +19,7 @@ import tempfile
 import time
 
 TAIL_LINES = 60
+KILL_GRACE = 3  # másodperc a SIGTERM után, mielőtt SIGKILL jön
 
 
 def parse_step(raw: str) -> tuple[str, str]:
@@ -35,12 +36,21 @@ def start(cmd: str, log) -> subprocess.Popen:
     )
 
 
-def kill(proc: subprocess.Popen) -> None:
+def signal_group(proc: subprocess.Popen, sig: signal.Signals) -> None:
     try:
-        os.killpg(proc.pid, signal.SIGTERM)
+        os.killpg(proc.pid, sig)
     except (ProcessLookupError, PermissionError):
         pass  # a csoport már kilépett (macOS-en zombi vezetőnél EPERM)
-    proc.wait()
+
+
+def kill(proc: subprocess.Popen) -> None:
+    signal_group(proc, signal.SIGTERM)
+    try:
+        proc.wait(timeout=KILL_GRACE)
+    except subprocess.TimeoutExpired:
+        # SIGTERM-et figyelmen kívül hagyó folyamat ne akassza meg a /check-et.
+        signal_group(proc, signal.SIGKILL)
+        proc.wait()
 
 
 def tail(log) -> str:
@@ -51,9 +61,10 @@ def tail(log) -> str:
 
 def report(done: list[tuple[str, bool]], failed_log=None) -> None:
     print("Check: " + " · ".join(f"{n} {'✓' if ok else '✗'}" for n, ok in done))
-    if failed_log is not None:
+    output = tail(failed_log) if failed_log is not None else ""
+    if output:
         print()
-        print(tail(failed_log))
+        print(output)
 
 
 def main() -> int:
