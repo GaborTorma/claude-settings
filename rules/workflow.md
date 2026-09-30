@@ -49,8 +49,7 @@ Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 
 **Munka**: commit `/commit`-tal.
 
-**Merge** a *Fejlesztő* jóváhagyásával, PR nélkül: `/commit-push-merge` —
-gate, commit, `/worklog`, lokális fast-forward merge a `main`-be, push. A `dev` megmarad.
+**Merge** a *Fejlesztő* jóváhagyásával, PR nélkül: `/commit-push-merge`. A `dev` megmarad.
 
 ## Feature-jellegű munka:
 
@@ -64,9 +63,7 @@ gate, commit, `/worklog`, lokális fast-forward merge a `main`-be, push. A `dev`
 A `main` munka közben nem kerül be az ágba — csak a PR merge-e fésüli össze. Kivétel:
 ütközésnél a lezáráskor a `/merge-pr` az ágban oldja fel (`git merge origin/main`).
 
-**Lezárás** a *Fejlesztő* jóváhagyásával: `/commit-push-pr-merge` — commit,
-`/worklog`, push, PR (benne a worklogok), merge, `/worktree-close`.
-Ha a PR ütközés miatt nem mergelhető, a command megáll; a feloldásról a *Fejlesztő* dönt.
+**Lezárás** a *Fejlesztő* jóváhagyásával: `/commit-push-pr-merge`.
 
 Félbehagyott vagy eldobott feature: `/worktree-close` (mergeletlen munkánál rákérdez).
 

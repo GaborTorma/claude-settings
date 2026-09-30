@@ -12,8 +12,7 @@ hibátlanul lefutottak.
 
 `/commit-push-pr-merge` (a *Fejlesztő* argumentumát add át `args`-ként).
 
-Ha bármelyik lépése megállt (elbukott gate, nem mergelhető PR), **itt is állj
-meg** — deploy nincs.
+Ha bármelyik lépése megállt **itt is állj meg** — deploy nincs.
 
 ## 2. Kiadás
 
