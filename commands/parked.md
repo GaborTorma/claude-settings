@@ -21,7 +21,8 @@ Ha nincs se aktuális, se parkoló tétel: csak ennyi — `Nincs aktuális/parko
 
 ## 2. Lista
 
-A sessionbe, ebben a formában:
+A sessionbe, ebben a formában. A tétel végén lévő dátum (`· <YYYY-MM-DD>`) nem jelenik meg
+se a listában, se az opciókban — csak a régi tételek jelzésére való (→ 3. Kérdés).
 
 Ha van aktuális:
 
@@ -62,7 +63,8 @@ Ha nincs aktuális:
 
 - **Sorrend**: a lista sorrendje; a `label` nem kap jelölést.
 - **`description`**: egy rövid mondat, mi történik, ha ezt választja; a javasoltnál
-  `Javasolt — ` kezdettel.
+  `Javasolt — ` kezdettel. 3 napnál régebben parkoló tételnél: `<N> napja parkol —
+  issue-vá léptethető: /issue <ID>`.
 - **Push**: ha a Kontextus szerint van pusholatlan commit (`[ahead N]`), `Push` az utolsó
   opció — parkoló tétel nem lesz belőle.
 - **4 opció a határ**: ami nem fér bele, második kérdésbe kerül ugyanígy (header:
