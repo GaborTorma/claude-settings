@@ -7,7 +7,7 @@ allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash
 
 ## Kontextus
 
-- Remote: !`git remote get-url origin`
+- Remote: !`git remote get-url origin || true`
 - Ág: !`git branch --show-current`
 - Állapot: !`git status -sb`
 

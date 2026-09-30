@@ -2,13 +2,13 @@
 name: park
 description: Új tétel felvétele a projekt .parked.md parkolójába. Használd amikor a Fejlesztő /park-ot ír, vagy menet közben egy témát parkolni kell (→ focus.md).
 argument-hint: "a parkolandó téma (opcionális)"
-allowed-tools: Bash(cat .parked.md), Bash(git rev-parse *), Bash(git remote get-url *), Write(.parked.md), Edit(.parked.md)
+allowed-tools: Bash(cat .parked.md *), Bash(git rev-parse *), Bash(git remote get-url *), Write(.parked.md), Edit(.parked.md)
 ---
 
 ## Kontextus
 
-- Parkoló: !`cat .parked.md`
-- Remote: !`git remote get-url origin`
+- Parkoló: !`cat .parked.md || true`
+- Remote: !`git remote get-url origin || true`
 
 ## 1. A tétel
 

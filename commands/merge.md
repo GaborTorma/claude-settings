@@ -7,7 +7,7 @@ allowed-tools: Bash(git branch --show-current), Bash(gh pr view *)
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state`
+- PR: !`gh pr view --json number,url,state || true`
 
 A Kontextus alapján, az argumentumot továbbadva (`args`); a válasz a hívott commandé:
 

@@ -9,7 +9,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git des
 
 - Ág: !`git branch --show-current`
 - Munkakönyvtár: !`git status --short`
-- Utolsó kiadás: !`git describe --tags --abbrev=0 --match 'v*'`
+- Utolsó kiadás: !`git describe --tags --abbrev=0 --match 'v*' || true`
 
 A `main` állapotát adod ki. Az élesben lévő állapotot a legutóbbi `v*` tag jelzi;
 ami utána jött, az kiadatlan — akárhány merge is. A command meghívása maga a

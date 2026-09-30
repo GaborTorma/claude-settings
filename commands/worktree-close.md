@@ -1,14 +1,14 @@
 ---
 name: worktree-close
 description: A feature-worktree lezárása — kilépés a fő checkoutba (dev), a worktree és az ág törlése helyben és a remote-on; mergeletlen munkánál rákérdez. Használd amikor a Fejlesztő /worktree-close-t ír, vagy egy feature-t lezárna vagy eldobna.
-allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(cat .parked.md)
+allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(cat .parked.md *)
 ---
 
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state`
-- Parkoló: !`cat .parked.md`
+- PR: !`gh pr view --json number,url,state || true`
+- Parkoló: !`cat .parked.md || true`
 
 Ha nem worktree-ben vagy (az ág `dev` vagy `main`), **állj meg**: nincs mit lezárni.
 Jegyezd fel az ág nevét — a kilépés után már nem ez az aktuális ág.

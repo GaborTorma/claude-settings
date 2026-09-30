@@ -9,8 +9,8 @@ allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls
 
 - Worktree-k: !`git worktree list`
 - Helyi ágak: !`git branch --list 'feat/*' 'refactor/*'`
-- Remote ágak: !`git ls-remote --heads origin 'refs/heads/feat/*' 'refs/heads/refactor/*'`
-- PR-ok (minden állapot): !`gh pr list --state all --limit 200 --json headRefName -q '.[].headRefName'`
+- Remote ágak: !`git ls-remote --heads origin 'refs/heads/feat/*' 'refs/heads/refactor/*' || true`
+- PR-ok (minden állapot): !`gh pr list --state all --limit 200 --json headRefName -q '.[].headRefName' || true`
 
 ## 1. Ágnév
 

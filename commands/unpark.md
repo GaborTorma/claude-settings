@@ -2,12 +2,12 @@
 name: unpark
 description: Tétel(ek) törlése a projekt .parked.md parkolójából ID alapján — elvetéskor, vagy amikor a munka elindul rajta. Használd amikor a Fejlesztő /unpark-ot ír, vagy a /parked kérdése után elvetés vagy parkoló tétel folytatása történt.
 argument-hint: "P01 P03 …"
-allowed-tools: Bash(cat .parked.md), Edit(.parked.md)
+allowed-tools: Bash(cat .parked.md *), Edit(.parked.md)
 ---
 
 ## Kontextus
 
-- Parkoló: !`cat .parked.md`
+- Parkoló: !`cat .parked.md || true`
 
 ## 1. Mit
 

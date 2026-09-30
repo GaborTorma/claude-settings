@@ -8,7 +8,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr v
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state`
+- PR: !`gh pr view --json number,url,state || true`
 - Munkakönyvtár: !`git status --porcelain`
 
 A command meghívása maga a merge-engedély — de csak akkor, ha a lépések

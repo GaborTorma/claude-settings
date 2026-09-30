@@ -7,8 +7,8 @@ allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(gh repo vi
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- Repó URL: !`gh repo view --json url -q .url`
-- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD`
+- Repó URL: !`gh repo view --json url -q .url || true`
+- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD || true`
 
 Egyszerűen értelmezhető szöveg arról, mi történt. Olvasója a *Fejlesztő* és a
 későbbi *AI*-sessionök.

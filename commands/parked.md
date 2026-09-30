@@ -1,13 +1,13 @@
 ---
 name: parked
 description: Az aktuális munka és a parkoló témák kiírása, majd kérdés a folytatásról. Használd lezáráskor (→ focus.md), amikor a Fejlesztő /parked-ot ír, vagy azt kérdezi, mi van nyitva, mi parkol.
-allowed-tools: Bash(git status *), Bash(cat .parked.md)
+allowed-tools: Bash(git status *), Bash(cat .parked.md *)
 ---
 
 ## Kontextus
 
 - Git: !`git status -sb`
-- Parkoló: !`cat .parked.md`
+- Parkoló: !`cat .parked.md || true`
 
 ## 1. Összegyűjtés
 
