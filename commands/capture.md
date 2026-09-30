@@ -2,7 +2,12 @@
 name: capture
 description: Tanulság rögzítése a claude-settings inboxába — bárhonnan, a kurációig nem hat semmire. Használd amikor a Fejlesztő /capture-t ír, vagy egy munka során olyan általánosítható tanulság születik, amit a jövőbeli sessionöknek tudniuk kellene.
 argument-hint: "mit tanultunk (üresen a beszélgetésből következtetek)"
+allowed-tools: Bash(readlink ~/.claude/rules), Bash(git -C * add inbox/), Bash(git -C * commit *), Bash(git -C * push), Write, Edit
 ---
+
+## Kontextus
+
+- Rules: !`readlink ~/.claude/rules`
 
 A *Fejlesztő* egy tanulságot akar megőrizni a globális Claude Code környezet
 számára. Ez **nem** azonnali szabály: az inboxba kerül, a sorsáról a `/curate`
@@ -10,11 +15,9 @@ dönt.
 
 ## 1. A repó megtalálása
 
-```bash
-REPO="$(dirname "$(readlink ~/.claude/rules)")"
-```
+`$REPO` = a Kontextus **Rules** sorának szülőmappája (a `rules/` fölötte).
 
-Ha a symlink nem létezik, állj meg és szólj, hogy a claude-settings nincs
+Ha a symlink nem létezik (a sor hiba), állj meg és szólj, hogy a claude-settings nincs
 telepítve ezen a gépen.
 
 ## 2. A tanulság megfogalmazása
@@ -56,7 +59,7 @@ szerkessz.
 ## 4. Commit és push
 
 ```bash
-cd "$REPO" && git add inbox/ && git commit -m "chore(inbox): <slug>" && git push   # kiegészítésnél: "chore(inbox): extend <slug>"
+git -C "$REPO" add inbox/ && git -C "$REPO" commit -m "chore(inbox): <slug>" && git -C "$REPO" push   # kiegészítésnél: "chore(inbox): extend <slug>"
 ```
 
 A push azért kell, mert a `sync.sh` csak shell-indításkor fut — enélkül a

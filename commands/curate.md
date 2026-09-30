@@ -1,7 +1,12 @@
 ---
 name: curate
 description: A claude-settings inbox feldolgozása — minden összegyűlt tanulságról eldől, hogy rule lesz, skill lesz, elvetjük, vagy halasztjuk. Használd amikor a Fejlesztő /curate-et ír, vagy az inboxban összegyűlt néhány bejegyzés.
+allowed-tools: Bash(readlink ~/.claude/rules), Bash(ls *), Bash(git -C *), Bash(claude plugin *), Read, Write, Edit
 ---
+
+## Kontextus
+
+- Rules: !`readlink ~/.claude/rules`
 
 Az `inbox/` a más projektekből érkezett tanulságok gyűjtőhelye. Ez a parancs
 dönti el a sorsukat. Felderítéssel kezdj; mutáció csak a *Fejlesztő* jóváhagyása
@@ -9,9 +14,10 @@ után.
 
 ## 1. Leltár
 
+`$REPO` = a Kontextus **Rules** sorának szülőmappája; `$PLUGINS` = mellette a
+`claude-plugins` (ha nincs ott, kérdezd meg, hol van).
+
 ```bash
-REPO="$(dirname "$(readlink ~/.claude/rules)")"
-PLUGINS="$(dirname "$REPO")/claude-plugins"   # ha nincs ott, kérdezd meg, hol van
 ls "$REPO"/inbox/*.md "$REPO"/inbox/deferred/*.md
 ```
 
