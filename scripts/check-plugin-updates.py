@@ -26,6 +26,7 @@ from pathlib import Path
 
 PLUGINS = Path.home() / ".claude" / "plugins"
 CACHE = PLUGINS / "cache"
+ORPHAN_REPORT_MIN_KB = 50 * 1024
 MARKETPLACES = PLUGINS / "marketplaces"
 HTTP_TIMEOUT = 20
 
@@ -99,13 +100,17 @@ def available(mp: str, entry: dict) -> tuple[str | None, str]:
     return None, "?"
 
 
-def orphans() -> list[tuple[str, str]]:
+def orphans() -> list[tuple[int, str]]:
     found = []
     for marker in CACHE.glob("*/*/*/.orphaned_at"):
         d = marker.parent
-        size = subprocess.run(["du", "-sh", str(d)], capture_output=True, text=True).stdout.split("\t")[0]
-        found.append((size.strip(), str(d.relative_to(CACHE))))
+        kb = subprocess.run(["du", "-sk", str(d)], capture_output=True, text=True).stdout.split("\t")[0]
+        found.append((int(kb), str(d.relative_to(CACHE))))
     return sorted(found, key=lambda x: x[1])
+
+
+def human(kb: int) -> str:
+    return f"{kb / 1024:.1f}M" if kb >= 1024 else f"{kb}K"
 
 
 def main() -> int:
@@ -170,10 +175,12 @@ def main() -> int:
             print(f"  - {line}")
         print()
 
-    if orphan_list:
-        print(f"HASZNÁLATON KÍVÜLI CACHE ({len(orphan_list)}):")
-        for size, path in orphan_list:
-            print(f"  {size:>6}  {path}")
+    # Kis méretű árva cache nem éri meg a figyelmet.
+    orphan_kb = sum(kb for kb, _ in orphan_list)
+    if orphan_kb >= ORPHAN_REPORT_MIN_KB:
+        print(f"HASZNÁLATON KÍVÜLI CACHE ({len(orphan_list)}, összesen {human(orphan_kb)}):")
+        for kb, path in orphan_list:
+            print(f"  {human(kb):>6}  {path}")
         print("  takarítás: find ~/.claude/plugins/cache -mindepth 4 -maxdepth 4 "
               "-name .orphaned_at -print0 | xargs -0 -n1 dirname | xargs rm -rf")
         print()
