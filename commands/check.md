@@ -16,7 +16,17 @@ Elsőként a projekt `CLAUDE.md`-je (**Check** sor). Ha ott nincs, `package.json
 
 ## 2. Futtatás
 
-Mindegyiket, sorban. Ha egy elbukik, a többit nem kell futtatni.
+Egy hívásban, a script futtatja: a fájlt író lépések (`format --write`, `lint --fix`)
+`--pre`-vel, sorban; utána az ellenőrzések párhuzamosan, az első bukás a többit leállítja.
+A `<név>=<parancs>` párok az 1. Detektálás eredményéből jönnek. Pl. egy pnpm-projektben:
+
+```bash
+python3 "$(dirname "$(readlink ~/.claude/rules)")/scripts/check.py" \
+  --pre "format=pnpm format" "lint=pnpm lint" "typecheck=pnpm typecheck" "test=pnpm test"
+```
+
+A kimenete már a Check-sor (→ 3. Válasz); bukásnál alatta a bukott lépés kimenetének
+vége, ebből jön a `Hiba:` sor.
 
 ## 3. Válasz
 
