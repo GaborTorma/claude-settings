@@ -61,7 +61,8 @@ gate, commit, `/worklog`, lokális fast-forward merge a `main`-be, push. A `dev`
 1. Commit `/commit`-tal
 2. Első push: `git push -u origin HEAD`
 
-A `main` munka közben nem kerül be az ágba — csak a PR merge-e fésüli össze.
+A `main` munka közben nem kerül be az ágba — csak a PR merge-e fésüli össze. Kivétel:
+ütközésnél a lezáráskor a `/merge-pr` az ágban oldja fel (`git merge origin/main`).
 
 **Lezárás** a *Fejlesztő* jóváhagyásával: `/commit-push-pr-merge` — commit,
 `/worklog`, push, PR (benne a worklogok), merge, `/worktree-close`.

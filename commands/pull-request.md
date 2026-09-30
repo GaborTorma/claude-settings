@@ -36,7 +36,7 @@ Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 - **`## Élesítés`**: ami a deploy előtt vagy közben teendő — migráció, új vagy
   megváltozott env-változó, ütemezett feladat, sorrend, rollback. Forrás a diff
   (migrációs könyvtár, `.env.example`), a worklogok és a *Fejlesztő*; ne találd ki.
-  A `/merge` ezt a merge commitba viszi, a `/release` onnan gyűjti.
+  A `/merge-pr` ezt a merge commitba viszi, a `/release` onnan gyűjti.
 - **`## Worklog`**: az ágon létrejött worklog-fájlok linkje, a fájl
   `# <cím>` sorával: `- [<cím>](<repó URL>/blob/<HEAD SHA>/.worklog/<fájl>)`.
   SHA-ra mutató link, mert az ág a merge után törlődik:
