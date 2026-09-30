@@ -40,6 +40,8 @@ Témánként (nem fájlonként) egy atomic commit, Conventional Commits üzenett
   (`git add <fájlok>` → `git commit`), logikus sorrendben.
 - **Egy fájlon belül kevert témák** → egy commit. Ha a szétválasztás fontos lenne,
   kérdezz rá a *Fejlesztő*nél.
+- **Merge folyamatban** (`git rev-parse -q --verify MERGE_HEAD` sikeres): nincs témabontás — egy commit a git
+  alapértelmezett merge-üzenetével (`git commit --no-edit`).
 - **A *Fejlesztő* argumentuma**: ha fájlokat nevez meg, csak azok kerülnek bele; ha
   szöveget ad, abból jön az üzenet vagy a kontextusa.
 
