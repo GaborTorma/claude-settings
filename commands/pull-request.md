@@ -2,14 +2,15 @@
 name: pull-request
 description: Worklog, az aktuális ág pusholása, majd PR nyitása vagy frissítése — a leírásban az ágon létrejött worklogokkal. Használd amikor a Fejlesztő /pull-request-et (vagy /pr-t) ír, vagy egy ág munkáját PR-ba akarja vinni.
 argument-hint: "PR cím vagy kontextus (opcionális)"
-allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(git diff *), Bash(git rev-parse *), Skill(worklog *), Skill(push *)
+allowed-tools: Bash(git branch --show-current), Bash(gh pr list *), Bash(git diff *), Bash(git rev-parse *), Skill(worklog *), Skill(push *)
 ---
 
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state 2>/dev/null || echo "NINCS"`
+- PR: !`gh pr list --state all --head "$(git branch --show-current)" --limit 1 --json number,url,state 2>&1 || echo "HIBA"`
+  — `[]` = nincs PR; a sor végén `HIBA` → mutasd a fölötte lévő hibát, és **állj meg**.
 
 Ha a Kontextus szerint a `main`-en állsz, **állj meg — ez hiba**: a `main`-en
 sosem dolgozunk (→ `~/.claude/rules/workflow.md`). Jelezd a *Fejlesztő*nek.
