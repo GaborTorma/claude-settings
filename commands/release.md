@@ -10,7 +10,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git des
 - Argumentum: $ARGUMENTS
 - Ág: !`git branch --show-current`
 - Munkakönyvtár: !`git status --short`
-- Utolsó kiadás: !`git describe --tags --abbrev=0 --match 'v*' || true`
+- Utolsó kiadás: !`git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || echo "NINCS"`
 
 A `main` állapotát adod ki. Az élesben lévő állapotot a legutóbbi `v*` tag jelzi;
 ami utána jött, az kiadatlan — akárhány merge is. A command meghívása maga a
@@ -19,7 +19,7 @@ deploy-engedély — kivéve, ha élesítési teendő van (→ 4. Deploy).
 ## 1. Előfeltételek
 
 Tiszta munkakönyvtár kell (Kontextus **Munkakönyvtár** sora üres); ha nem az,
-**állj meg**. Az **Utolsó kiadás** hibája (`No names found`) azt jelenti: ez az
+**állj meg**. Az **Utolsó kiadás** `NINCS` azt jelenti: ez az
 első kiadás.
 
 ```bash

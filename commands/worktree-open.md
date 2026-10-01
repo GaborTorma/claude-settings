@@ -10,8 +10,8 @@ allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls
 - Argumentum: $ARGUMENTS
 - Worktree-k: !`git worktree list`
 - Helyi ágak: !`git branch --list 'feat/*' 'refactor/*'`
-- Remote ágak: !`git ls-remote --heads origin 'refs/heads/feat/*' 'refs/heads/refactor/*' || true`
-- PR-ok (minden állapot): !`gh pr list --state all --limit 200 --json headRefName -q '.[].headRefName' || true`
+- Remote ágak: !`git ls-remote --heads origin 'refs/heads/feat/*' 'refs/heads/refactor/*' 2>/dev/null || echo "NINCS"`
+- PR-ok (minden állapot): !`gh pr list --state all --limit 200 --json headRefName -q '.[].headRefName' 2>/dev/null || echo "NINCS"`
 
 ## 1. Ágnév
 
@@ -21,7 +21,7 @@ allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls
   szerint (angol, ASCII kebab-case, 2–4 szó).
 - **Van már ilyen worktree** a Kontextusban (`.claude/worktrees/<slug>`) → visszalépés:
   `EnterWorktree`, `path: .claude/worktrees/<slug>`, majd a **3. Létrehozás** 3. lépése — és kész.
-- **Foglalt** (helyi ág, remote ág vagy bármilyen PR a Kontextusban) → másik slug
+- **Foglalt** (helyi ág, remote ág vagy bármilyen PR a Kontextusban; `NINCS` = nincs adat) → másik slug
   (pl. `-2` utótag).
 
 ## 2. Ellenőrzés

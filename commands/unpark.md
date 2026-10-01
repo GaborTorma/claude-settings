@@ -8,14 +8,14 @@ allowed-tools: Bash(cat .parked.md *), Edit(.parked.md)
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Parkoló: !`cat .parked.md || true`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 
 ## 1. Mit
 
 - **Argumentum**: egy vagy több ID (`P01`; a `P` és a vezető nulla elhagyható: `1`), szóközzel vagy vesszővel elválasztva.
 - **Nincs argumentum**: `AskUserQuestion`, header: `Kivétel`, `multiSelect: true`, az
   opciók a parkoló tételek, a `label` pontosan a tétel sora.
-- **Üres parkoló** (Kontextus-hiba `No such file`, vagy nincs tétel): csak ennyi —
+- **Üres parkoló** (a Kontextus **Parkoló** sora `NINCS`, vagy nincs tétel): csak ennyi —
   `Nincs parkoló tétel.`
 
 ## 2. Törlés

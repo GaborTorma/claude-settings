@@ -8,7 +8,7 @@ allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Remote: !`git remote get-url origin || true`
+- Remote: !`git remote get-url origin 2>/dev/null || echo "NINCS"`
 - Ág: !`git branch --show-current`
 - Állapot: !`git status -sb`
 
@@ -17,7 +17,7 @@ allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash
 A Kontextus **Remote** sora:
 
 - **URL** → **3. Push**.
-- **Hiba** (`No such remote`) → **2. Repó létrehozása**.
+- **`NINCS`** → **2. Repó létrehozása**.
 
 ## 2. Repó létrehozása
 

@@ -8,13 +8,13 @@ allowed-tools: Bash(gh issue list *), Bash(gh issue create *), Bash(gh label cre
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Remote: !`git remote get-url origin || true`
-- Parkoló: !`cat .parked.md || true`
+- Remote: !`git remote get-url origin 2>/dev/null || echo "NINCS"`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 
 A `.parked.md` a rövid távú, lokális parkoló; az issue a tartós, szinkronizált teendő.
 Munka nem indul — csak felvétel.
 
-Ha nincs remote (Kontextus-hiba): **állj meg** — issue nem vehető fel; ajánld a `/park`-ot.
+Ha nincs remote (a **Remote** sor `NINCS`): **állj meg** — issue nem vehető fel; ajánld a `/park`-ot.
 
 ## 1. Mi
 

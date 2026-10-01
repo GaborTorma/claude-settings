@@ -9,7 +9,7 @@ allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(git dif
 
 - Argumentum: $ARGUMENTS
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state || true`
+- PR: !`gh pr view --json number,url,state 2>/dev/null || echo "NINCS"`
 
 Ha a Kontextus szerint a `main`-en állsz, **állj meg — ez hiba**: a `main`-en
 sosem dolgozunk (→ `~/.claude/rules/workflow.md`). Jelezd a *Fejlesztő*nek.

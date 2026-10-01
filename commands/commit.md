@@ -9,18 +9,17 @@ allowed-tools: Bash(git status *), Bash(git diff *), Bash(git branch --show-curr
 
 - Argumentum: $ARGUMENTS
 - Git status: !`git status`
-- Diff (staged és unstaged): !`git diff HEAD || true`
+- Staged diff: !`git diff --cached`
+- Unstaged diff: !`git diff`
 - Aktuális ág: !`git branch --show-current`
-- Utolsó commitok: !`git log --oneline -10 || true`
+- Utolsó commitok: !`git log --oneline -10 2>/dev/null || echo "NINCS"`
 
 ## 1. Van mit commitolni?
 
 Ha a munkakönyvtár tiszta: nincs commit, nincs check — ez nem hiba, a hívó
 command folytatja.
 
-Üres repóban (még nincs commit) a **Diff** és az **Utolsó commitok** sor hibaüzenet
-(`does not have any commits yet`, `ambiguous argument 'HEAD'`) — a változásokat ilyenkor
-a **Git status** mutatja.
+Az **Utolsó commitok** sor `NINCS`: üres repó, ez lesz az első commit.
 
 ## 2. Check
 

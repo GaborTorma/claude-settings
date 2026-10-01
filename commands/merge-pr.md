@@ -8,7 +8,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr v
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state || true`
+- PR: !`gh pr view --json number,url,state 2>/dev/null || echo "NINCS"`
 - Munkakönyvtár: !`git status --porcelain`
 
 A command meghívása maga a merge-engedély — de csak akkor, ha a lépések
@@ -19,7 +19,7 @@ hibátlanul lefutnak. A `main` pusholása nem deploy — kiadás csak `/release`
 
 - **Tiszta munkakönyvtár** (a **Munkakönyvtár** sor üres) — commitolatlan változás nem
   kerül a PR-be; előbb `/commit`.
-- **Nyitott PR** (`state: OPEN`) — nincs, vagy hiba → előbb `/pull-request`; `MERGED` /
+- **Nyitott PR** (`state: OPEN`) — `NINCS` → előbb `/pull-request`; `MERGED` /
   `CLOSED` → nincs mit mergelni.
 - **Zöld CI**:
   - ha a PR-en van check (`gh pr checks`; „no checks reported” → nincs CI),

@@ -8,9 +8,9 @@ allowed-tools: Bash(cat .parked.md *), Bash(grep *), Bash(git rev-parse *), Bash
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Parkoló: !`cat .parked.md || true`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 - A `.gitignore`-ban: !`grep -qxF .parked.md .gitignore 2>/dev/null && echo igen || echo nem`
-- Remote: !`git remote get-url origin || true`
+- Remote: !`git remote get-url origin 2>/dev/null || echo "NINCS"`
 
 ## 1. A tétel
 
@@ -25,7 +25,7 @@ allowed-tools: Bash(cat .parked.md *), Bash(grep *), Bash(git rev-parse *), Bash
 
 Issue-jellegű, ha **mind** igaz: tartós projektmunka (bug, feature, technikai adósság,
 ami napok múlva is aktuális), önállóan elvégezhető (nem a mostani munka kérdése vagy
-mellékszála), és van remote (a Kontextus **Remote** sora nem hiba).
+mellékszála), és van remote (a Kontextus **Remote** sora nem `NINCS`).
 
 - **Egyértelműen issue-jellegű** → `AskUserQuestion`, header: `Hova`: **Issue**
   (`description`: `Javasolt — …`) / **Parkoló**. Issue → `/issue <szöveg>`, és itt kész.

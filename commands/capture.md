@@ -8,7 +8,7 @@ allowed-tools: Bash(readlink ~/.claude/rules), Bash(git -C * add inbox/), Bash(g
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Rules: !`readlink ~/.claude/rules || true`
+- Rules: !`readlink ~/.claude/rules || echo "NINCS"`
 
 A *Fejlesztő* egy tanulságot akar megőrizni a globális Claude Code környezet
 számára. Ez **nem** azonnali szabály: az inboxba kerül, a sorsáról a `/curate`
@@ -18,7 +18,7 @@ dönt.
 
 `$REPO` = a Kontextus **Rules** sorának szülőmappája (a `rules/` fölötte).
 
-Ha a symlink nem létezik (a sor üres), állj meg és szólj, hogy a claude-settings nincs
+Ha a symlink nem létezik (a sor `NINCS`), állj meg és szólj, hogy a claude-settings nincs
 telepítve ezen a gépen.
 
 ## 2. A tanulság megfogalmazása

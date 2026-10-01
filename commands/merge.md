@@ -7,7 +7,7 @@ allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Skill(merge-
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state || true`
+- PR: !`gh pr view --json number,url,state 2>/dev/null || echo "NINCS"`
 
 A Kontextus alapján, az argumentumot továbbadva (`args`); a válasz a hívott commandé:
 

@@ -7,8 +7,8 @@ allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(cat .pa
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- PR: !`gh pr view --json number,url,state || true`
-- Parkoló: !`cat .parked.md || true`
+- PR: !`gh pr view --json number,url,state 2>/dev/null || echo "NINCS"`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 
 Ha nem worktree-ben vagy (az ág `dev` vagy `main`), **állj meg**: nincs mit lezárni.
 Jegyezd fel az ág nevét — a kilépés után már nem ez az aktuális ág.
@@ -31,8 +31,8 @@ Mergelt az is, ha a Kontextus szerint a PR `MERGED`.
 
 ## 2. Parkoló tételek
 
-Ha a Kontextus **Parkoló** sora szerint a worktree `.parked.md`-jében van tétel (hiba
-`No such file` → nincs): mutasd, és kérdezd meg az
+Ha a Kontextus **Parkoló** sora szerint a worktree `.parked.md`-jében van tétel (`NINCS`
+→ nincs): mutasd, és kérdezd meg az
 `AskUserQuestion`-nel (`multiSelect: true`, a `label` pontosan a tétel sora), melyek
 kerüljenek át a fő checkout `.parked.md`-jébe (a számláló elé, az ID marad). A többi a
 worktree-vel együtt törlődik.

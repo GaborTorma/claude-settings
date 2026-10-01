@@ -8,7 +8,7 @@ allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *)
 ## Kontextus
 
 - Argumentum: $ARGUMENTS
-- Parkoló: !`cat .parked.md || true`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 - Git: !`git status -sb`
 
 ## 1. Melyik
@@ -19,7 +19,7 @@ allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *)
   Lezárt vagy nem létező → **állj meg**, jelezd.
 - **Nincs argumentum**: `AskUserQuestion`, header: `Kiválasztás`, az opciók a parkoló
   tételek, a `label` pontosan a tétel sora. Issue-hoz: `/issues`.
-- **Üres parkoló** (Kontextus-hiba `No such file`, vagy nincs tétel) és nincs
+- **Üres parkoló** (a Kontextus **Parkoló** sora `NINCS`, vagy nincs tétel) és nincs
   argumentum: csak ennyi — `Nincs parkoló tétel.`
 
 ## 2. A nyitott munka

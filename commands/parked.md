@@ -7,14 +7,14 @@ allowed-tools: Bash(git status *), Bash(cat .parked.md *), Skill(pick *), Skill(
 ## Kontextus
 
 - Git: !`git status -sb`
-- Parkoló: !`cat .parked.md || true`
+- Parkoló: !`cat .parked.md 2>/dev/null || echo "NINCS"`
 
 ## 1. Összegyűjtés
 
 - **Aktuális**: ha van még teendő az aktuális témával — a folyamatban lévő munka
   ebben a sessionben, és a félbemaradt munka a Kontextusból (commitolatlan
   változás). Commitolt, de nem pusholt munka nem aktuális.
-- **Parkolóban**: a Kontextus **Parkoló** sora — a `.parked.md` tételei ; tétel a `**PNN** · ` kezdetű sor, a `<!-- next id -->` számláló nem; hiba (`No such file`) → üres.
+- **Parkolóban**: a Kontextus **Parkoló** sora — a `.parked.md` tételei ; tétel a `**PNN** · ` kezdetű sor, a `<!-- next id -->` számláló nem; `NINCS` → üres.
 
 Ha nincs se aktuális, se parkoló tétel: csak ennyi — `Nincs aktuális/parkoló téma.`,
 és nincs kérdés.

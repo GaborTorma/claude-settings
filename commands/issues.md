@@ -6,9 +6,9 @@ allowed-tools: Bash(gh issue list *), Skill(pick *)
 
 ## Kontextus
 
-- Issue-k: !`gh issue list --state open --limit 50 --json number,title,labels,url || true`
+- Issue-k: !`gh issue list --state open --limit 50 --json number,title,labels,url 2>&1 || echo "HIBA"`
 
-Hiba (nincs remote, nincs `gh` auth) → mutasd a hibát és állj meg. Üres lista → csak
+A sor végén `HIBA` (nincs remote, nincs `gh` auth) → mutasd a fölötte lévő hibát és állj meg. Üres lista → csak
 ennyi: `Nincs nyitott issue.`
 
 ## 1. Lista

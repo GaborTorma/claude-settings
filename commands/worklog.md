@@ -7,14 +7,14 @@ allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(git diff *
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- Repó URL: !`gh repo view --json url -q .url || true`
-- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD || true`
+- Repó URL: !`gh repo view --json url -q .url 2>/dev/null || echo "NINCS"`
+- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD 2>/dev/null || echo "NINCS"`
 
 Egyszerűen értelmezhető szöveg arról, mi történt. Olvasója a *Fejlesztő* és a
 későbbi *AI*-sessionök.
 
 Ha a Kontextus szerint a `main`-en állsz, vagy nincs commit, **állj meg**: nincs mit
-összefoglalni.
+összefoglalni. A commitlista `NINCS`: nincs `origin/main` — **állj meg**, és jelezd.
 
 ## 1. Hatókör
 
@@ -65,7 +65,7 @@ commit legalább egy témához tartozik; vegyes commit mindegyikhez.
   - Bekezdések sorrendje: mi történt → miért → döntések (ha volt) → mi maradt
     nyitva (ha van). Folyó szöveg, alcímek nélkül; ahogy egy kollégának elmondanád.
   - Commitlista a szöveg után, címsor nélkül: a témához tartozó összes commit,
-    időrendben. GitHub-remote nélkül link nélkül.
+    időrendben. GitHub-remote nélkül (a **Repó URL** sor `NINCS`) link nélkül.
 
 **Nem ez**: changelog. A szöveg ne fájl- vagy commitlista legyen — a commitok csak a
 végén, hivatkozásként.
