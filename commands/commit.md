@@ -9,8 +9,6 @@ allowed-tools: Bash(git status *), Bash(git diff *), Bash(git branch --show-curr
 
 - Argumentum: $ARGUMENTS
 - Git status: !`git status`
-- Staged diff: !`git diff --cached`
-- Unstaged diff: !`git diff`
 - Aktuális ág: !`git branch --show-current`
 - Utolsó commitok: !`git log --oneline -10 2>/dev/null || echo "NINCS"`
 
@@ -26,6 +24,15 @@ Az **Utolsó commitok** sor `NINCS`: üres repó, ez lesz az első commit.
 `/check`. Ha elbukik, **állj meg**!
 
 ## 3. Commit
+
+A `/check` módosíthat fájlokat (`format --write`, `lint --fix`), ezért a csoportosítás
+előtt kérd le a friss állapotot:
+
+```bash
+git status --short
+git diff --cached
+git diff
+```
 
 Témánként (nem fájlonként) egy atomic commit, Conventional Commits üzenettel:
 

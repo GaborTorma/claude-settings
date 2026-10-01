@@ -1,13 +1,13 @@
 ---
 name: worklog
 description: Worklog-bejegyzés(ek) a .worklog/ mappába arról, mi történt az ágon a main-ről való leválása óta — témánként külön fájl, egy commitban. Használd amikor a Fejlesztő /worklog-ot ír.
-allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(git diff *), Bash(gh repo view *), Write(.worklog/**), Bash(git add .worklog/), Bash(git commit *)
+allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(git diff *), Bash(git remote get-url *), Write(.worklog/**), Bash(git add .worklog/), Bash(git commit *)
 ---
 
 ## Kontextus
 
 - Ág: !`git branch --show-current`
-- Repó URL: !`gh repo view --json url -q .url 2>/dev/null || echo "NINCS"`
+- Remote: !`git remote get-url origin 2>/dev/null || echo "NINCS"`
 - Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD 2>/dev/null || echo "NINCS"`
 
 Egyszerűen értelmezhető szöveg arról, mi történt. Olvasója a *Fejlesztő* és a
@@ -65,7 +65,9 @@ commit legalább egy témához tartozik; vegyes commit mindegyikhez.
   - Bekezdések sorrendje: mi történt → miért → döntések (ha volt) → mi maradt
     nyitva (ha van). Folyó szöveg, alcímek nélkül; ahogy egy kollégának elmondanád.
   - Commitlista a szöveg után, címsor nélkül: a témához tartozó összes commit,
-    időrendben. GitHub-remote nélkül (a **Repó URL** sor `NINCS`) link nélkül.
+    időrendben. A link alapja a Kontextus **Remote** sorából: `git@github.com:<owner>/<repo>.git`
+    vagy `https://github.com/<owner>/<repo>.git` → `https://github.com/<owner>/<repo>`. Nem
+    GitHub-remote vagy `NINCS` → link nélkül.
 
 **Nem ez**: changelog. A szöveg ne fájl- vagy commitlista legyen — a commitok csak a
 végén, hivatkozásként.
