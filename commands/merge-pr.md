@@ -69,7 +69,9 @@ A merge commit leírása egy ideiglenes fájlba kerül:
   git diff --name-only --diff-filter=A origin/main...HEAD -- .worklog/
   ```
 
-  Ha nincs worklog, a szakasz elmarad.
+  Ha nincs worklog, a szakasz elmarad. A commit-üzenet nem markdown: a commitlista
+  linkjei helyett csak a hash és a tárgysor — `` - [`[221fd4a8]`](<URL>) · <subject> ``
+  helyett `- 221fd4a8 · <subject>`.
 
 ```bash
 gh pr merge --merge --body-file <leírás>
