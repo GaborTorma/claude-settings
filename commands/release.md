@@ -7,6 +7,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git des
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Ág: !`git branch --show-current`
 - Munkakönyvtár: !`git status --short`
 - Utolsó kiadás: !`git describe --tags --abbrev=0 --match 'v*' || true`
@@ -47,7 +48,7 @@ last=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null)
 next=$(git cliff --bumped-version)
 ```
 
-Ha a *Fejlesztő* adott argumentumot: `git cliff --bump <major|minor|patch> --bumped-version`.
+Ha az **Argumentum** sor nem üres: `git cliff --bump <major|minor|patch> --bumped-version`.
 
 Ha `next` = `last`: a legutóbbi tag óta nincs új commit — **állj meg**, nincs mit
 kiadni. (Minden más commit léptet: breaking → MAJOR, `feat` → MINOR, a többi → PATCH.)

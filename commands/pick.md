@@ -7,6 +7,7 @@ allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *)
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Parkoló: !`cat .parked.md || true`
 - Git: !`git status -sb`
 

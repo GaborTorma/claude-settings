@@ -7,7 +7,7 @@ allowed-tools: Skill(commit-push-pr *), Skill(merge-pr *)
 
 Sorban — ha egy lépés megállt, **itt is állj meg**:
 
-1. `/commit-push-pr` (a *Fejlesztő* argumentumát add át `args`-ként)
+1. `/commit-push-pr` (`args`: `$ARGUMENTS`)
 2. `/merge-pr`
 
 Minden lépés válaszát a lépés saját formájában írd ki: az egysorosat azonnal, amint

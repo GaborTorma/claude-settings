@@ -7,8 +7,8 @@ allowed-tools: Skill(commit *), Skill(pull-request *)
 
 Sorban — ha egy lépés megállt, **itt is állj meg**:
 
-1. `/commit` (a *Fejlesztő* argumentumát add át `args`-ként)
-2. `/pull-request` (ugyanazzal az argumentummal)
+1. `/commit` (`args`: `$ARGUMENTS`)
+2. `/pull-request` (`args`: `$ARGUMENTS`)
 
 Minden lépés válaszát a lépés saját formájában írd ki: az egysorosat azonnal, amint
 a lépés kész; a többsorosat a lánc végén, a többivel együtt sorrendben.

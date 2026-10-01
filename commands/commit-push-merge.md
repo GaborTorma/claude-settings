@@ -8,7 +8,7 @@ allowed-tools: Skill(commit *), Skill(worklog *), Skill(merge-dev *)
 A `dev` ág munkája a `main`-be, PR nélkül. Sorban — ha egy lépés megállt, **itt is
 állj meg**:
 
-1. `/commit` (a *Fejlesztő* argumentumát add át `args`-ként)
+1. `/commit` (`args`: `$ARGUMENTS`)
 2. `/worklog`
 3. `/merge-dev`
 

@@ -5,7 +5,7 @@ argument-hint: "commit üzenet vagy kontextus (opcionális)"
 allowed-tools: Skill(commit *), Skill(push *)
 ---
 
-`/commit` (az argumentumot add át `args`-ként), majd `/push`.
+`/commit` (`args`: `$ARGUMENTS`), majd `/push`.
 Ha a `/commit` megállt, a `/push` elmarad.
 
 Minden lépés válaszát a lépés saját formájában írd ki: az egysorosat azonnal, amint

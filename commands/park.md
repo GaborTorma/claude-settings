@@ -7,13 +7,14 @@ allowed-tools: Bash(cat .parked.md *), Bash(grep *), Bash(git rev-parse *), Bash
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Parkoló: !`cat .parked.md || true`
 - A `.gitignore`-ban: !`grep -qxF .parked.md .gitignore 2>/dev/null && echo igen || echo nem`
 - Remote: !`git remote get-url origin || true`
 
 ## 1. A tétel
 
-- **Szöveg**: a *Fejlesztő* argumentuma, a szavaival; ha nincs, a beszélgetésből a
+- **Szöveg**: az **Argumentum** sor, a *Fejlesztő* szavaival; ha üres, a beszélgetésből a
   legutóbb félretett téma. Ha nem egyértelmű, melyik: kérdezz rá.
 - **Egy sor**, később is érthetően: mi a téma, és ha kell, mi van vele hátra.
 - **Jelölés**, kinek a szándéka:

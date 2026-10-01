@@ -7,6 +7,7 @@ allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Remote: !`git remote get-url origin || true`
 - Ág: !`git branch --show-current`
 - Állapot: !`git status -sb`
@@ -22,7 +23,7 @@ A Kontextus **Remote** sora:
 
 ### Javaslat
 
-- **Név**: a *Fejlesztő* argumentuma; ha nincs, a projekt neve (`package.json`
+- **Név**: az **Argumentum** sor; ha üres, a projekt neve (`package.json`
   / `pyproject.toml` `name`, különben a mappa neve), kebab-case-re alakítva.
 - **Owner**: `gh api user -q .login`; ha van szervezet (`gh api user/orgs -q '.[].login'`),
   az is opció.

@@ -7,6 +7,7 @@ allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Worktree-k: !`git worktree list`
 - Helyi ágak: !`git branch --list 'feat/*' 'refactor/*'`
 - Remote ágak: !`git ls-remote --heads origin 'refs/heads/feat/*' 'refs/heads/refactor/*' || true`
@@ -16,7 +17,7 @@ allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls
 
 - **Típus**: `refactor`, ha tisztán refactor; minden más feature-jellegű munka
   `feat` (→ `~/.claude/rules/workflow.md` / Útválasztás).
-- **`<slug>`**: a *Fejlesztő* argumentumából vagy a feladatból, a `workflow.md`
+- **`<slug>`**: az **Argumentum** sorból vagy a feladatból, a `workflow.md`
   szerint (angol, ASCII kebab-case, 2–4 szó).
 - **Van már ilyen worktree** a Kontextusban (`.claude/worktrees/<slug>`) → visszalépés:
   `EnterWorktree`, `path: .claude/worktrees/<slug>`, majd a **3. Létrehozás** 3. lépése — és kész.

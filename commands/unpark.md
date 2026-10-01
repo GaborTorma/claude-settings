@@ -7,6 +7,7 @@ allowed-tools: Bash(cat .parked.md *), Edit(.parked.md)
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Parkoló: !`cat .parked.md || true`
 
 ## 1. Mit

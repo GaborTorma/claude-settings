@@ -11,7 +11,7 @@ hibátlanul lefutottak.
 
 ## 1. Merge
 
-`/commit-push-pr-merge` (a *Fejlesztő* argumentumát add át `args`-ként).
+`/commit-push-pr-merge` (`args`: `$ARGUMENTS`).
 
 Ha bármelyik lépése megállt **itt is állj meg** — deploy nincs.
 

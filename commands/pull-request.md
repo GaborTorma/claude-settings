@@ -7,6 +7,7 @@ allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(git dif
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Ág: !`git branch --show-current`
 - PR: !`gh pr view --json number,url,state || true`
 
@@ -26,9 +27,9 @@ sosem dolgozunk (→ `~/.claude/rules/workflow.md`). Jelezd a *Fejlesztő*nek.
 Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 
 - **Összefoglaló**, 2–3 mondat: mi változott és miért — a miért az első
-  mondatban (a *Fejlesztő* argumentuma a kontextus).
+  mondatban (az **Argumentum** sor a kontextus).
 - **Issue**: ha a munka egy issue-ból indult (`/pick #<szám>`, vagy a *Fejlesztő*
-  megnevezte az argumentumban vagy a beszélgetésben), az összefoglaló alá `Closes #<szám>` — a
+  megnevezte az **Argumentum** sorban vagy a beszélgetésben), az összefoglaló alá `Closes #<szám>` — a
   merge lezárja. Ha nem volt, a sor elmarad; ne keress és ne találd ki.
 - **`## Ellenőrzés`**: csak ami ténylegesen lefutott — a `/check` eredménye (a
   `/commit` Check-sora vagy a CI), és amit kézzel megnéztünk. UI-változásnál
@@ -49,7 +50,7 @@ Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 ## 4. PR
 
 - **Nincs nyitott PR** → `gh pr create --title "<cím>" --body-file <leírás>`. A cím
-  angol, Conventional Commits formájú, a *Fejlesztő* argumentumából vagy a változásból.
+  angol, Conventional Commits formájú, az **Argumentum** sorból vagy a változásból.
 - **Van nyitott PR** (`state: OPEN`) → `gh pr edit --body-file <leírás>`.
 
 Végül írd ki a PR számát és URL-jét.

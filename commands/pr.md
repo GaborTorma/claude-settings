@@ -6,4 +6,4 @@ disable-model-invocation: true
 allowed-tools: Skill(pull-request *)
 ---
 
-`/pull-request` (az argumentumot add át `args`-ként) — a válasz is a `/pull-request`-é.
+`/pull-request` (`args`: `$ARGUMENTS`) — a válasz is a `/pull-request`-é.

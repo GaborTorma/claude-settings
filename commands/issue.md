@@ -7,6 +7,7 @@ allowed-tools: Bash(gh issue list *), Bash(gh issue create *), Bash(gh label cre
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Remote: !`git remote get-url origin || true`
 - Parkoló: !`cat .parked.md || true`
 
@@ -18,8 +19,8 @@ Ha nincs remote (Kontextus-hiba): **állj meg** — issue nem vehető fel; aján
 ## 1. Mi
 
 - **P-ID** (`P04`, `4`): a parkoló tétele — a szövegből indulsz, a végén `/unpark <ID>`.
-- **Szöveg**: a *Fejlesztő* argumentuma, a szavaival.
-- **Nincs argumentum**: a beszélgetésből; ha nem egyértelmű, kérdezz.
+- **Szöveg**: az **Argumentum** sor, a *Fejlesztő* szavaival.
+- **Üres Argumentum**: a beszélgetésből; ha nem egyértelmű, kérdezz.
 
 ## 2. Duplikátum
 

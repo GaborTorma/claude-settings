@@ -7,6 +7,7 @@ allowed-tools: Bash(readlink ~/.claude/rules), Bash(git -C * add inbox/), Bash(g
 
 ## Kontextus
 
+- Argumentum: $ARGUMENTS
 - Rules: !`readlink ~/.claude/rules || true`
 
 A *Fejlesztő* egy tanulságot akar megőrizni a globális Claude Code környezet
@@ -22,7 +23,7 @@ telepítve ezen a gépen.
 
 ## 2. A tanulság megfogalmazása
 
-Ha a *Fejlesztő* adott argumentumot, abból indulj ki; ha nem, a beszélgetésből
+Ha az **Argumentum** sor nem üres, abból indulj ki; ha nem, a beszélgetésből
 következtess — de **csak arra, ami általánosítható**. Ami csak az aktuális
 repóban igaz, az annak a projektnek a `CLAUDE.md`-jébe való, nem ide.
 
