@@ -2,7 +2,7 @@
 name: pull-request
 description: Worklog, az aktuális ág pusholása, majd PR nyitása vagy frissítése — a leírásban az ágon létrejött worklogokkal. Használd amikor a Fejlesztő /pull-request-et (vagy /pr-t) ír, vagy egy ág munkáját PR-ba akarja vinni.
 argument-hint: "PR cím vagy kontextus (opcionális)"
-allowed-tools: Bash(git branch --show-current), Bash(gh pr view *)
+allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Bash(git diff *), Bash(git rev-parse *), Skill(worklog *), Skill(push *)
 ---
 
 ## Kontextus

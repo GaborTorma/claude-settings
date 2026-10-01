@@ -1,7 +1,7 @@
 ---
 name: worklog
 description: Worklog-bejegyzés(ek) a .worklog/ mappába arról, mi történt az ágon a main-ről való leválása óta — témánként külön fájl, egy commitban. Használd amikor a Fejlesztő /worklog-ot ír.
-allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(gh repo view *)
+allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(git diff *), Bash(gh repo view *), Write(.worklog/**), Bash(git add .worklog/), Bash(git commit *)
 ---
 
 ## Kontextus

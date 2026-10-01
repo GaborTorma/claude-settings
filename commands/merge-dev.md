@@ -2,7 +2,7 @@
 name: merge-dev
 description: A dev ág lokális fast-forward mergelése a mainbe PR nélkül, zöld CI után, majd push. Csak a dev ágon, PR nélkül.
 user-invocable: false
-allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh run list *), Bash(gh run watch *)
+allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git rev-parse *), Bash(git log *), Bash(gh run list *), Bash(gh run watch *), Bash(git switch *), Bash(git pull --ff-only), Bash(git merge --ff-only dev), Bash(git merge main), Skill(check *)
 ---
 
 ## Kontextus

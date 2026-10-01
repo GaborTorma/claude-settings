@@ -2,7 +2,7 @@
 name: worktree-open
 description: Feature-jellegű munka indítása saját worktree-ben — szabad ágnév, EnterWorktree, feat/ vagy refactor/ ág, függőségek; meglévő worktree-be visszalép. Használd amikor a Fejlesztő /worktree-open-t ír, vagy feature-jellegű munkát kezd.
 argument-hint: "<slug> vagy a feladat leírása (opcionális)"
-allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls-remote *), Bash(gh pr list *)
+allowed-tools: Bash(git worktree list *), Bash(git branch --list *), Bash(git ls-remote *), Bash(gh pr list *), Bash(git branch -m *), Bash(git rev-parse *), Bash(pnpm install), Bash(uv sync), EnterWorktree, Skill(commit *)
 ---
 
 ## Kontextus

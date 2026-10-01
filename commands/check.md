@@ -1,6 +1,7 @@
 ---
 name: check
 description: A projekt ellenőrzései (lint, typecheck, test, format) az aktuális állapoton. Használd amikor a Fejlesztő /check-et ír, vagy egy command/skill ellenőrzést kér.
+allowed-tools: Bash(readlink ~/.claude/rules), Bash(dirname *), Bash(python3 */scripts/check.py *), Edit(CLAUDE.md)
 ---
 
 Az aktuális munkakönyvtár állapotán le kell futtatni a releváns ellenőrzéseket

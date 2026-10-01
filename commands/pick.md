@@ -2,7 +2,7 @@
 name: pick
 description: Egy parkoló tétel (P-ID) vagy GitHub issue (#szám) kiválasztása aktuális munkának — a nyitott munka lezárása vagy parkolása után. Használd amikor a Fejlesztő /pick-et ír, vagy egy parkoló témával vagy issue-val akar folytatni.
 argument-hint: "P02 | #12"
-allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *)
+allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *), Skill(unpark *), Skill(park *), Skill(worktree-open *)
 ---
 
 ## Kontextus

@@ -1,7 +1,7 @@
 ---
 name: issues
 description: A projekt nyitott GitHub issue-inak listája címke szerint, majd kérdés a folytatásról. Használd amikor a Fejlesztő /issues-t ír, vagy azt kérdezi, milyen teendők vannak a projektben.
-allowed-tools: Bash(gh issue list *)
+allowed-tools: Bash(gh issue list *), Skill(pick *)
 ---
 
 ## Kontextus

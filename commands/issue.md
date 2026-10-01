@@ -2,7 +2,7 @@
 name: issue
 description: Teendő felvétele GitHub issue-ként — leírásból vagy egy parkoló tétel (P-ID) átléptetésével, fix/feature címkével. Használd amikor a Fejlesztő /issue-t ír, vagy egy teendőt tartósan, a projekt backlogjába akar felvenni.
 argument-hint: "leírás vagy P-ID (opcionális)"
-allowed-tools: Bash(gh issue list *), Bash(gh issue create *), Bash(gh label create *), Bash(git remote get-url *), Bash(cat .parked.md *)
+allowed-tools: Bash(gh issue list *), Bash(gh issue create *), Bash(gh label create *), Bash(git remote get-url *), Bash(cat .parked.md *), Skill(unpark *)
 ---
 
 ## Kontextus

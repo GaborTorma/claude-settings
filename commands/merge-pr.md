@@ -2,7 +2,7 @@
 name: merge-pr
 description: Feature-ág PR-jének mergelése a mainbe — próba-merge és check, zöld CI, merge commit a worklogokkal, majd takarítás. Csak nyitott PR esetén.
 user-invocable: false
-allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr view *), Bash(gh pr checks *)
+allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr view *), Bash(gh pr checks *), Bash(git fetch *), Bash(git merge-base *), Bash(git merge --no-commit --no-ff origin/main), Bash(git merge --abort), Bash(git merge origin/main), Bash(git diff *), Skill(check *), Skill(worktree-close *)
 ---
 
 ## Kontextus

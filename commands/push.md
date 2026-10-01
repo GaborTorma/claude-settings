@@ -2,7 +2,7 @@
 name: push
 description: Push a remote-ra; ha még nincs remote, GitHub-repót hoz létre — nevet és láthatóságot javasol, és kérdésként felteszi. Használd amikor a Fejlesztő /push-t ír, vagy a repót először vinné fel GitHubra.
 argument-hint: "repó neve (opcionális)"
-allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash(git status *)
+allowed-tools: Bash(git remote get-url *), Bash(git branch --show-current), Bash(git status *), Bash(git log *), Bash(git rev-parse *), Bash(git pull --rebase *), Bash(gh api user *), Bash(gh api user/orgs *), Bash(gh repo view *)
 ---
 
 ## Kontextus

@@ -2,6 +2,7 @@
 name: commit-push-pr-merge
 description: Commit + worklog + push + PR + merge a mainbe + takarítás egy menetben. Használd amikor a Fejlesztő /commit-push-pr-merge-öt ír, vagy egy kész feature-ág munkáját azonnal a mainbe akarja vinni.
 argument-hint: "PR cím vagy kontextus (opcionális)"
+allowed-tools: Skill(commit-push-pr *), Skill(merge-pr *)
 ---
 
 Sorban — ha egy lépés megállt, **itt is állj meg**:

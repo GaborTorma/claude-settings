@@ -2,7 +2,7 @@
 name: commit
 description: Git commit a jelenlegi változásokból — /check után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
 argument-hint: 'commit üzenet vagy kontextus (opcionális)'
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
+allowed-tools: Bash(git status *), Bash(git diff *), Bash(git branch --show-current), Bash(git log *), Bash(git rev-parse *), Bash(git add *), Bash(git commit *), Skill(check *)
 ---
 
 ## Kontextus

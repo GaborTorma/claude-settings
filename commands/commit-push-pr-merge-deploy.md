@@ -2,6 +2,7 @@
 name: commit-push-pr-merge-deploy
 description: Commit + push + PR + merge a mainbe + kiadás (release, deploy) egy menetben. Használd amikor a Fejlesztő /commit-push-pr-merge-deploy-t ír, vagy egy kész branch munkáját azonnal élesíteni akarja.
 argument-hint: "PR cím vagy kontextus (opcionális)"
+allowed-tools: Skill(commit-push-pr-merge *), Skill(release *)
 ---
 
 A `/commit-push-pr-merge` folyamata, utána kiadás (`/release`) a friss `main`-ről.

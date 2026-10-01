@@ -1,7 +1,7 @@
 ---
 name: curate
 description: A claude-settings inbox feldolgozása — minden összegyűlt tanulságról eldől, hogy rule lesz, skill lesz, elvetjük, vagy halasztjuk. Használd amikor a Fejlesztő /curate-et ír, vagy az inboxban összegyűlt néhány bejegyzés.
-allowed-tools: Bash(readlink ~/.claude/rules), Bash(ls *), Bash(git -C *), Bash(claude plugin *), Read, Write, Edit
+allowed-tools: Bash(readlink ~/.claude/rules), Bash(ls *), Bash(git -C * add *), Bash(git -C * commit *), Bash(git -C * mv *), Bash(git -C * rm *), Bash(git -C * push), Bash(claude plugin *), Read, Write, Edit
 ---
 
 ## Kontextus

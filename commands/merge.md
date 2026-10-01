@@ -1,7 +1,7 @@
 ---
 name: merge
 description: Az aktuális ág mergelése a mainbe — nyitott PR-nél /merge-pr, a dev ágon PR nélkül /merge-dev. Használd amikor a Fejlesztő /merge-et ír, vagy egy kész ágat a mainbe akar vinni.
-allowed-tools: Bash(git branch --show-current), Bash(gh pr view *)
+allowed-tools: Bash(git branch --show-current), Bash(gh pr view *), Skill(merge-pr *), Skill(merge-dev *)
 ---
 
 ## Kontextus

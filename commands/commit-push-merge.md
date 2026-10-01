@@ -2,6 +2,7 @@
 name: commit-push-merge
 description: Commit + worklog + lokális merge a mainbe + push, PR nélkül. Használd amikor a Fejlesztő /commit-push-merge-öt ír, vagy a dev ágon kész, fix-jellegű munkát a mainbe akarja vinni.
 argument-hint: "commit üzenet vagy kontextus (opcionális)"
+allowed-tools: Skill(commit *), Skill(worklog *), Skill(merge-dev *)
 ---
 
 A `dev` ág munkája a `main`-be, PR nélkül. Sorban — ha egy lépés megállt, **itt is

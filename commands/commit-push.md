@@ -2,6 +2,7 @@
 name: commit-push
 description: Commit + push egy menetben, PR nélkül. Használd amikor a Fejlesztő /commit-push-t ír, vagy a kész munkát csak fel akarja tolni a remote-ra.
 argument-hint: "commit üzenet vagy kontextus (opcionális)"
+allowed-tools: Skill(commit *), Skill(push *)
 ---
 
 `/commit` (az argumentumot add át `args`-ként), majd `/push`.

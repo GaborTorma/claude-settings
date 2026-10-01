@@ -2,6 +2,7 @@
 name: commit-push-pr
 description: Commit + PR (worklog, push, PR a worklogokkal). Használd amikor a Fejlesztő /commit-push-pr-t ír, vagy egy ág munkáját PR-ba akarja vinni.
 argument-hint: "PR cím vagy kontextus (opcionális)"
+allowed-tools: Skill(commit *), Skill(pull-request *)
 ---
 
 Sorban — ha egy lépés megállt, **itt is állj meg**:
