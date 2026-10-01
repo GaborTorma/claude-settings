@@ -32,8 +32,23 @@ A commitolatlan változás nem tartozik bele — előbb commitolj.
 ## 2. Témák
 
 Csoportosítsd a változásokat témák szerint. Egy téma = egy fájl: ha az ágra
-egymástól független dolgok is bekerültek, mindegyik külön fájlt kap. Minden
-commit legalább egy témához tartozik; vegyes commit mindegyikhez.
+egymástól független dolgok is bekerültek, mindegyik külön fájlt kap. Vegyes commit
+mindegyik témájához.
+
+Témát az a változás ad, ami a *User* vagy a *Fejlesztő* szemszögéből történetet
+hordoz. Kiindulás a commit típusa:
+
+| Típus | Worklog |
+| --- | --- |
+| `feat`, `fix`, `perf`, `refactor`, `revert`, `deploy`, bármely `!` | **téma**: saját fájl, szöveggel |
+| `docs`, `test`, `build` | **csak lista**: a legközelebbi téma commitlistájába, szöveg nélkül |
+| `style`, `chore`, `docs(worklog)` | **kimarad** |
+
+- **Felfelé**: ha egy „csak lista” vagy „kimarad” típus az ág fő munkája (pl. egy
+  docs-repó tartalma, build-rendszer csere), az téma.
+- **Lefelé**: a történet nélküli „téma” típusú commit (elírás-`fix`, egysoros
+  `refactor`) csak a listába kerül.
+- Ha nem marad téma, **állj meg** — nincs érdemi összefoglalnivaló, ez nem hiba.
 
 ## 3. Fájlok
 
@@ -64,7 +79,7 @@ commit legalább egy témához tartozik; vegyes commit mindegyikhez.
 
   - Bekezdések sorrendje: mi történt → miért → döntések (ha volt) → mi maradt
     nyitva (ha van). Folyó szöveg, alcímek nélkül; ahogy egy kollégának elmondanád.
-  - Commitlista a szöveg után, címsor nélkül: a témához tartozó összes commit,
+  - Commitlista a szöveg után, címsor nélkül: a témához tartozó commitok (a „csak lista” commitokkal együtt),
     időrendben. A link alapja a Kontextus **Remote** sorából: `git@github.com:<owner>/<repo>.git`
     vagy `https://github.com/<owner>/<repo>.git` → `https://github.com/<owner>/<repo>`. Nem
     GitHub-remote vagy `NINCS` → link nélkül.
