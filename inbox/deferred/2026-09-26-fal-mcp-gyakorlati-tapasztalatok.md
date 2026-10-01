@@ -2,7 +2,10 @@
 date: 2026-09-26
 source: claude-plugins
 kind: skill
+deferred: 2026-10-01
 ---
+
+**Miért halasztva**: a rövid lényeg (fal.ai képgeneráláshoz, vektorhoz Recraft) a `rules/fal-ai.md`-be került. A részletek (bekötési buktatók, árak, prompt-tippek, asset-szabályok) skillnek valók, de még nincs eldöntve, melyik pluginba.
 
 # fal.ai MCP: gyakorlati tapasztalatok az első bekötésből
 
