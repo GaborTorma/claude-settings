@@ -8,7 +8,7 @@ allowed-tools: Bash(git branch --show-current), Bash(git log *), Bash(git diff *
 
 - Ág: !`git branch --show-current`
 - Remote: !`git remote get-url origin 2>/dev/null || echo "NINCS"`
-- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %s' origin/main..HEAD 2>/dev/null || echo "NINCS"`
+- Commitok az ág leválása óta: !`git log --reverse --abbrev=8 --format='%h %H %cd %s' --date=format-local:%Y-%m-%d-%H%M origin/main..HEAD 2>/dev/null || echo "NINCS"`
 
 Egyszerűen értelmezhető szöveg arról, mi történt. Olvasója a *Fejlesztő* és a
 későbbi *AI*-sessionök.
@@ -53,7 +53,8 @@ hordoz. Kiindulás a commit típusa:
 ## 3. Fájlok
 
 - **Hely**: `.worklog/` a repó gyökerében, verziókövetve.
-- **Név**: `YYYY-MM-DD-HHMM-<téma>.md`: a mostani időpont (helyi idő) + a téma
+- **Név**: `YYYY-MM-DD-HHMM-<téma>.md`: a téma legutolsó commitjának időpontja (a
+  Kontextus commitlistájának dátum-oszlopa, helyi idő) + a téma
   rövid neve (angol, ASCII kebab-case, 2–4 szó), a tartalomból — nem az ág nevéből.
 - **Nyelv**: magyar.
 - **Tartalom** — minta:
