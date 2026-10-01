@@ -8,14 +8,18 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 ## Kontextus
 
 - Git status: !`git status`
-- Diff (staged és unstaged): !`git diff HEAD`
+- Diff (staged és unstaged): !`git diff HEAD || true`
 - Aktuális ág: !`git branch --show-current`
-- Utolsó commitok: !`git log --oneline -10`
+- Utolsó commitok: !`git log --oneline -10 || true`
 
 ## 1. Van mit commitolni?
 
 Ha a munkakönyvtár tiszta: nincs commit, nincs check — ez nem hiba, a hívó
 command folytatja.
+
+Üres repóban (még nincs commit) a **Diff** és az **Utolsó commitok** sor hibaüzenet
+(`does not have any commits yet`, `ambiguous argument 'HEAD'`) — a változásokat ilyenkor
+a **Git status** mutatja.
 
 ## 2. Check
 

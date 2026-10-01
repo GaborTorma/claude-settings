@@ -6,7 +6,7 @@ allowed-tools: Bash(readlink ~/.claude/rules), Bash(ls *), Bash(git -C *), Bash(
 
 ## Kontextus
 
-- Rules: !`readlink ~/.claude/rules`
+- Rules: !`readlink ~/.claude/rules || true`
 
 Az `inbox/` a más projektekből érkezett tanulságok gyűjtőhelye. Ez a parancs
 dönti el a sorsukat. Felderítéssel kezdj; mutáció csak a *Fejlesztő* jóváhagyása
@@ -15,7 +15,8 @@ után.
 ## 1. Leltár
 
 `$REPO` = a Kontextus **Rules** sorának szülőmappája; `$PLUGINS` = mellette a
-`claude-plugins` (ha nincs ott, kérdezd meg, hol van).
+`claude-plugins` (ha nincs ott, kérdezd meg, hol van). Ha a **Rules** sor üres (nincs
+symlink), állj meg és szólj, hogy a claude-settings nincs telepítve ezen a gépen.
 
 ```bash
 ls "$REPO"/inbox/*.md "$REPO"/inbox/deferred/*.md
