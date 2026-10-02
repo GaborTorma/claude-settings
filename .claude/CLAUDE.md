@@ -16,3 +16,4 @@ ezért a repó saját tényei ide kerülnek.
   worktree), nincs PR — minden commit közvetlenül a `main`-re megy.
 - Felmentés a **teljes** globális `workflow.md` alól (ágak, útválasztás, Init, Fix- és
   Feature-munka, merge, kiadás) — ebben a repóban egyik utasítása sem érvényes.
+- **Commit csak jóváhagyás után**: a változás a munkakönyvtárban marad, amíg a _Fejlesztő_ olvasta.
