@@ -12,5 +12,7 @@ ezért a repó saját tényei ide kerülnek.
 
 ## Git
 
-- A globális `workflow.md` utasításai ebben a repóban **nem érvényesek**.
-- Minden commit közvetlenül a `main`-re megy — nincs `dev`, nincs feature-ág, nincs PR.
+- **Mindig a `main`-en dolgozunk**: nincs `dev`, nincs feature-ág (`feat/`, `refactor/`,
+  worktree), nincs PR — minden commit közvetlenül a `main`-re megy.
+- Felmentés a **teljes** globális `workflow.md` alól (ágak, útválasztás, Init, Fix- és
+  Feature-munka, merge, kiadás) — ebben a repóban egyik utasítása sem érvényes.
