@@ -29,13 +29,12 @@ Conventional Commits type-jai (→ `/commit`):
 
 1. `git init -b main`
 2. `git-graph --launch-config`
-3. A stack váza: stack-döntés (→ [stack.md](stack.md)), scaffold, lint / typecheck / test / format config
-4. `.gitignore` (→ [enviroment.md](enviroment.md))
-5. `.env.example` (→ [enviroment.md](enviroment.md))
-6. `CLAUDE.md` (→ [claude.md](claude.md))
-7. `/commit chore: initial commit` — egyetlen commit, témabontás nélkül
-8. `git branch dev`
-9. `git switch dev`
+3. `.gitignore` (→ [enviroment.md](enviroment.md))
+4. `.env.example` (→ [enviroment.md](enviroment.md))
+5. `CLAUDE.md` (→ [claude.md](claude.md))
+6. `git commit -m "Initial commit"`
+7. `git branch dev`
+8. `git switch dev`
 
 Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 
