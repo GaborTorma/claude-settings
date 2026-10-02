@@ -1,7 +1,15 @@
 # Munkafolyamat
 
-Ágkezelés git + GitHub alatt, stack-függetlenül. Ha a stacknek van saját
+Hogyan kezdünk vagy bővítünk egy projektet. Ha a stacknek van saját
 workflow-skillje (DB-ág, preview, deploy), az erre épül, nem írja felül.
+
+## Célok tisztázása
+
+Implementáció előtt a *Fejlesztő*vel:
+
+- **Cél**: milyen problémát old meg.
+- **Hatókör**: mi része az aktuális körnek és mi nem.
+- **Stack**: → [stack.md](stack.md).
 
 ## Ágak
 
@@ -28,12 +36,13 @@ Conventional Commits type-jai (→ `/commit`):
 ## Init
 
 1. `git init -b main`
-2. `.gitignore` (→ [enviroment.md](enviroment.md))
-3. `.env.example` (→ [enviroment.md](enviroment.md))
-4. `CLAUDE.md` (→ [claude.md](claude.md))
-5. `git commit -m "Initial commit"`
-6. `git branch dev`
-7. `git switch dev`
+2. A stack váza: scaffold, lint / typecheck / test / format config
+3. `.gitignore` (→ [enviroment.md](enviroment.md))
+4. `.env.example` (→ [enviroment.md](enviroment.md))
+5. `CLAUDE.md` (→ [claude.md](claude.md))
+6. `/commit chore: initial commit` — egyetlen commit, témabontás nélkül
+7. `git branch dev`
+8. `git switch dev`
 
 Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 
