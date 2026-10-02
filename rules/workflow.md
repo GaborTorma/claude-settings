@@ -28,13 +28,12 @@ Conventional Commits type-jai (→ `/commit`):
 ## Init
 
 1. `git init -b main`
-2. `git-graph --launch-config`
-3. `.gitignore` (→ [enviroment.md](enviroment.md))
-4. `.env.example` (→ [enviroment.md](enviroment.md))
-5. `CLAUDE.md` (→ [claude.md](claude.md))
-6. `git commit -m "Initial commit"`
-7. `git branch dev`
-8. `git switch dev`
+2. `.gitignore` (→ [enviroment.md](enviroment.md))
+3. `.env.example` (→ [enviroment.md](enviroment.md))
+4. `CLAUDE.md` (→ [claude.md](claude.md))
+5. `git commit -m "Initial commit"`
+6. `git branch dev`
+7. `git switch dev`
 
 Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 
