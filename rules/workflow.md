@@ -5,11 +5,18 @@ workflow-skillje (DB-ág, preview, deploy), az erre épül, nem írja felül.
 
 ## Célok tisztázása
 
-Implementáció előtt a *Fejlesztő*vel:
+A munka indulásakor, a *Fejlesztő*vel. Ha a munka issue-ból vagy parkoló tételből indul (`/pick`), az 1–2. pontot az adja.
 
-- **Cél**: milyen problémát old meg.
-- **Hatókör**: mi része az aktuális körnek és mi nem.
-- **Stack**: → [stack.md](stack.md).
+1. **Cél**: milyen problémát kell megoldani.
+2. **Hatókör**: mi része az aktuális körnek és mi nem.
+3. **Útválasztás** a feladat típusa szerint. A kategóriák a Conventional Commits type-jai (→ `/commit`):
+   - Feature-jellegű: `feat`, `refactor`, és típustól függetlenül a breaking change (`!`) és minden
+     migráció, amit egy `git revert` nem állít vissza (pl. DB-séma, tárolt adat, más kliensek által hívott API, env).
+   - Fix-jellegű: minden más (`fix`, `perf`, `style`, `docs`, `test`, `build`, `chore`, ...).
+   - Vegyes feladat → feature-ág. Ha egy Fix-jellegű munkáról menet közben kiderül, hogy feature-jellegű, állj meg és kérdezz.
+4. **Stack**: új projektnél vagy új függőségnél → [stack.md](stack.md).
+
+Ez a könnyített változat; nagyobb, több lépéses körnél az 1–2. pont → `/intent-driven-planning`.
 
 ## Ágak
 
@@ -25,14 +32,6 @@ Implementáció előtt a *Fejlesztő*vel:
 **Teendők**: tartós → GitHub issue (`/issue`, `/issues`), `fix` / `feature` címkével;
 rövid távú, félretett → `.parked.md` (`/park`). Indulás mindkettőből: `/pick`.
 
-**Útválasztás a feladat típusa szerint**, a munka indulásakor. A kategóriák a
-Conventional Commits type-jai (→ `/commit`):
-
-- Feature-jellegű: `feat`, `refactor`, és típustól függetlenül a breaking change (`!`) és minden
-  migráció, amit egy `git revert` nem állít vissza (pl. DB-séma, tárolt adat, más kliensek által hívott API, env).
-- Fix-jellegű: minden más (`fix`, `perf`, `style`, `docs`, `test`, `build`, `chore`, ...).
-- Vegyes feladat → feature-ág. Ha egy Fix-jellegű munkáról menet közben kiderül, hogy feature-jellegű, állj meg és kérdezz.
-
 ## Init
 
 1. `git init -b main`
@@ -43,8 +42,7 @@ Conventional Commits type-jai (→ `/commit`):
 6. `/commit chore: initial commit` — egyetlen commit, témabontás nélkül
 7. `git branch dev`
 8. `git switch dev`
-
-Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
+9. `/push`
 
 ## Fix-jellegű munka:
 
@@ -53,7 +51,8 @@ Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 1. `git fetch`
 2. `git switch dev`
 3. `git merge --ff-only origin/main`
-4. Ha nem fast-forward (a `dev`-en merge-eletlen munka van): egyeztess a *Fejlesztő*vel.
+
+Ha nem fast-forward (a `dev`-en merge-eletlen munka van): egyeztess a *Fejlesztő*vel.
 
 **Munka**: commit `/commit`-tal.
 
@@ -65,11 +64,10 @@ Remote (GitHub) nem része az initnek → `/push`, amikor a *Fejlesztő* kéri.
 
 **Munka**:
 
-1. Commit `/commit`-tal
-2. Első push: `git push -u origin HEAD`
+`/commit-push`
 
-A `main` munka közben nem kerül be az ágba — csak a PR merge-e fésüli össze. Kivétel:
-ütközésnél a lezáráskor a `/merge-pr` az ágban oldja fel (`git merge origin/main`).
+A `main` munka közben nem kerül be az ágba — csak a PR merge-e fésüli össze.
+Kivétel: ütközésnél a lezáráskor a `/merge-pr` az ágban oldja fel (`git merge origin/main`).
 
 **Lezárás** a *Fejlesztő* jóváhagyásával: `/commit-push-pr-merge`.
 
