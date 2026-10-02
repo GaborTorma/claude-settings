@@ -19,19 +19,13 @@ command folytatja.
 
 Az **Utolsó commitok** sor `NINCS`: üres repó, ez lesz az első commit.
 
-## 2. Typo
+## 2. `/typo`
 
-`/typo` — a commitolatlan változások elírásai. Javíthat fájlt, ezért a `/check` előtt
-fut; nem bukik.
-
-## 3. Check
-
-`/check`. Ha elbukik, **állj meg**!
+## 3. `/check`
 
 ## 4. Commit
 
-A `/check` módosíthat fájlokat (`format --write`, `lint --fix`), ezért a csoportosítás
-előtt kérd le a friss állapotot:
+A `/typo` és a `/check` módosíthat fájlokat (`format --write`, `lint --fix`), ezért a csoportosítás előtt kérd le a friss állapotot:
 
 ```bash
 git status --short
@@ -39,7 +33,7 @@ git diff --cached
 git diff
 ```
 
-Témánként (nem fájlonként) egy atomic commit, Conventional Commits üzenettel:
+Témánként (nem fájlonként) egy commit, Conventional Commits üzenettel:
 
 - **Csoportosítás**: a változásokat témák szerint válaszd szét. Ha a témák
   **fájlszinten** tisztán elkülönülnek, mindegyik külön commit a saját típusával
