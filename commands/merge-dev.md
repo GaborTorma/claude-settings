@@ -2,7 +2,7 @@
 name: merge-dev
 description: A dev ág lokális fast-forward mergelése a mainbe PR nélkül, zöld CI után, majd push. Csak a dev ágon, PR nélkül.
 user-invocable: false
-allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git rev-parse *), Bash(git log *), Bash(gh run list *), Bash(gh run watch *), Bash(git switch *), Bash(git pull --ff-only), Bash(git merge --ff-only dev), Bash(git merge main), Skill(check *)
+allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(git rev-parse *), Bash(git log *), Bash(gh run list *), Bash(gh run watch *), Bash(git switch *), Bash(git pull --ff-only), Bash(git merge --ff-only dev), Bash(git merge main), Bash(git add *), Bash(git commit --no-edit), Skill(check *)
 ---
 
 ## Kontextus
@@ -37,6 +37,7 @@ git switch dev
 
 Ha a `--ff-only` merge elbukik (a `main` közben elmozdult): `git switch dev`,
 `git merge main`, `/check`, merge újra. Konfliktusnál **állj meg** — onnan
-a *Fejlesztő* dönt, de tegyél javaslatot.
+a *Fejlesztő* dönt, de tegyél javaslatot. Jóváhagyott feloldás után: `/check` →
+`git add <feloldott fájlok>` → `git commit --no-edit` → `/merge` újra.
 
 Végül írd ki a mergelt commitok rövid SHA-ját.

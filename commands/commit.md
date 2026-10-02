@@ -2,7 +2,7 @@
 name: commit
 description: Git commit a jelenlegi változásokból — /check után, Conventional Commits üzenettel; tisztán elkülönülő témák külön commitba. Használd amikor a Fejlesztő /commit-ot ír, vagy egy másik command commitot kér.
 argument-hint: 'commit üzenet vagy kontextus (opcionális)'
-allowed-tools: Bash(git status *), Bash(git diff *), Bash(git branch --show-current), Bash(git log *), Bash(git rev-parse *), Bash(git add *), Bash(git commit *), Skill(check *)
+allowed-tools: Bash(git status *), Bash(git diff *), Bash(git branch --show-current), Bash(git log *), Bash(git rev-parse *), Bash(git add *), Bash(git commit *), Skill(typo *), Skill(check *)
 ---
 
 ## Kontextus
@@ -19,11 +19,16 @@ command folytatja.
 
 Az **Utolsó commitok** sor `NINCS`: üres repó, ez lesz az első commit.
 
-## 2. Check
+## 2. Typo
+
+`/typo` — a commitolatlan változások elírásai. Javíthat fájlt, ezért a `/check` előtt
+fut; nem bukik.
+
+## 3. Check
 
 `/check`. Ha elbukik, **állj meg**!
 
-## 3. Commit
+## 4. Commit
 
 A `/check` módosíthat fájlokat (`format --write`, `lint --fix`), ezért a csoportosítás
 előtt kérd le a friss állapotot:
@@ -41,8 +46,6 @@ Témánként (nem fájlonként) egy atomic commit, Conventional Commits üzenett
   (`git add <fájlok>` → `git commit`), logikus sorrendben.
 - **Egy fájlon belül kevert témák** → egy commit. Ha a szétválasztás fontos lenne,
   kérdezz rá a *Fejlesztő*nél.
-- **Merge folyamatban** (`git rev-parse -q --verify MERGE_HEAD` sikeres): nincs témabontás — egy commit a git
-  alapértelmezett merge-üzenetével (`git commit --no-edit`).
 - **Az Argumentum sor**: ha fájlokat nevez meg, csak azok kerülnek bele; ha
   szöveget ad, abból jön az üzenet vagy a kontextusa.
 
@@ -89,7 +92,7 @@ feat!: remove deprecated v1 API endpoints
 issue-ból indult (`/pick #<szám>`), vagy a *Fejlesztő* megnevezte — soha ne találd ki.
 Fix-jellegű munkánál ez zárja le az issue-t, amikor a commit a `main`-re kerül.
 
-## 4. Válasz
+## 5. Válasz
 
 Mindig ebben a formában!
 
@@ -109,6 +112,7 @@ Commits:
 - `[62ad1820]` · <commit subject>
 ```
 
+- **Typo-sorok**: ha a `/typo` talált valamit, a sorai (`Typo:` / `Typo?:`) a Check-sor alatt.
 - **Check-sor**: a `/check` válasza, egyszer, az összes commit előtt; ha nem futott ellenőrzés, elmarad.
 - **Nem volt mit commitolni**: csak ennyi — `Nincs új commit.`
 - **Egy check elbukott**: `Check: <ellenőrzés> ✗`, alatta üres sor, majd Commit-sor helyett:

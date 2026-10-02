@@ -2,7 +2,7 @@
 name: merge-pr
 description: Feature-ág PR-jének mergelése a mainbe — próba-merge és check, zöld CI, merge commit a worklogokkal, majd takarítás. Csak nyitott PR esetén.
 user-invocable: false
-allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr list *), Bash(gh pr view *), Bash(gh pr checks *), Bash(git fetch *), Bash(git merge-base *), Bash(git merge --no-commit --no-ff origin/main), Bash(git merge --abort), Bash(git merge origin/main), Bash(git diff *), Skill(check *), Skill(worktree-close *)
+allowed-tools: Bash(git branch --show-current), Bash(git status *), Bash(gh pr list *), Bash(gh pr view *), Bash(gh pr checks *), Bash(git fetch *), Bash(git merge-base *), Bash(git merge --no-commit --no-ff origin/main), Bash(git merge --abort), Bash(git merge origin/main), Bash(git add *), Bash(git commit --no-edit), Bash(git push), Bash(git diff *), Skill(check *), Skill(worktree-close *)
 ---
 
 ## Kontextus
@@ -93,7 +93,8 @@ worktree-jében.
 git merge origin/main        # ütközések feloldása
 ```
 
-Feloldás után `/commit-push` (benne a `/check`), majd újra `/merge-pr`.
+Feloldás után: `/check` → `git add <feloldott fájlok>` → `git commit --no-edit` →
+`git push`, majd újra `/merge-pr`.
 
 ## 4. Takarítás
 
