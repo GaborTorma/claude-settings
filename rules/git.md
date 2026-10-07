@@ -1,7 +1,7 @@
 # Git workflow
 
-- **Új projekt, ágak, merge, PR**: → [workflow.md](workflow.md).
-- **Commit**: mindig `/commit`, Conventional Commits üzenettel.
+- **Új projekt, ágak, merge, PR**: → `workflow:workflow` skill.
+- **Commit**: mindig `/workflow:commit`, Conventional Commits üzenettel.
 - **Több feladat**: egymástól független feladatok (apró módosítások is) → feladatonként
   külön commit. Ha két feladat ugyanazt a fájlt érinti, az elsőt commitold, mielőtt a
   másodikba kezdesz.
