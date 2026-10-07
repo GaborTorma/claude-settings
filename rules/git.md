@@ -2,6 +2,9 @@
 
 - **Új projekt, ágak, merge, PR**: → [workflow.md](workflow.md).
 - **Commit**: mindig `/commit`, Conventional Commits üzenettel.
+- **Több feladat**: egymástól független feladatok (apró módosítások is) → feladatonként
+  külön commit. Ha két feladat ugyanazt a fájlt érinti, az elsőt commitold, mielőtt a
+  másodikba kezdesz.
 - **Auto-commit**: Csak jóváhagyott terv / TODO önállóan végrehajtásakor, lépésenként.
 - **Merge, push, PR**: sosem automatikus, csak külön commandra vagy megerősítés után.
 - **Visszavonás**: `git revert <sha>` — nem patchek! Keress korábbi commitot, ha a
