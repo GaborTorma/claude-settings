@@ -50,8 +50,9 @@ Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 
 ## 4. PR
 
-- **Nincs nyitott PR** → `gh pr create --title "<cím>" --body-file <leírás>`. A cím
-  angol, Conventional Commits formájú, az **Argumentum** sorból vagy a változásból.
+- **Nincs nyitott PR** → `gh pr create --title "<cím>" --body-file <leírás>`, és
+  `--draft`, ha az **Argumentum** sor tartalmazza. A cím angol, Conventional Commits
+  formájú, az **Argumentum** sorból (a `--draft` nélkül) vagy a változásból.
 - **Van nyitott PR** (`state: OPEN`) → `gh pr edit --body-file <leírás>`.
 
 Végül írd ki a PR számát és URL-jét.
