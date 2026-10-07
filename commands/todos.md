@@ -27,7 +27,7 @@ indulni a `/pick`-kel lehet.
    - [#<szám>](<URL>) · <cím>
 ```
 
-- **Parkolóban**: tétel a `**PNN** · ` kezdetű sor, a `<!-- next id -->` számláló nem;
+- **Parkolóban**: tétel a `**PNN** · ` vagy `**PNN** ▶ · ` (pick-elt) kezdetű sor, a `<!-- next id -->` számláló nem;
   a tétel végi dátum (`· <YYYY-MM-DD>`) nem jelenik meg.
 - **Issue-k**: címke szerint (`feature`, `fix`, címke nélkül), a csoporton belül szám
   szerint; üres csoport kimarad. `HIBA` → a blokk helyén a fölötte lévő hiba egy sorban.

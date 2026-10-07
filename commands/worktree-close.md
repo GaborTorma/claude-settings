@@ -38,8 +38,9 @@ Mergelt az is, ha a Kontextus szerint a PR `MERGED`.
 Ha a Kontextus **Parkoló** sora szerint a worktree `.parked.md`-jében van tétel (`NINCS`
 → nincs): mutasd, és kérdezd meg az
 `AskUserQuestion`-nel (`multiSelect: true`, a `label` pontosan a tétel sora), melyek
-kerüljenek át a fő checkout `.parked.md`-jébe (a számláló elé, az ID marad). A többi a
-worktree-vel együtt törlődik.
+kerüljenek át a fő checkout `.parked.md`-jébe: a számláló elé, a fő checkout
+számlálójából új ID-vel (a `/park` 3. pontja szerint); a 4-es határ itt nem érvényes.
+A többi a worktree-vel együtt törlődik.
 
 ## 3. Kilépés
 

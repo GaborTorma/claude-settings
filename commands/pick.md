@@ -2,7 +2,7 @@
 name: pick
 description: Egy parkoló tétel (P-ID) vagy GitHub issue (#szám) kiválasztása aktuális munkának — a nyitott munka lezárása vagy parkolása után. Használd amikor a Fejlesztő /pick-et ír, vagy egy parkoló témával vagy issue-val akar folytatni.
 argument-hint: "P02 | #12"
-allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *), Skill(unpark *), Skill(park *), Skill(worktree-open *)
+allowed-tools: Bash(cat .parked.md *), Bash(git status *), Bash(gh issue view *), Edit(.parked.md), Skill(park *), Skill(worktree-open *)
 ---
 
 ## Kontextus
@@ -30,7 +30,9 @@ parkoljuk (`/park`), vagy eldobjuk. A választás után folytasd.
 
 ## 3. Váltás
 
-1. **P-ID**: `/unpark <ID>` — a tétel kikerül a parkolóból. **Issue**: nyitva marad; a
+1. **P-ID**: a `.parked.md`-ben a tétel ID-je mögé `▶` kerül (`**P05** ▶ · …`); ha
+   másik tételen már van, onnan lekerül. A tétel a munka lezárásáig a parkolóban marad,
+   a kivételéről a `/parked` gondoskodik. **Issue**: nyitva marad; a
    száma a munka végéig a kontextusban marad (→ `/commit` Footer, `/pull-request` Issue).
 2. Egy sorban: `Aktuális: <ID> · <tétel>`, ill. `Aktuális: [#<szám>](<URL>) · <cím>`.
 3. Indulás a `~/.claude/rules/workflow.md` útválasztása szerint (fix-jellegű → `dev`,

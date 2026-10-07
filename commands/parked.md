@@ -14,7 +14,9 @@ allowed-tools: Bash(git status *), Bash(cat .parked.md *), Skill(pick *), Skill(
 - **Aktuális**: ha van még teendő az aktuális témával — a folyamatban lévő munka
   ebben a sessionben, és a félbemaradt munka a Kontextusból (commitolatlan
   változás). Commitolt, de nem pusholt munka nem aktuális.
-- **Parkolóban**: a Kontextus **Parkoló** sora — a `.parked.md` tételei ; tétel a `**PNN** · ` kezdetű sor, a `<!-- next id -->` számláló nem; `NINCS` → üres.
+- **Parkolóban**: a Kontextus **Parkoló** sora — a `.parked.md` tételei; tétel a `**PNN** · ` vagy `**PNN** ▶ · ` kezdetű sor, a `<!-- next id -->` számláló nem; `NINCS` → üres.
+- **Pick-elt** (`▶`) tétel: ha a munkája lezárult (commitolva, nincs vele teendő) →
+  `/unpark <ID>`, és a listába már nem kerül be; ha még tart, ő az **Aktuális**.
 
 Ha nincs se aktuális, se parkoló tétel: csak ennyi — `Nincs aktuális/parkoló téma.`,
 és nincs kérdés.
@@ -67,11 +69,7 @@ Ha nincs aktuális:
   issue-vá léptethető: /issue <ID>`.
 - **Push**: ha a Kontextus szerint van pusholatlan commit (`[ahead N]`), `Push` az utolsó
   opció — parkoló tétel nem lesz belőle.
-- **4 opció a határ**: ami nem fér bele, második kérdésbe kerül ugyanígy (header:
-  `Folytatás 2`). Az Elvetésnél ugyanígy (`Elvetés 2`); egy hívásban legfeljebb 4 kérdés.
+- **4 opció a határ**: ami nem fér bele (az Aktuális és a Push mellett), második
+  kérdésbe kerül ugyanígy (header: `Folytatás 2`).
 
-Ugyanabban a hívásban egy további kérdés, ha van parkoló tétel: „Mit vessünk el?”,
-header: `Elvetés`, `multiSelect: true`. Az opciók a parkoló tételek, a `label` ugyanúgy
-pontosan a tétel sora (az Aktuális és a Push nem). A kiválasztott tételekre
-`/unpark <ID-k>`; ha semmit nem jelöl, minden marad. Ha a folytatás egy parkoló tétel:
-`/pick <ID>`.
+Ha a folytatás egy parkoló tétel: `/pick <ID>`.

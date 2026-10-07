@@ -16,7 +16,8 @@ Ha a *Fejlesztő* a nyitott feladattól független témát hoz:
    - **Előbb lezárjuk** — ajánlott, ha a maradék rövid. Az új ötlet `/park`.
    - **Váltunk** — a nyitott munka commitolva vagy saját ágon marad, és `/park` egy sorral, hogy mi van hátra.
    - **A nyitottat eldobjuk.**
-3. **Parkolás**: `/park <téma>` — a projekt `.parked.md`-jébe.
+3. **Parkolás**: `/park <téma>` — a projekt `.parked.md`-jébe; csak rövid, a sessionhöz
+   kapcsolódó tétel, legfeljebb 4; ami nagyobb vagy független, issue lesz (a `/park` dönti el).
 4. **Lezáráskor**: `/parked`. A `/commit`, `/commit-push` és `/commit-push-pr` után mindig.
 
 Ha a *Fejlesztő* kifejezetten vált ("hagyjuk, jöjjön X") → nem kérdezel, de a nyitva
