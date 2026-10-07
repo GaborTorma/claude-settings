@@ -3,12 +3,8 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CLAUDE_DIR="$HOME/.claude"
+# Korábbi telepítés shell rc hookja (auto-sync); már nem használjuk.
 MARKER="# claude-settings auto-update"
-UPDATE_CMD="bash \"$REPO_DIR/scripts/sync.sh\" --quiet 2>/dev/null || true"
-HOOK_LINE="${MARKER}"$'\n'"${UPDATE_CMD}"
-
-NO_HOOK=0
-[ "${1:-}" = "--no-hook" ] && NO_HOOK=1
 
 # Egész mappa-symlink ~/.claude alá. Csak ott, ahol minden fájl ebből a repóból
 # jön (más eszköz nem ír bele).
@@ -23,52 +19,22 @@ DIR_FILE_SYMLINK_TARGETS=(
   "commands"
 )
 
-detect_shell() { basename "${SHELL:-}"; }
-
-rc_file_for() {
-  case "$1" in
-    zsh)  echo "$HOME/.zshrc" ;;
-    bash) echo "$HOME/.bashrc" ;;
-    fish) echo "$HOME/.config/fish/config.fish" ;;
-    *)    echo "" ;;
-  esac
-}
-
 confirm() {
   local answer
   read -r -p "$1 [i/N] " answer
   [[ "$answer" =~ ^[iI]$ ]]
 }
 
-install_hook() {
-  local rc="$1"
-
-  if [ -z "$rc" ]; then
-    echo "Ismeretlen shell: $SHELL — add hozzá manuálisan:"
-    echo "  $UPDATE_CMD"
-    exit 1
-  fi
-
-  mkdir -p "$(dirname "$rc")"
-
-  if grep -qF "$MARKER" "$rc" 2>/dev/null; then
-    local current
-    current="$(awk -v m="$MARKER" 'f{print; exit} index($0,m){f=1}' "$rc")"
-    if [ "$current" = "$UPDATE_CMD" ]; then
-      echo "Hook naprakész: $rc"
-      return
-    fi
-
-    local tmp; tmp="$(mktemp)"
+# A marker-sort és az utána álló parancssort törli, ha van.
+remove_hook() {
+  local rc tmp
+  for rc in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.config/fish/config.fish"; do
+    grep -qF "$MARKER" "$rc" 2>/dev/null || continue
+    tmp="$(mktemp)"
     awk -v m="$MARKER" 'index($0,m){skip=2} skip>0{skip--; next} {print}' "$rc" > "$tmp"
-    mv "$tmp" "$rc"
-    printf '\n%s\n' "$HOOK_LINE" >> "$rc"
-    echo "Hook frissítve: $rc"
-    return
-  fi
-
-  printf '\n%s\n' "$HOOK_LINE" >> "$rc"
-  echo "Hook hozzáadva: $rc"
+    cat "$tmp" > "$rc" && rm "$tmp"
+    echo "Auto-sync hook eltávolítva: $rc"
+  done
 }
 
 link_one() {
@@ -218,18 +184,7 @@ install_symlinks() {
 main() {
   install_symlinks
   link_managed_settings
-
-  if [ "$NO_HOOK" -eq 1 ]; then
-    echo "Kész (shell rc érintetlen — --no-hook)."
-    return
-  fi
-
-  local shell rc
-  shell="$(detect_shell)"
-  rc="$(rc_file_for "$shell")"
-
-  echo "Shell: $shell"
-  install_hook "$rc"
+  remove_hook
   echo "Kész."
 }
 

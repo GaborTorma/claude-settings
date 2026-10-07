@@ -63,8 +63,8 @@ szerkessz.
 git -C "$REPO" add inbox/ && git -C "$REPO" commit -m "chore(inbox): <slug>" && git -C "$REPO" push   # kiegészítésnél: "chore(inbox): extend <slug>"
 ```
 
-A push azért kell, mert a `sync.sh` csak shell-indításkor fut — enélkül a
-tanulság ezen a gépen ragadna.
+A push azért kell, mert a repóban nincs automatikus sync — enélkül a tanulság
+ezen a gépen ragadna.
 
 ## 5. Visszajelzés
 

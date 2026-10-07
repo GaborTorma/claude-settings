@@ -6,9 +6,9 @@ Személyes Claude Code környezet: globális szabályok, slash commandok és a
 ## Telepítés
 
 ```bash
-make install     # symlinkek ~/.claude alá + shell rc auto-sync hook
-make link        # ugyanaz, a shell rc érintése nélkül
-make update      # sync + újratelepítés, ha a HEAD elmozdult
+make install     # symlinkek ~/.claude alá + managed settings drop-in
+make update      # fast-forward pull + újratelepítés, ha a HEAD elmozdult
+make push        # git push
 ```
 
 ## Mi hova kerül
@@ -44,7 +44,7 @@ a két parancsot. Ellenőrzés: `/status` → `Setting sources` sorában `(drop-
 **Kockázatok**:
 
 - Érvénytelen JSON-nal a Claude Code **el sem indul** — szerkesztés után
-  `python3 -m json.tool settings.user.json`. A `sync.sh` érvénytelen remote
+  `python3 -m json.tool settings.user.json`. Az `update.sh` érvénytelen remote
   állapotot nem húz le.
 - Céges claude.ai-policy vagy MDM esetén a drop-in figyelmeztetés nélkül kiesik
   (`first-wins`).
