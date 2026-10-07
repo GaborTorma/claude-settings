@@ -29,12 +29,20 @@ Magyarul, ebben a sorrendben; az üres szakasz elmarad.
 
 - **Összefoglaló**, 2–3 mondat: mi változott és miért — a miért az első
   mondatban (az **Argumentum** sor a kontextus).
+- **Vázlat**: ha egy ábra gyorsítja az ellenőrzést, az összefoglaló alá a
+  legkisebb nézet, ami a lényeget mutatja — `diff`-vázlat a meglévő szerkezeten
+  (fájlfa, hívási lánc, vezérlési folyamat), pszeudokód vagy Mermaid. Csak a
+  lényeghez kellő fájlok, hívások, állapotok; egy, legfeljebb kettő. Ha a szöveg
+  elég (pl. egy command megfogalmazásának pontosítása), elmarad.
 - **Issue**: ha a munka egy issue-ból indult (`/pick #<szám>`, vagy a *Fejlesztő*
   megnevezte az **Argumentum** sorban vagy a beszélgetésben), az összefoglaló alá `Closes #<szám>` — a
   merge lezárja. Ha nem volt, a sor elmarad; ne keress és ne találd ki.
 - **`## Ellenőrzés`**: csak ami ténylegesen lefutott — a `/check` eredménye (a
-  `/commit` Check-sora vagy a CI), és amit kézzel megnéztünk. UI-változásnál
-  képernyőkép.
+  `/commit` Check-sora vagy a CI), és amit kézzel megnéztünk. A cél, hogy a
+  *Fejlesztő* a változás működését a leírásból ellenőrizni tudja: **előtte /
+  utána** — a régi viselkedés vagy a hiba, és a mostani (bukó → átmenő teszt,
+  parancskimenet; UI-változásnál képernyőkép). Ha nincs mit összevetni, csak az
+  utána.
 - **`## Élesítés`**: ami a deploy előtt vagy közben teendő — migráció, új vagy
   megváltozott env-változó, ütemezett feladat, sorrend, rollback. Forrás a diff
   (migrációs könyvtár, `.env.example`), a worklogok és a *Fejlesztő*; ne találd ki.
