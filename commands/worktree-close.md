@@ -73,8 +73,9 @@ app session-fájlja (`cwd`) különben a törölt worktree-re mutatna; erre ép�
 git-graph „saját” worktree-je. Ártalmatlan, ha a session már a fő checkoutban van. A kör
 végén hat.
 
-A **play gomb** tartós shellje a `/worktree-open` `cd`-je után a törölt worktree-ben
-maradna — a válasz végén adj egy blokkot, és kérd a *Fejlesztő*t, hogy egyszer nyomja meg:
+A **play gomb** a terminál panel *Fejlesztő* nyitotta tabjába gépel; a `/worktree-open`
+`cd`-je után az a törölt worktree-ben maradna — a válasz végén adj egy blokkot, és kérd a
+*Fejlesztő*t, hogy egyszer nyomja meg:
 
 ```bash
 cd <a fő checkout abszolút útja>

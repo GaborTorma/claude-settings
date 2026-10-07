@@ -74,10 +74,12 @@ pl. a git-graph „saját” worktree-je. Utolsó lépésként:
 (`git rev-parse --show-toplevel`). A kör végén hat — utána ebben a körben ne futtass
 semmit, ami a cwd-re épül.
 
-A **play gomb** (```` ```bash ```` blokk) egy tartós shellben fut, amely megőrzi a
-`cd`-t, de a munkakönyvtárát sem az `EnterWorktree`, sem a `change_directory` nem állítja
-át (mérve, 2026.10.06.). Ezért a válasz végén adj egy blokkot, és kérd a *Fejlesztő*t,
-hogy egyszer nyomja meg:
+A **play gomb** (```` ```bash ```` blokk) a terminál panel *Fejlesztő* nyitotta tabjába
+gépel (a Claude nyitotta tabokat kihagyja), és az ott futó shell nem követi sem az
+`EnterWorktree`-t, sem a `change_directory`-t (mérve, 2026.10.07.). Ezért a válasz végén
+adj egy blokkot, és kérd a *Fejlesztő*t, hogy egyszer nyomja meg — ez a terminál tabját is
+a worktree-be viszi (vagy nyisson új tabot a panel „+” gombjával: az a session cwd-jében
+indul, és onnantól a play abba gépel):
 
 ```bash
 cd <a worktree abszolút útja>
