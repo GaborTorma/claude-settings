@@ -132,6 +132,8 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
 - **Rövid válasz**: a kérdések számozva, az opciók betűvel (`- a.`, `- b.`), így a
   *Fejlesztő* kóddal válaszolhat (`1a`). A betű elé `- ` kell, különben a Markdown egy
   sorba vonja az opciókat.
+- **Csak valódi alternatíva**: opció az, ami a munka célját másképp éri el. A cél feladása
+  („marad így”, „nem csinálunk semmit”, „hagyjuk”) nem opció. Ha így egyetlen értelmes lépés    marad — főleg ha amúgy is az az ajánlott —, az nem Döntés, hanem Folytatás.
 - **Döntés csak teljes információval**: ha egy teendő vagy egy futó subagent eredménye
   kizárhat vagy átírhat opciókat, a döntés még nem kerül a blokkba — előbb az eredmény,
   utána a döntés. Addig a függőség a Folyamatban vagy a Teendő blokkban látszik.
@@ -151,6 +153,8 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
 - Kérdésként, amire az **OK** önmagában elég válasz (`Megírjam a teszteket a parserhez?`)
   — nem választás opciók között, az Döntés.
 - Commit, push nem lehet a Folytatás (→ Döntés és Teendő).
+- **Előfeltétel**: ha a lépés előtt a *Fejlesztő*nek kell valamit tennie (mentés, bezárás,
+  belépés), új sorban közvetlenül a Folytatás alatt — nem külön Teendő blokkban.
 - Ha nincs értelmes következő lépés, elmarad.
 
 ## Kivétel
