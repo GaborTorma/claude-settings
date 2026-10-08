@@ -133,7 +133,10 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   *Fejlesztő* kóddal válaszolhat (`1a`). A betű elé `- ` kell, különben a Markdown egy
   sorba vonja az opciókat.
 - **Csak valódi alternatíva**: opció az, ami a munka célját másképp éri el. A cél feladása
-  („marad így”, „nem csinálunk semmit”, „hagyjuk”) nem opció. Ha így egyetlen értelmes lépés    marad — főleg ha amúgy is az az ajánlott —, az nem Döntés, hanem Folytatás.
+  („marad így”, „nem csinálunk semmit”, „hagyjuk”) nem opció. Ha így egyetlen értelmes lépés
+  marad — főleg ha amúgy is az az ajánlott —, az nem Döntés, hanem Folytatás.
+- **Nincs nyitott gyűjtő-opció**: „keverék”, „egyéb”, „írd meg, mit szeretnél” nem opció —
+  szabad szöveggel a *Fejlesztő* mindig válaszolhat.
 - **Döntés csak teljes információval**: ha egy teendő vagy egy futó subagent eredménye
   kizárhat vagy átírhat opciókat, a döntés még nem kerül a blokkba — előbb az eredmény,
   utána a döntés. Addig a függőség a Folyamatban vagy a Teendő blokkban látszik.
