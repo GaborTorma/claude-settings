@@ -68,6 +68,15 @@ def load_catalog() -> dict[tuple[str, str], dict]:
     return out
 
 
+def local_marketplaces() -> set[str]:
+    """Helyi könyvtárból telepített marketplace-ek: saját fejlesztés, nincs mit ellenőrizni."""
+    f = PLUGINS / "known_marketplaces.json"
+    if not f.exists():
+        return set()
+    return {mp for mp, v in json.loads(f.read_text()).items()
+            if v.get("source", {}).get("source") == "directory"}
+
+
 def remote_version(repo_url: str, ref: str) -> str | None:
     repo = repo_url.replace("https://github.com/", "").removesuffix(".git")
     url = f"https://raw.githubusercontent.com/{repo}/{ref}/.claude-plugin/plugin.json"
@@ -117,12 +126,15 @@ def main() -> int:
     installed = json.loads((PLUGINS / "installed_plugins.json").read_text())["plugins"]
     catalog_note = refresh_catalogs()
     catalog = load_catalog()
+    local = local_marketplaces()
 
     outdated: list[dict] = []
     unknown: list[str] = []
 
     for key, entries in sorted(installed.items()):
         name, _, mp = key.partition("@")
+        if mp in local:
+            continue
         entry = catalog.get((mp, name))
         for inst in entries:
             have = inst.get("version")
