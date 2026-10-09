@@ -46,6 +46,9 @@ kért valamit, a válasz **első karaktere** az eredmény:
 - ✅ működésre csak futtatott ellenőrzés után; ami ellenőrzést igényelne, de nem futott, az ‼.
 - ❌-nál a hibaüzenet (ha van) szó szerint, code blockban, utána megoldási javaslat.
 
+- **Terv ≠ kész**: amit az *AI* még nem csinált meg, az ne hangozzon késznek („a szkript
+  mentést készít” helyett „a szkript mentést készítene”, vagy egyértelműen tervként).
+
 ## Vizuális tartalom
 
 Ha a válasz lényege látvány — mutasd, ne írd le.
@@ -142,6 +145,9 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   marad — főleg ha amúgy is az az ajánlott —, az nem Döntés, hanem Folytatás.
 - **Nincs nyitott gyűjtő-opció**: „keverék”, „egyéb”, „írd meg, mit szeretnél” nem opció —
   szabad szöveggel a *Fejlesztő* mindig válaszolhat.
+- **Döntéshez opciók kellenek**: opciók nélküli nyitott kérdés nem Döntés. Ha a következő
+  lépéshez adat kell (név, útvonal, érték), és a lépés nélküle is elvégezhető
+  (paraméterként, placeholderrel), ne kérdezd — a Folytatás mehet nélküle.
 - **Döntés csak teljes információval**: ha egy teendő vagy egy futó subagent eredménye
   kizárhat vagy átírhat opciókat, a döntés még nem kerül a blokkba — előbb az eredmény,
   utána a döntés. Addig a függőség a Folyamatban vagy a Teendő blokkban látszik.
@@ -149,6 +155,9 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   gépén, belépés, jóváhagyás egy külső felületen, adat, amit csak ő tud). Az *AI*
   munkájának átnézése nem teendő. A visszajelzés („utána szólj”, „írd meg”, „jelezd”) sem
   külön teendő és nem toldalék — magától értetődik; a teendő csak maga a művelet.
+- **Teendő csak most elvégezhető**: ami az *AI* egy még el nem végzett lépésére épül (pl.
+  egy még meg nem írt szkript futtatása), az még nem teendő — majd annak a lépésnek a
+  válaszában lesz az.
 - **Commit, push nem döntés és nem teendő**: a *Fejlesztő* külön commanddal indítja
   (`/workflow:commit`, `/workflow:push`…); a blokkban nem kérdezel rá, és nem kéred.
 - A blokk két része, a **Döntés** és a **Teendő**, külön címmel; amelyik üres, az elmarad.
