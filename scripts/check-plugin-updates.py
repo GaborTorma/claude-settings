@@ -11,6 +11,10 @@ kezelni kell:
   3. url-forrás `sha` pinnel                        → a pinelt commit plugin.json-ja
 A 2. eset verzió nélkül is előfordul (a telepített "verzió" ilyenkor commit-sha):
 ott a cache és a katalógus mappájának tartalmi diffje dönt.
+
+A saját torma-ai marketplace ezen a gépen a forrásból fut, cache nélkül: a
+CLAUDE_CODE_PLUGIN_DIRS (~/.claude/settings.json env) minden pluginját a helyi
+repóból tölti. Ennek a beállításnak a sértetlenségét is ellenőrzi.
 """
 
 from __future__ import annotations
@@ -29,6 +33,9 @@ CACHE = PLUGINS / "cache"
 ORPHAN_REPORT_MIN_KB = 50 * 1024
 MARKETPLACES = PLUGINS / "marketplaces"
 HTTP_TIMEOUT = 20
+SETTINGS = Path.home() / ".claude" / "settings.json"
+TORMA_MP = "torma-ai"
+TORMA_SRC = Path.home() / "Development" / "Claude" / "claude-plugins"
 
 
 def claude_bin() -> str | None:
@@ -118,6 +125,31 @@ def orphans() -> list[tuple[int, str]]:
     return sorted(found, key=lambda x: x[1])
 
 
+def torma_local_problems() -> list[str]:
+    """A torma-ai pluginok a helyi repóból töltődjenek, mindegyik, cache-másolat nélkül."""
+    problems = []
+    known = PLUGINS / "known_marketplaces.json"
+    src = json.loads(known.read_text()).get(TORMA_MP, {}).get("source", {}) if known.exists() else {}
+    if src.get("source") != "directory" or Path(src.get("path", "")) != TORMA_SRC:
+        problems.append(f"a marketplace forrása nem a helyi könyvtár ({TORMA_SRC}): {src or 'nincs felvéve'}")
+
+    if (CACHE / TORMA_MP).exists():
+        problems.append(f"van cache-másolat: {CACHE / TORMA_MP} — "
+                        f"takarítás: mv {CACHE / TORMA_MP} ~/.Trash/{TORMA_MP}-cache-$(date +%Y%m%d-%H%M%S)")
+
+    catalog = TORMA_SRC / ".claude-plugin" / "marketplace.json"
+    if not catalog.exists():
+        return problems + [f"a katalógus nem található: {catalog}"]
+    wanted = {(TORMA_SRC / e["source"]).resolve() for e in json.loads(catalog.read_text()).get("plugins", [])}
+    env = json.loads(SETTINGS.read_text()).get("env", {}) if SETTINGS.exists() else {}
+    listed = {Path(p).resolve() for p in env.get("CLAUDE_CODE_PLUGIN_DIRS", "").split(":") if p}
+    for d in sorted(wanted - listed):
+        problems.append(f"hiányzik a CLAUDE_CODE_PLUGIN_DIRS-ből ({SETTINGS}): {d}")
+    for d in sorted(p for p in listed if p.is_relative_to(TORMA_SRC) and not p.is_dir()):
+        problems.append(f"nem létező könyvtár a CLAUDE_CODE_PLUGIN_DIRS-ben: {d}")
+    return problems
+
+
 def human(kb: int) -> str:
     return f"{kb / 1024:.1f}M" if kb >= 1024 else f"{kb}K"
 
@@ -159,8 +191,9 @@ def main() -> int:
                 outdated.append(hit | {"change": f"{have} → {avail}"})
 
     orphan_list = orphans()
+    torma = torma_local_problems()
 
-    print("STATUS:", "TEENDO" if outdated else "OK")
+    print("STATUS:", "TEENDO" if outdated or torma else "OK")
     print(f"# {catalog_note}")
     print()
 
@@ -181,6 +214,12 @@ def main() -> int:
         print("Minden telepített plugin naprakész.")
         print()
 
+    if torma:
+        print(f"{TORMA_MP.upper()} NEM LOKÁLISAN FUT ({len(torma)}):")
+        for line in torma:
+            print(f"  - {line}")
+        print()
+
     if unknown:
         print("NEM ELLENŐRIZHETŐ:")
         for line in unknown:
@@ -197,7 +236,7 @@ def main() -> int:
               "-name .orphaned_at -print0 | xargs -0 -n1 dirname | xargs rm -rf")
         print()
 
-    return 1 if outdated else 0
+    return 1 if outdated or torma else 0
 
 
 if __name__ == "__main__":
