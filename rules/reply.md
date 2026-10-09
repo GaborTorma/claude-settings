@@ -20,8 +20,8 @@ A szóhasználat: → `communication.md`.
 
 > **❓ Döntés**
 > 1. **<a helyzet lényege — ha a kérdés önmagában nem elég>** <rövid kontextus — ha a lényeg nem elég>. **<a kérdés>?**
->    - a. **<opció>** (ajánlott): <mi történik, ha ezt választod>
->    - b. **<opció>**: <mi történik, ha ezt választod>
+>    1. **<opció>** *(ajánlott)*: <mi történik, ha ezt választod>
+>    2. **<opció>**: <mi történik, ha ezt választod>
 >
 > **⭕ Teendő**
 > - <mit kell a *Fejlesztő*nek csinálni, hol>
@@ -129,9 +129,14 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   van, nem külön szakaszban.
 - **Kiemelés a döntésben**: félkövér a helyzet lényege és maga a kérdés; az opcióknál a
   név félkövér, utána az esetleges `(ajánlott)`, majd kettősponttal a következménye.
-- **Rövid válasz**: a kérdések számozva, az opciók betűvel (`- a.`, `- b.`), így a
-  *Fejlesztő* kóddal válaszolhat (`1a`). A betű elé `- ` kell, különben a Markdown egy
-  sorba vonja az opciókat.
+- **Egy kérdés**: a `❓ Döntés` cím helyén maga a kérdés (`> **❓ <a kérdés>?**`), alatta az
+  opciók Markdown számozott listában (`1.`, `2.`) — a *Fejlesztő* számmal válaszol.
+- **Több kérdés**: `❓ Döntés` cím, a kérdések számozott listában, alattuk az opciók
+  beágyazott számozott listában (`   1.`, `   2.`) — a Code fül a második szintet betűvel
+  jeleníti meg (a., b.), így kóddal válaszolhat (`1a`). Betűt kézzel ne írj.
+- **Saját azonosítójú opciók** (pl. `U3`, `T1`, `A — Glass`): pontozott lista (`-`), az
+  opció a saját azonosítójával kezdődik, külön szám vagy betű nélkül — egy sornak egy
+  azonosítója legyen.
 - **Csak valódi alternatíva**: opció az, ami a munka célját másképp éri el. A cél feladása
   („marad így”, „nem csinálunk semmit”, „hagyjuk”) nem opció. Ha így egyetlen értelmes lépés
   marad — főleg ha amúgy is az az ajánlott —, az nem Döntés, hanem Folytatás.
@@ -155,6 +160,9 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   lépéssel.
 - Kérdésként, amire az **OK** önmagában elég válasz (`Megírjam a teszteket a parserhez?`)
   — nem választás opciók között, az Döntés.
+- **Az *AI* lépése**: a Folytatás az, amit az *AI* csinál meg az „OK” után. Ha a lépést a
+  *Fejlesztő*nek kell megtennie (kattintás, indítás egy felületen, parancs a saját gépén),
+  az Teendő.
 - Commit, push nem lehet a Folytatás (→ Döntés és Teendő).
 - **Előfeltétel**: ha a lépés előtt a *Fejlesztő*nek kell valamit tennie (mentés, bezárás,
   belépés), új sorban közvetlenül a Folytatás alatt — nem külön Teendő blokkban.
