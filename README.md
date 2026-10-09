@@ -15,7 +15,7 @@ make push        # git push
 
 | Repóban | Célja | Hogyan |
 | --- | --- | --- |
-| `rules/` | globális instrukciók, minden sessionben betöltődnek; a `workflow.md` és a `focus.md` csak a `workflow:workflow` és a `focus:focus` skill betöltését kéri | symlink → `~/.claude/rules` |
+| `rules/` | globális instrukciók, minden sessionben betöltődnek; a `focus:focus` és a `workflow:workflow` betöltését a pluginjuk SessionStart hookja kéri | symlink → `~/.claude/rules` |
 | `CLAUDE.md` | globális user memory | symlink → `~/.claude/CLAUDE.md` |
 | `commands/` | a repóhoz kötött slash commandok (`capture`, `curate`, `handoff`); a git- és teendő-commandok a `workflow` és `focus` pluginban | fájlonkénti symlink → `~/.claude/commands/` |
 | `inbox/` | más sessionökből érkezett tanulságok a kurációig | nem kerül ki sehova |
