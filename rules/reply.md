@@ -172,6 +172,11 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
 - **Az *AI* lépése**: a Folytatás az, amit az *AI* csinál meg az „OK” után. Ha a lépést a
   *Fejlesztő*nek kell megtennie (kattintás, indítás egy felületen, parancs a saját gépén),
   az Teendő.
+- **Amit az *AI* futtatni tud, az Folytatás**: egy parancs (build, install, újraindítás),
+  amit az *AI* maga is lefuttathat, nem Teendő — `Futtassam a make install-t?`.
+- **Parancs code blockban**: ha a Folytatás vagy a Teendő shell-parancsot jelent, alatta
+  ` ```bash ` blokkban, soronként egy parancs blokkonként — a play gombbal a *Fejlesztő* is
+  elindíthatja.
 - Commit, push nem lehet a Folytatás (→ Döntés és Teendő).
 - **Előfeltétel**: ha a lépés előtt a *Fejlesztő*nek kell valamit tennie (mentés, bezárás,
   belépés), új sorban közvetlenül a Folytatás alatt — nem külön Teendő blokkban.
