@@ -60,7 +60,12 @@ Ha a válasz lényege látvány — mutasd, ne írd le.
   mutass, amiből választhat.
 - **Kisebb léptékben is**: táblázat felsorolás helyett, ha 2+ tulajdonságot vetsz össze;
   diff a változás leírása helyett.
-- **Ne**: ASCII-rajz vagy hosszú szöveges leírás ott, ahol egy widget egyértelműbb.
+- **Diagram → widget**: flowchart, szekvencia, állapotgép a widgetben; Mermaid-szintaxis
+  is mehet, de csak a widgeten belül, `mermaid.js`-szel renderelve
+  (`cdn.jsdelivr.net/npm/mermaid@11`, `mermaid.render` → SVG, a téma a
+  `prefers-color-scheme` szerint).
+- **Ne**: ASCII-rajz, a válaszba írt ` ```mermaid ` blokk (a Code fül nem rendereli, nyers
+  szöveg marad), vagy hosszú szöveges leírás ott, ahol egy widget egyértelműbb.
 
 ### Widget
 
