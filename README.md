@@ -1,5 +1,10 @@
 # claude-settings
 
+> [!WARNING]
+> **Deprecated — 2026.10.11.** A tartalom a [`claude-plugins`](https://github.com/GaborTorma/claude-plugins)
+> repóba költözött (a `torma-ai` marketplace pluginjai: `communication`, `coding`, `core`, `learn`…).
+> Ez a repó csak archívum, nem frissül, és a `~/.claude` semmit nem tölt be belőle.
+
 Személyes Claude Code környezet: globális szabályok, slash commandok és a
 `torma-ai` plugin-marketplace.
 
